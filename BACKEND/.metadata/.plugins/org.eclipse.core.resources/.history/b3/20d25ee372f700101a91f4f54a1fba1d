@@ -1,0 +1,19 @@
+package com.rentit.register.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rentit.register.services.RegisterService;
+
+@RestController
+@RequestMapping("/api")
+public class RegisterController {
+	
+//	RegisterService serv;
+	
+	@GetMapping("/hello")
+	public String Hello() {
+		return "Hello";
+	}
+}
