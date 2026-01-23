@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+G:\Girish Know IT\Rent-it_Project\.metadata\.plugins\org.eclipse.jdt.core
-117216860.index
-1865797976.index
-3755456200.index
