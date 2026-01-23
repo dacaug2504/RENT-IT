@@ -3,6 +3,7 @@ package com.rentit.signin.entities;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.rentit.signin.enums.AccountStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class User {
 	
 	private Integer city_id;
 	
-	private Status status;
+	private AccountStatus status;
 	
 	private LocalDateTime date_time;
 	
@@ -54,4 +55,8 @@ public class User {
 	@JoinColumn(name = "role_id")
 	@JsonIgnoreProperties("users")
 	Role role;
+	public AccountStatus getStatus() {
+	    return status;
+	}
+
 }
