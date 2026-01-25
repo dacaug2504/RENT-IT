@@ -1,66 +1,37 @@
 package com.rentit.signin.services;
 
-
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rentit.signin.controllers.LoginController;
 import com.rentit.signin.entities.User;
-import com.rentit.signin.enums.AccountStatus;
 import com.rentit.signin.repositories.UserRepository;
 
 @Service
 public class LoginService {
 
-   
-	
     @Autowired
     private UserRepository userRepository;
 
-
     public List<User> getAll() {
-    	return userRepository.findAll();
+        return userRepository.findAll();
     }
-  
 
-    public User login(String username, String password) {
+    public User login(String email, String password) {
         System.out.println("in login service");
-        User dbUser = userRepository.findByEmailAndPassword(username,password);
-        System.out.println(dbUser);
-        /*User u = null;
-        
-        try {
-        	u = dbUser.get();
-        	System.out.println(u);
+
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            return null;
         }
-        catch(NoSuchElementException e) {
-        	e.printStackTrace();
-        }*/
-        return dbUser;
-        
-        //        .orElseThrow(() -> new RuntimeException("Invalid email or password"));
 
-   
-
-        // Role validation
-        /*if (!dbUser.getRole().getRoleName().equalsIgnoreCase(roleName)) {
-            throw new RuntimeException("Unauthorized role");
+        // plain-text password check (TEMPORARY)
+        if (!user.getPassword().equals(password)) {
+            return null;
         }
-  
 
-        return dbUser;*/
+        return user;
     }
-    
-    /*public boolean isValidUser(String email, String password) {
-
-        return userRepository.findByEmail(email)
-                .map(dbUser -> dbUser.getPassword().equals(password))
-                .orElse(false);
-    }*/
-		
-
 }
