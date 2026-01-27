@@ -26,18 +26,64 @@ const Login = () => {
     setError('');
 
     try {
-      console.log('Sending login request:', formData);
       const response = await authService.login(formData);
-      console.log('Login response:', response.data);
+
+      console.log(response.data);
+
+      if (!response.data || !response.data.token || !response.data.user) {
+        setError('Invalid login response');
+        setLoading(false);
+        return;
+      }
+
+      /* =========================
+         ✅ SAVE JWT TOKEN
+         ========================= */
+      localStorage.setItem('token', response.data.token);
+
+      /* =========================
+         ✅ SAVE USER (NO PASSWORD)
+         ========================= */
+      userService.saveUser(response.data.user);
+
+      /* =========================
+         ✅ ROLE BASED REDIRECT
+         ========================= */
+      let role = null;
+
+      const userRole = response.data.user.role;
+
+      if (userRole) {
+        // Handle both backend naming styles safely
+        role = (
+          userRole.role_name ||   // snake_case
+          userRole.roleName ||    // camelCase
+          userRole               // string fallback
+        );
+
+        if (typeof role === 'string') {
+          role = role.toLowerCase();
+        }
+      }
+
+      if (!role) {
+        console.error("Invalid role object:", response.data.user.role);
+        setError('Unable to determine user role');
+        setLoading(false);
+        return;
+      }
+
       
-      userService.saveUser(response.data);
-      
-      const role = response.data.role.toLowerCase();
+
       navigate(`/${role}/dashboard`);
     } catch (err) {
-      console.error('Login error:', err);
-      const errorMessage = err.response?.data?.error || 'Invalid email or password';
-      setError(errorMessage);
+      if (err.response?.status === 401) {
+        setError('Invalid email or password');
+      } else if (err.response?.status === 403) {
+        setError('Your account is inactive. Please contact support.');
+      } else {
+        setError('Login failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -49,7 +95,7 @@ const Login = () => {
       <div className="floating-circle"></div>
       <div className="floating-circle"></div>
       <div className="floating-circle"></div>
-      
+
       <div className="auth-card">
         <div className="auth-header">
           <div className="brand-logo">
@@ -86,22 +132,15 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button 
-            variant="primary" 
-            type="submit" 
+          <Button
+            variant="primary"
+            type="submit"
             className="w-100"
             disabled={loading}
           >
             {loading ? (
               <>
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                  className="me-2"
-                />
+                <Spinner size="sm" className="me-2" />
                 Signing in...
               </>
             ) : (

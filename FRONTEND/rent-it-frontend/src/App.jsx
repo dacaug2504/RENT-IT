@@ -5,6 +5,10 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import AddItem from './components/AddItem';
+import EditProduct from './components/EditProduct';
+
+
 
 function App() {
   return (
@@ -13,6 +17,15 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* DEV ROUTES */}
+        {/* temp add page*/}
+        <Route path="/dev/add-item" element={<AddItem />} />
+
+        {/* temp edit page */}
+        <Route path="/edit-product/:otId" element={<EditProduct />} />
+
+
         
         <Route
           path="/customer/dashboard"
