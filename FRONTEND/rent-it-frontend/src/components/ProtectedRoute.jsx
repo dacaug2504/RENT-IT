@@ -8,7 +8,28 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  // 🔹 Normalize role safely
+  let userRole = user.role;
+
+  if (typeof userRole === 'object' && userRole !== null) {
+    userRole =
+      userRole.roleName ||
+      userRole.role_name ||
+      userRole.name;
+  }
+
+  if (typeof userRole === 'string') {
+    userRole = userRole.toUpperCase(); // normalize
+  }
+
+  // 🔹 Normalize allowed roles
+  const normalizedAllowedRoles = allowedRoles?.map(r => r.toUpperCase());
+
+  if (
+    normalizedAllowedRoles &&
+    !normalizedAllowedRoles.includes(userRole)
+  ) {
+    console.warn('Role blocked by ProtectedRoute:', userRole);
     return <Navigate to="/login" replace />;
   }
 

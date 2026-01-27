@@ -6,6 +6,17 @@ const Dashboard = ({ role }) => {
   const navigate = useNavigate();
   const user = userService.getCurrentUser();
 
+  let roleName = null;
+
+  if (typeof user.role === 'object' && user.role !== null) {
+    roleName = user.role.roleName || user.role.role_name;
+  } else {
+    roleName = user.role;
+  }
+
+  roleName = roleName?.toUpperCase();
+
+
   const handleLogout = () => {
     userService.logout();
     navigate('/login');
@@ -51,7 +62,10 @@ const Dashboard = ({ role }) => {
                   {/* <Nav.Link onClick={() => navigate('/owner/my-items')}>My Listings</Nav.Link>
                   <Nav.Link onClick={() => navigate('/owner/add-item')}>Add Appliance</Nav.Link> */}
                   <Nav.Link href="#listings">My Listings</Nav.Link>
-                  <Nav.Link href="#addlistings">Add Appliances</Nav.Link>
+                  <Nav.Link onClick={() => navigate('/dev/add-item')}>
+                    Add Appliances
+                  </Nav.Link>
+
                   <Nav.Link href="#requests">Rental Requests</Nav.Link>
                 </>
               )}
@@ -81,8 +95,9 @@ const Dashboard = ({ role }) => {
           </h1>
           <p className="welcome-text">{getRoleDescription()}</p>
           <span className="role-badge">
-            {user.role} Account
+            {roleName} Account
           </span>
+
         </div>
 
         <div className="welcome-card">
