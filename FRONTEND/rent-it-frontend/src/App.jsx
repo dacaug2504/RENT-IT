@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import AddItem from './components/AddItem';
 import EditProduct from './components/EditProduct';
+import MyProducts from './components/MyProducts';
 
 
 
@@ -18,12 +19,27 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* DEV ROUTES */}
-        {/* temp add page*/}
-        <Route path="/dev/add-item" element={<AddItem />} />
+        
 
-        {/* temp edit page */}
-        <Route path="/edit-product/:otId" element={<EditProduct />} />
+        <Route
+          path="/owner/edit-product/:otId"
+          element={
+            <ProtectedRoute allowedRoles={['OWNER']}>
+              <EditProduct />
+            </ProtectedRoute>
+          }
+        />
+
+        
+
+        <Route
+          path="/owner/my-products"
+          element={
+            <ProtectedRoute allowedRoles={['OWNER']}>
+              <MyProducts />
+            </ProtectedRoute>
+          }
+        />
 
 
         
@@ -44,6 +60,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/owner/add-product"
+          element={
+            <ProtectedRoute allowedRoles={['OWNER']}>
+              <AddItem />
+            </ProtectedRoute>
+          }
+        />
+
         
         <Route
           path="/admin/dashboard"

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button, Alert, Card, Row, Col, Spinner } from 'react-bootstrap';
-import { ownerService } from '../services/api';
+import { Container, Form, Button, Alert, Card, Row, Col, Spinner, Navbar, Nav } from 'react-bootstrap';
+import { ownerService, userService } from '../services/api';
 import { useRef } from 'react';
 
 const AddItem = () => {
@@ -74,6 +74,16 @@ const AddItem = () => {
         setError('Failed to load items for selected category');
       });
   };
+
+  /* =========================
+     LOGOUT HANDLER
+     ========================= */
+
+  const handleLogout = () => {
+    userService.logout();
+    navigate('/login');
+  };
+
 
 
   /* =========================
@@ -150,8 +160,56 @@ const AddItem = () => {
 
 
   return (
-    <div style={{ minHeight: '100vh', padding: '40px 0' }}>
-      <Container>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, var(--soft-white) 0%, var(--pastel-green-light) 100%)'
+      }}
+    >
+
+
+      {/* Navbar */}
+      <Navbar bg="light" expand="lg" className="navbar">
+        <Container>
+          <Navbar.Brand
+            style={{ fontWeight: '700', fontSize: '24px', color: 'var(--text-dark)' }}
+          >
+            🏠 Rent-It System
+          </Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link onClick={() => navigate('/owner/dashboard')}>
+                Dashboard
+              </Nav.Link>
+
+              <Nav.Link onClick={() => navigate('/owner/my-products')}>
+                My Listings
+              </Nav.Link>
+
+              <Nav.Link
+                onClick={() => navigate('/owner/add-product')}
+                style={{ color: 'var(--pastel-green-dark) !important' }}
+              >
+                Add Item
+              </Nav.Link>
+
+              <Button
+                variant="outline-primary"
+                onClick={handleLogout}
+                className="ms-2"
+              >
+                Logout
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      
+      <Container className="py-5">
+
         <Card className="shadow-lg border-0" style={{ borderRadius: '20px', maxWidth: '800px', margin: '0 auto' }}>
           <Card.Body className="p-5">
 

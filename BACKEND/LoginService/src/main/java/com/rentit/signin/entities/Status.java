@@ -5,6 +5,5 @@ public enum Status {
 	ACTIVE,
 	SUSPENDED,
 	BLOCKED
-	
-	
+		
 }

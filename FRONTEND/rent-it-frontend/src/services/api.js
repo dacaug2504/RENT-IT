@@ -41,15 +41,7 @@ export const authService = {
 
 
   register: async (userData) => {
-    // const rolesResponse = await authApi.get("/getallroles");
-
-    // const selectedRole = rolesResponse.data.find(
-    //   (role) => role.role_name === userData.role
-    // );
-
-    // if (!selectedRole) {
-    //   throw new Error("Invalid role selected");
-    // }
+    
 
     const requestData = {
       firstName: userData.firstName,
@@ -185,24 +177,21 @@ export const ownerService = {
 
     return ownerApi.put(`/products/${otId}/image`, formData);
   },
+  
+  // MyProducts
+  getMyProducts: async () => {
+    return ownerApi.get('/products/myProducts');
+  },
 
-
-  //Edit Images
-  // updateProductImages: async (otId, images) => {
-  //   const formData = new FormData();
-
-  //   if (images.img1) formData.append('img1', images.img1);
-  //   if (images.img2) formData.append('img2', images.img2);
-  //   if (images.img3) formData.append('img3', images.img3);
-  //   if (images.img4) formData.append('img4', images.img4);
-  //   if (images.img5) formData.append('img5', images.img5);
-
-  //   return api.put(`/products/${otId}/image`, formData);
-  // },
-
+  //Delete Img
   deleteProductImage: async (otId, imgKey) => {
     return ownerApi.delete(`/products/${otId}/image/${imgKey}`);
   },
+
+  //Delete Product
+  deleteProduct: async (otId) => {
+  return ownerApi.delete(`/products/${otId}`);
+},
 
 
 

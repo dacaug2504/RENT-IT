@@ -1,36 +1,36 @@
 package com.rentit.signin.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import com.rentit.signin.dto.RegisterRequest;
 import com.rentit.signin.entities.User;
-import com.rentit.signin.services.RegisterService;
+import com.rentit.signin.services.UserService;
 
+import java.util.Map;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@RequestMapping("/api")
 public class RegisterController {
-	
-	@Autowired
-	RegisterService serv;
-	
-	
-	@GetMapping("/hello")
-	public String hello() {
-		return "Hello";
-	}
-	
-	@GetMapping("/getallusers")
-	public List<User> getAllUsers(){
-		return serv.getAllUsers();
-	}
-	
-	@PostMapping("/saveuser")
-	public User saveUser(@RequestBody User user) {
-		return serv.saveUser(user);
-	}
-	
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
+
+        try {
+        	System.out.println("REGISTER REQUEST = " + request);
+            User savedUser = userService.registerUser(request);
+            savedUser.setPassword(null); // extra safety
+            return ResponseEntity.ok(savedUser);
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("error", e.getMessage()));
+        }
+    }
+
 }

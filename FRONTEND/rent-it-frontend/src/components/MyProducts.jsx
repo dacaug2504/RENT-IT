@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Card, Row, Col, Badge, Button, Spinner, Alert, Navbar, Nav } from 'react-bootstrap';
 import { ownerService, userService } from '../services/api';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const MyItems = () => {
+
+const MyProducts = () => {
   const navigate = useNavigate();
   const user = userService.getCurrentUser();
   const [items, setItems] = useState([]);
@@ -16,7 +18,7 @@ const MyItems = () => {
 
   const fetchMyItems = async () => {
     try {
-      const response = await ownerService.getMyItems();
+      const response = await ownerService.getMyProducts();
       setItems(response.data);
     } catch (err) {
       setError('Failed to load items');
@@ -40,6 +42,29 @@ const MyItems = () => {
     };
     return badges[condition] || { bg: 'secondary', text: condition };
   };
+
+  const handleEdit = (otId) => {
+    navigate(`/owner/edit-product/${otId}`);
+  };
+
+  const handleDelete = async (otId) => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this product? This action cannot be undone.'
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await ownerService.deleteProduct(otId);
+
+      // Remove item from UI immediately (no refetch needed)
+      setItems(prev => prev.filter(item => item.otId !== otId));
+    } catch (err) {
+      console.error(err);
+      alert('Failed to delete product');
+    }
+  };
+
 
   if (loading) {
     return (
@@ -65,10 +90,10 @@ const MyItems = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link onClick={() => navigate('/owner/dashboard')}>Dashboard</Nav.Link>
-              <Nav.Link onClick={() => navigate('/owner/my-items')} style={{ color: 'var(--pastel-green-dark) !important' }}>
+              <Nav.Link onClick={() => navigate('/owner/my-products')} style={{ color: 'var(--pastel-green-dark) !important' }}>
                 My Listings
               </Nav.Link>
-              <Nav.Link onClick={() => navigate('/owner/add-item')}>Add Item</Nav.Link>
+              
               <Button 
                 variant="outline-primary" 
                 onClick={handleLogout}
@@ -93,7 +118,7 @@ const MyItems = () => {
           </div>
           <Button 
             variant="primary"
-            onClick={() => navigate('/owner/add-item')}
+            onClick={() => navigate('/owner/add-product')}
             style={{
               background: 'linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-dark) 100%)',
               border: 'none',
@@ -102,7 +127,7 @@ const MyItems = () => {
               fontWeight: '600'
             }}
           >
-            + Add New Item
+            + Add New Product
           </Button>
         </div>
 
@@ -130,11 +155,44 @@ const MyItems = () => {
             </Button>
           </Card>
         ) : (
+          <AnimatePresence>
           <Row>
             {items.map(item => {
               const conditionBadge = getConditionBadge(item.conditionType);
               return (
-                <Col key={item.otId} md={6} lg={4} className="mb-4">
+                <motion.div
+                  key={item.otId}
+                  layout
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{
+                    opacity: { duration: 0.5, ease: 'easeInOut' },
+                    y: { duration: 0.5, ease: 'easeInOut' },
+                    layout: {
+                      type: 'spring',
+                      stiffness: 60,
+                      damping: 20
+                    }
+                    // layout: {
+                    //   type: 'spring',
+                    //   stiffness: 80,
+                    //   damping: 18
+                    // }
+                    // layout: {
+                    //   type: 'spring',
+                    //   stiffness: 120,
+                    //   damping: 15
+                    // }
+
+
+
+
+                  }}
+                  className="col-md-6 col-lg-4 mb-4"
+                >
+
+
                   <Card className="h-100 shadow-sm" style={{ borderRadius: '16px', border: '1px solid var(--border-color)' }}>
                     <Card.Body>
                       <div className="d-flex justify-content-between align-items-start mb-3">
@@ -147,6 +205,7 @@ const MyItems = () => {
                         >
                           {item.status === 'AVAILABLE' ? '✓ Available' : '✗ Not Available'}
                         </Badge>
+                        
                       </div>
                       
                       <p style={{ color: 'var(--text-light)', fontSize: '14px', marginBottom: '8px' }}>
@@ -181,22 +240,47 @@ const MyItems = () => {
                         </div>
                       </div>
                       
-                      <Badge 
-                        bg={conditionBadge.bg}
-                        style={{ borderRadius: '8px', padding: '6px 12px', fontSize: '12px' }}
-                      >
-                        {conditionBadge.text}
-                      </Badge>
+                      <div className="d-flex justify-content-between align-items-center mt-3">
+                        <Badge 
+                          bg={conditionBadge.bg}
+                          style={{ borderRadius: '8px', padding: '6px 12px', fontSize: '12px' }}
+                        >
+                          {conditionBadge.text}
+                        </Badge>
+
+                        <div className="d-flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline-primary"
+                            onClick={() => handleEdit(item.otId)}
+                            style={{ borderRadius: '8px' }}
+                          >
+                            ✏️ Edit
+                          </Button>
+
+                          <Button
+                            size="sm"
+                            variant="outline-danger"
+                            onClick={() => handleDelete(item.otId)}
+                            style={{ borderRadius: '8px' }}
+                          >
+                            🗑 Delete
+                          </Button>
+                        </div>
+                      </div>
+
                     </Card.Body>
                   </Card>
-                </Col>
+                </motion.div>
+
               );
             })}
           </Row>
+          </AnimatePresence>
         )}
       </Container>
     </div>
   );
 };
 
-export default MyItems;
+export default MyProducts;

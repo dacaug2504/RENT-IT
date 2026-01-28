@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import { userService } from '../services/api';
+import { motion } from 'framer-motion';
+
 
 const Dashboard = ({ role }) => {
   const navigate = useNavigate();
@@ -50,7 +52,6 @@ const Dashboard = ({ role }) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
               {role === 'customer' && (
                 <>
                   <Nav.Link href="#appliances">Browse Appliances</Nav.Link>
@@ -61,12 +62,14 @@ const Dashboard = ({ role }) => {
                 <>
                   {/* <Nav.Link onClick={() => navigate('/owner/my-items')}>My Listings</Nav.Link>
                   <Nav.Link onClick={() => navigate('/owner/add-item')}>Add Appliance</Nav.Link> */}
-                  <Nav.Link href="#listings">My Listings</Nav.Link>
-                  <Nav.Link onClick={() => navigate('/dev/add-item')}>
-                    Add Appliances
+                  <Nav.Link onClick={()=> navigate('/owner/my-products')}>
+                    My Listings
                   </Nav.Link>
 
-                  <Nav.Link href="#requests">Rental Requests</Nav.Link>
+                  <Nav.Link onClick={() => navigate('/owner/add-product')}>
+                    Add Product
+                  </Nav.Link>
+
                 </>
               )}
               {role === 'admin' && (
@@ -100,64 +103,83 @@ const Dashboard = ({ role }) => {
 
         </div>
 
-        <div className="welcome-card">
-          <h2 style={{ color: 'var(--text-dark)', marginBottom: '20px' }}>
-            {role.charAt(0).toUpperCase() + role.slice(1)} Dashboard
-          </h2>
-          <p style={{ color: 'var(--text-light)', fontSize: '16px', lineHeight: '1.6' }}>
-            Your dashboard is ready! Start exploring the features available to you.
-          </p>
-          
-          <div style={{ marginTop: '30px' }}>
-            <h4 style={{ color: 'var(--text-dark)', marginBottom: '15px' }}>
-              Quick Stats
-            </h4>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-              gap: '20px',
-              marginTop: '20px'
-            }}>
-              <div style={{
-                padding: '20px',
-                background: 'linear-gradient(135deg, var(--pastel-green-light) 0%, var(--pastel-mint) 100%)',
+        <div className="welcome-card" style={{ marginTop: '30px' }}>
+          <h4 style={{ color: 'var(--text-dark)', marginBottom: '20px' }}>
+            ⚡ Quick Actions
+          </h4>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '20px'
+            }}
+          >
+            {/* Add Item */}
+            <motion.div
+              whileHover={{
+                y: -8,
+                boxShadow: '0 18px 36px rgba(0,0,0,0.15)'
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{
+                type: 'spring',
+                stiffness: 220,
+                damping: 18
+              }}
+              onClick={() => navigate('/owner/add-product')}
+              style={{
+                cursor: 'pointer',
+                padding: '24px',
                 borderRadius: '16px',
-                textAlign: 'center'
-              }}>
-                <h3 style={{ color: 'var(--text-dark)', margin: 0 }}>0</h3>
-                <p style={{ color: 'var(--text-light)', margin: '5px 0 0 0', fontSize: '14px' }}>
-                  {role === 'customer' ? 'Active Rentals' : role === 'owner' ? 'Active Listings' : 'Total Users'}
-                </p>
-              </div>
-              
-              <div style={{
-                padding: '20px',
-                background: 'linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-green-light) 100%)',
+                background: 'linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-dark) 100%)',
+                color: '#fff',
+                fontWeight: '600'
+              }}
+            >
+
+
+              <div style={{ fontSize: '32px', marginBottom: '10px' }}>➕</div>
+              Add New Item
+              <p style={{ fontSize: '14px', marginTop: '8px', opacity: 0.9 }}>
+                List a new appliance for rent
+              </p>
+            </motion.div>
+
+            {/* My Listings */}
+            <motion.div
+              whileHover={{
+                y: -8,
+                boxShadow: '0 18px 36px rgba(0,0,0,0.12)'
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{
+                type: 'spring',
+                stiffness: 220,
+                damping: 18
+              }}
+              onClick={() => navigate('/owner/my-products')}
+              style={{
+                cursor: 'pointer',
+                padding: '24px',
                 borderRadius: '16px',
-                textAlign: 'center'
-              }}>
-                <h3 style={{ color: 'var(--text-dark)', margin: 0 }}>0</h3>
-                <p style={{ color: 'var(--text-light)', margin: '5px 0 0 0', fontSize: '14px' }}>
-                  {role === 'customer' ? 'Past Rentals' : role === 'owner' ? 'Pending Requests' : 'Total Listings'}
-                </p>
-              </div>
-              
-              <div style={{
-                padding: '20px',
-                background: 'linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-light) 100%)',
-                borderRadius: '16px',
-                textAlign: 'center'
-              }}>
-                <h3 style={{ color: 'var(--text-dark)', margin: 0 }}>
-                  {role === 'customer' ? '₹0' : role === 'owner' ? '₹0' : '0'}
-                </h3>
-                <p style={{ color: 'var(--text-light)', margin: '5px 0 0 0', fontSize: '14px' }}>
-                  {role === 'customer' ? 'Total Spent' : role === 'owner' ? 'Total Earned' : 'Active Rentals'}
-                </p>
-              </div>
-            </div>
+                background: '#ffffff',
+                border: '1px solid var(--border-color)',
+                fontWeight: '600'
+              }}
+            >
+
+              <div style={{ fontSize: '32px', marginBottom: '10px' }}>📦</div>
+              My Listings
+              <p style={{ fontSize: '14px', marginTop: '8px', color: 'var(--text-light)' }}>
+                View & manage your items
+              </p>
+            </motion.div>
+
+            
           </div>
         </div>
+
       </Container>
     </div>
   );
