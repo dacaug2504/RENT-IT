@@ -1,9 +1,9 @@
 package com.rentit.signin.enums;
 
 public enum AccountStatus {
-    INACTIVE(0),
-    ACTIVE(1),
-    BLOCKED(2);
+    INACTIVE(-1),
+    BLOCKED(0),
+    ACTIVE(1);
 
     private final int value;
 

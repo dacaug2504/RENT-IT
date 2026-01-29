@@ -130,6 +130,7 @@ export const ownerService = {
     formData.append('conditionType', itemData.conditionType);
     formData.append('rentPerDay', String(itemData.rentPerDay));
     formData.append('depositAmt', String(itemData.depositAmt));
+    formData.append('maxRentDays',String(itemData.maxRentDays));
 
     // 🔹 OPTIONAL IMAGES (MultipartFile)
     if (images.img1) formData.append('img1', images.img1);
@@ -158,7 +159,8 @@ export const ownerService = {
       conditionType: data.conditionType,
       rentPerDay: data.rentPerDay,
       depositAmt: data.depositAmt,
-      status: data.status
+      status: data.status,
+      maxRentDays: data.maxRentDays
     });
   },
 

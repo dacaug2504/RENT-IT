@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Select from "react-select";
 import { Container, Form, Button, Alert, Card, Row, Col, Spinner, Navbar, Nav } from 'react-bootstrap';
 import { ownerService, userService } from '../services/api';
 import { useRef } from 'react';
+import SuccessScreen from "../components/SuccessScreen";
+
 
 const AddItem = () => {
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ const AddItem = () => {
     conditionType: '',
     rentPerDay: '',
     depositAmt: '',
+    maxRentDays: '',
   });
 
   const [imageSlots, setImageSlots] = useState([
@@ -32,6 +36,9 @@ const AddItem = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+
 
   /* =========================
      LOAD CATEGORIES ON PAGE LOAD
@@ -47,6 +54,17 @@ const AddItem = () => {
         setError('Failed to load categories');
       });
   }, []);
+
+  const categoryOptions = categories.map(cat => ({
+    value: cat.categoryId,
+    label: cat.categoryName
+  }));
+
+  const itemOptions = filteredItems.map(item => ({
+    value: item.itemId,
+    label: item.itemName
+  }));
+
 
   /* =========================
      CATEGORY CHANGE HANDLER
@@ -94,7 +112,7 @@ const AddItem = () => {
 
     setFormData(prev => ({
       ...prev,
-      [name]: ['itemId', 'rentPerDay', 'depositAmt'].includes(name)
+      [name]: ['itemId', 'rentPerDay', 'depositAmt', 'maxRentDays'].includes(name)
         ? (value ? Number(value) : '')
         : value,
     }));
@@ -112,6 +130,14 @@ const AddItem = () => {
     if (submitLock.current) return; // 🔥 HARD STOP
     submitLock.current = true;
 
+    if (!formData.maxRentDays || formData.maxRentDays <= 0) {
+      setError('Max rent days must be greater than 0');
+      submitLock.current = false;
+      setLoading(false);
+      return;
+    }
+
+
     setLoading(true);
     setError('');
     setSuccess('');
@@ -122,8 +148,12 @@ const AddItem = () => {
     });
 
     try {
-      await ownerService.addItem(formData, images);
-      setSuccess('Product added successfully! 🎉');
+      
+        await ownerService.addItem(formData, images);
+
+        // SHOW FULL-SCREEN SUCCESS OVERLAY
+        setShowSuccess(true);
+
     } catch (err) {
       console.error(err);
       setError('Failed to add Product');
@@ -160,6 +190,15 @@ const AddItem = () => {
 
 
   return (
+    <>
+    {showSuccess && (
+      <SuccessScreen
+        title="Product Added Successfully ✅"
+        message="Your product is now visible in My Listings"
+        redirectTo="/owner/my-products"
+      />
+    )}
+
     <div
       style={{
         minHeight: '100vh',
@@ -224,22 +263,15 @@ const AddItem = () => {
                   <Form.Group className="mb-3">
                   <Form.Label>Category *</Form.Label>
 
-                  <Form.Select
-                    value={selectedCategory}
-                    onChange={handleCategoryChange}
-                    required
-                  >
+                  <Select
+                    classNamePrefix="react-select"
+                    placeholder="Select Category"
+                    options={categoryOptions}
+                    onChange={(option) => handleCategoryChange({
+                      target: { value: option.value }
+                    })}
+                  />
 
-                    <option value="" disabled>
-                      Select Category
-                    </option>
-
-                    {categories.map((cat) => (
-                      <option key={cat.categoryId} value={cat.categoryId}>
-                        {cat.categoryName}
-                      </option>
-                    ))}
-                  </Form.Select>
                 </Form.Group>
 
                 </Col>
@@ -247,20 +279,19 @@ const AddItem = () => {
                 <Col md={6}>
                   <Form.Group className="mb-3">
                     <Form.Label>Item *</Form.Label>
-                    <Form.Select
-                      name="itemId"
-                      value={formData.itemId}
-                      onChange={handleChange}
-                      disabled={!selectedCategory}
-                      required
-                    >
-                      <option value="">Select Item</option>
-                      {filteredItems.map(item => (
-                        <option key={item.itemId} value={item.itemId}>
-                          {item.itemName}
-                        </option>
-                      ))}
-                    </Form.Select>
+                    <Select
+                      classNamePrefix="react-select"
+                      placeholder="Select Item"
+                      options={itemOptions}
+                      isDisabled={!selectedCategory}
+                      onChange={(option) =>
+                        setFormData(prev => ({
+                          ...prev,
+                          itemId: option.value
+                        }))
+                      }
+                    />
+
                   </Form.Group>
                 </Col>
               </Row>
@@ -308,6 +339,8 @@ const AddItem = () => {
                   Max 50 characters
                 </Form.Text>
               </Form.Group>
+
+         
 
               <Form.Group className="mb-4">
                 <Form.Label>Product Images (optional)</Form.Label>
@@ -364,7 +397,7 @@ const AddItem = () => {
 
 
               <Row className="mt-2">
-                <Col md={6}>
+                <Col md={4}>
                   <Form.Group className="mb-3">
                     <Form.Label>Rent Per Day (₹) *</Form.Label>
                     <Form.Control
@@ -373,12 +406,13 @@ const AddItem = () => {
                       placeholder="e.g. 150"
                       value={formData.rentPerDay}
                       onChange={handleChange}
+                      min={1}
                       required
                     />
                   </Form.Group>
                 </Col>
 
-                <Col md={6}>
+                <Col md={4}>
                   <Form.Group className="mb-3">
                     <Form.Label>Security Deposit (₹) *</Form.Label>
                     <Form.Control
@@ -387,11 +421,32 @@ const AddItem = () => {
                       placeholder="e.g. 2000"
                       value={formData.depositAmt}
                       onChange={handleChange}
+                      min={0}
                       required
                     />
                   </Form.Group>
                 </Col>
+
+                <Col md={4}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Max Rent Days *</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name="maxRentDays"
+                      placeholder="e.g. 30"
+                      value={formData.maxRentDays}
+                      onChange={handleChange}
+                      min={1}
+                      max={365}
+                      required
+                    />
+                    <Form.Text muted>
+                      Maximum number of days this item can be rented
+                    </Form.Text>
+                  </Form.Group>
+                </Col>
               </Row>
+
 
 
               <Button className="mt-4 w-100" type="submit" disabled={loading}>
@@ -403,6 +458,7 @@ const AddItem = () => {
         </Card>
       </Container>
     </div>
+    </>
   );
 };
 

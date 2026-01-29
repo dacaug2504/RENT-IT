@@ -1,8 +1,6 @@
 package com.rentit.productservice.controller;
 
-import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
-import com.rentit.productservice.security.JwtUtil;
 
 import com.rentit.productservice.request.ProductAddRequest;
 import com.rentit.productservice.request.ProductUpdateRequest;
@@ -51,13 +49,17 @@ public class ProductController {
     
     
     //Add new product
-    @Transactional
+    
     @PostMapping(
         value = "/add",
         consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
-    public ResponseEntity<?> addProduct(HttpServletRequest request,
-            @ModelAttribute ProductAddRequest req, BindingResult result) throws Exception {
+    @Transactional
+    public ResponseEntity<?> addProduct(
+            @ModelAttribute ProductAddRequest req,
+            BindingResult result,
+            HttpServletRequest request
+    ) throws Exception {
     	
     	
     	if (result.hasErrors()) {
@@ -77,6 +79,7 @@ public class ProductController {
     	System.out.println("rentPerDay = " + req.getRentPerDay());
     	System.out.println("depositAmt = " + req.getDepositAmt());
     	System.out.println("img1 = " + (req.getImg1() != null));
+    	System.out.println("maxRentDays = " + req.getMaxRentDays());
     	System.out.println("================================");
 
 
@@ -123,6 +126,7 @@ public class ProductController {
         ownerItem.setRentPerDay(req.getRentPerDay());
         ownerItem.setDepositAmt(req.getDepositAmt());
         ownerItem.setStatus("AVAILABLE");
+        ownerItem.setMaxRentDays(req.getMaxRentDays());
 
         ownerItem = ownerItemRepository.save(ownerItem);
 
@@ -194,6 +198,7 @@ public class ProductController {
         response.put("depositAmt", ownerItem.getDepositAmt());
         response.put("status", ownerItem.getStatus());
         response.put("itemId", ownerItem.getItemId());
+        response.put("maxRentDays",ownerItem.getMaxRentDays());
 
         return ResponseEntity.ok(response);
     }
@@ -215,6 +220,7 @@ public class ProductController {
         ownerItem.setConditionType(req.getConditionType().trim());
         ownerItem.setRentPerDay(req.getRentPerDay());
         ownerItem.setDepositAmt(req.getDepositAmt());
+        ownerItem.setMaxRentDays(req.getMaxRentDays());
 
         // 3️⃣ Validate & update status
         String status = req.getStatus().trim().toUpperCase();
@@ -379,6 +385,7 @@ public class ProductController {
             map.put("rentPerDay", oi.getRentPerDay());
             map.put("depositAmt", oi.getDepositAmt());
             map.put("status", oi.getStatus());
+            map.put("maxRentDays", oi.getMaxRentDays());
 
             // 🔹 fetch item info
             Item item = itemRepository.findById(oi.getItemId()).orElse(null);

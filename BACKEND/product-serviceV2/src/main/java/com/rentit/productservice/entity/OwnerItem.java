@@ -34,10 +34,15 @@ public class OwnerItem {
 
     @Column(name = "status")
     private String status;
+    
+    @Column(name = "max_rent_days")
+    private int maxRentDays;
 
     // -------- Getters & Setters --------
 
-    public int getOtId() {
+    
+
+	public int getOtId() {
         return otId;
     }
 
@@ -108,4 +113,12 @@ public class OwnerItem {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    public int getMaxRentDays() {
+		return maxRentDays;
+	}
+
+	public void setMaxRentDays(int maxRentDays) {
+		this.maxRentDays = maxRentDays;
+	}
 }

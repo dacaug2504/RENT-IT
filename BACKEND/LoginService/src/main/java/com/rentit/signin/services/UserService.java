@@ -1,16 +1,13 @@
 package com.rentit.signin.services;
 
-import java.time.LocalDateTime;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rentit.signin.entities.City;
-import com.rentit.signin.entities.Role;
-import com.rentit.signin.entities.State;
+
 import com.rentit.signin.entities.User;
 import com.rentit.signin.repositories.CityRepository;
-import com.rentit.signin.repositories.RegisterRepository;
 import com.rentit.signin.repositories.RoleRepository;
 import com.rentit.signin.repositories.StateRepository;
 import com.rentit.signin.repositories.UserRepository;

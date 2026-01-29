@@ -31,8 +31,7 @@ public class RegisterService {
 
     public User saveUser(User user) {
 
-        // timestamp (your existing functionality – NOT disturbed)
-        user.setDate_time(LocalDateTime.now());
+        
 
         // silent accept logic (as decided earlier)
         if (user.getState() != null && user.getState().getStateId() != null) {

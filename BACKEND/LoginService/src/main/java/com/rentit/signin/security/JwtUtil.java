@@ -31,38 +31,5 @@ public class JwtUtil {
                 .compact();
     }
 
-//    // ✅ VALIDATE TOKEN  
-//    public static boolean validateToken(String token) {
-//        try {
-//            Jwts.parserBuilder()
-//                .setSigningKey(getSigningKey())
-//                .build()
-//                .parseClaimsJws(token);
-//            return true;
-//        } catch (JwtException | IllegalArgumentException e) {
-//            return false;
-//        }
-//    }
-//
-//    // ✅ EXTRACT USER ID
-//    public static int extractUserId(String token) {
-//        Claims claims = Jwts.parserBuilder()
-//                .setSigningKey(getSigningKey())
-//                .build()
-//                .parseClaimsJws(token)
-//                .getBody();
-//
-//        return Integer.parseInt(claims.getSubject());
-//    }
-//
-//    // (optional) extract role
-//    public static String extractRole(String token) {
-//        Claims claims = Jwts.parserBuilder()
-//                .setSigningKey(getSigningKey())
-//                .build()
-//                .parseClaimsJws(token)
-//                .getBody();
-//
-//        return claims.get("role", String.class);
-//    }
+
 }
