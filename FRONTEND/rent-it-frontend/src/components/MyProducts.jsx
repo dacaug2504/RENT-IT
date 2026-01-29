@@ -168,6 +168,7 @@ const MyProducts = () => {
                         stiffness: 60,
                         damping: 20
                       }
+                      //new
                       // layout: {
                       //   type: 'spring',
                       //   stiffness: 80,
