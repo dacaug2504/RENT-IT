@@ -10,6 +10,7 @@ public class ProductUpdateRequest {
     private int rentPerDay;
     private int depositAmt;
     private String status; // AVAILABLE / UNAVAILABLE
+    private int maxRentDays;
     private MultipartFile img1;
     private MultipartFile img2;
     private MultipartFile img3;
@@ -105,5 +106,13 @@ public class ProductUpdateRequest {
 
 	public void setImg5(MultipartFile img5) {
 		this.img5 = img5;
+	}
+
+	public int getMaxRentDays() {
+		return maxRentDays;
+	}
+
+	public void setMaxRentDays(int maxRentDays) {
+		this.maxRentDays = maxRentDays;
 	}
 }

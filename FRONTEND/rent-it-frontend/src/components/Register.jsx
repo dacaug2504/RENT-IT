@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Select from "react-select";
 import { Form, Button, Alert, Row, Col, Spinner } from 'react-bootstrap';
 import { authService, userService } from '../services/api';
 import axios from 'axios';
+import SuccessScreen from "../components/SuccessScreen";
+
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -48,6 +52,17 @@ const Register = () => {
   useEffect(() => {
     fetchStates();
   }, []);
+
+  const stateOptions = states.map(s => ({
+    value: s.stateId,
+    label: s.stateName
+  }));
+
+  const cityOptions = cities.map(c => ({
+    value: c.cityId,
+    label: c.cityName
+  }));
+
 
   const fetchStates = async () => {
     try {
@@ -170,10 +185,7 @@ const Register = () => {
       });
       setCities([]);
 
-      // Redirect to login after 3 seconds
-      setTimeout(() => {
-        navigate('/login');
-      }, 3000);
+      
 
     } catch (err) {
       console.error('Registration error:', err);
@@ -190,94 +202,15 @@ const Register = () => {
   return (
     <>
       {/* Full-Screen Success Overlay */}
+      
       {showSuccessOverlay && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(168, 230, 207, 0.98)',
-          zIndex: 9999,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          animation: 'fadeIn 0.5s ease-in-out'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            animation: 'bounceIn 0.8s ease-out'
-          }}>
-            {/* Success Icon */}
-            <div style={{
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
-              backgroundColor: 'white',
-              margin: '0 auto 30px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 10px 40px rgba(127, 209, 174, 0.4)',
-              animation: 'scaleIn 0.6s ease-out'
-            }}>
-              <svg 
-                width="60" 
-                height="60" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="#7fd1ae" 
-                strokeWidth="3" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-
-            {/* Success Message */}
-            <h1 style={{
-              fontSize: '48px',
-              fontWeight: '700',
-              color: 'var(--text-dark)',
-              marginBottom: '20px',
-              animation: 'slideUp 0.8s ease-out'
-            }}>
-              Registration Successful! 🎉
-            </h1>
-            
-            <p style={{
-              fontSize: '20px',
-              color: 'var(--text-dark)',
-              marginBottom: '30px',
-              opacity: 0.8
-            }}>
-              Your account has been created successfully
-            </p>
-
-            {/* Loading Spinner */}
-            <div style={{ marginTop: '20px' }}>
-              <Spinner 
-                animation="border" 
-                style={{ 
-                  color: 'var(--pastel-green-dark)',
-                  width: '40px',
-                  height: '40px'
-                }} 
-              />
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--text-dark)',
-                marginTop: '15px',
-                opacity: 0.7
-              }}>
-                Redirecting to login page...
-              </p>
-            </div>
-          </div>
-        </div>
+        <SuccessScreen
+          title="Registration Successful! 🎉"
+          message="Your account has been created successfully"
+          redirectTo="/login"
+        />
       )}
+
 
       {/* Registration Form */}
       <div className="auth-container">
@@ -393,19 +326,15 @@ const Register = () => {
                 <Form.Group className="mb-3">
                   <Form.Label>State</Form.Label>
                  
-                  <Form.Select
-                    name="state"
-                    value={formData.state}
-                    onChange={handleStateChange}
-                    required
-                  >
-                    <option value="">Select State</option>
-                    {states.map(state => (
-                      <option key={state.stateId} value={state.stateId}>
-                        {state.stateName}
-                      </option>
-                    ))}
-                  </Form.Select>
+                  <Select
+                    classNamePrefix="react-select"
+                    placeholder="Select State"
+                    options={stateOptions}
+                    onChange={(option) => {
+                      handleStateChange({ target: { value: option.value } });
+                    }}
+                  />
+
 
                   {states.length === 0 && (
                     <Form.Text className="text-muted">
@@ -418,25 +347,19 @@ const Register = () => {
                 <Form.Group className="mb-3">
                   <Form.Label>City</Form.Label>
                  
-                  <Form.Select
-                    name="city"
-                    value={formData.city}
-                    onChange={(e) =>
+                  <Select
+                    classNamePrefix="react-select"
+                    placeholder="Select City"
+                    options={cityOptions}
+                    isDisabled={!formData.state}
+                    onChange={(option) =>
                       setFormData(prev => ({
                         ...prev,
-                        city: Number(e.target.value)
+                        city: option.value
                       }))
                     }
-                    disabled={!formData.state}
-                    required
-                  >
-                    <option value="">Select City</option>
-                    {cities.map(city => (
-                      <option key={city.cityId} value={city.cityId}>
-                        {city.cityName}
-                      </option>
-                    ))}
-                  </Form.Select>
+                  />
+
 
 
                   {!formData.state && (
@@ -489,22 +412,23 @@ const Register = () => {
               </Col>
             </Row>
 
-           
-            <Form.Select
-              name="roleId"
-              value={formData.roleId}
-              onChange={(e) =>
+            <Form.Label>Select Role</Form.Label>
+            <Select
+              className="mb-4"
+              classNamePrefix="react-select"
+              placeholder="Select Role"
+              options={[
+                { value: 3, label: "Customer" },
+                { value: 2, label: "Owner" }
+              ]}
+              onChange={(option) =>
                 setFormData(prev => ({
                   ...prev,
-                  roleId: Number(e.target.value)
+                  roleId: option.value
                 }))
               }
-              required
-            >
-              <option value="">Select Role</option>
-              <option value="3">Customer</option>
-              <option value="2">Owner</option>
-            </Form.Select>
+            />
+
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.*;
@@ -15,36 +16,38 @@ import org.springframework.web.cors.*;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+	    http
+	        .csrf(csrf -> csrf.disable())
+	        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-            .authorizeHttpRequests(auth -> auth
-                // CORS preflight
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+	        // JWT = STATELESS
+	        .sessionManagement(sm ->
+	            sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+	        )
 
-                // Public APIs (example – adjust as needed)
-                .requestMatchers(
-                        "/api/categories/**",
-                        "/api/products/public/**",
-                        "/api/items/category/**"
-                ).permitAll()
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                // 🔐 Everything else requires JWT
-                .anyRequest().authenticated()
-            )
+	            .requestMatchers(
+	                "/api/categories/**",
+	                "/api/products/public/**",
+	                "/api/items/category/**"
+	            ).permitAll()
 
-            // JWT validation
-            .addFilterBefore(
-                    new JwtFilter(),
-                    UsernamePasswordAuthenticationFilter.class
-            );
+	            .anyRequest().authenticated()
+	        )
 
-        return http.build();
-    }
+	        .addFilterBefore(
+	            new JwtFilter(),
+	            UsernamePasswordAuthenticationFilter.class
+	        );
+
+	    return http.build();
+	}
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

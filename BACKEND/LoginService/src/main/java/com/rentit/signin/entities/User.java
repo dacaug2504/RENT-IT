@@ -1,10 +1,10 @@
 package com.rentit.signin.entities;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import jakarta.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -54,8 +54,21 @@ public class User {
     @Column(name = "status")
     private Integer status;
 
-    @Column(name = "date_time")
-    private LocalDateTime date_time;
+    @Column(name = "date_time", nullable = false, updatable = false)
+    private LocalDateTime dateTime;
+    
+    @PrePersist
+    protected void onCreate() {
+        this.dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+    }
+    
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public User() {}
 
@@ -149,11 +162,5 @@ public class User {
         this.status = status;
     }
 
-    public LocalDateTime getDate_time() {
-        return date_time;
-    }
-
-    public void setDate_time(LocalDateTime date_time) {
-        this.date_time = date_time;
-    }
+    
 }

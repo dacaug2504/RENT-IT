@@ -16,6 +16,7 @@ public class ProductAddRequest {
     private String conditionType;
     private Integer rentPerDay;
     private Integer depositAmt;
+    private Integer maxRentDays;
 
     // ----- images (optional) -----
 
@@ -122,4 +123,12 @@ public class ProductAddRequest {
     public void setImg5(MultipartFile img5) {
         this.img5 = img5;
     }
+
+	public Integer getMaxRentDays() {
+		return maxRentDays;
+	}
+
+	public void setMaxRentDays(Integer maxRentDays) {
+		this.maxRentDays = maxRentDays;
+	}
 }

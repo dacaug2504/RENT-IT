@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { ownerService } from '../services/api';
+import Select from "react-select";
+
 
 const EditProductDetails = ({ otId }) => {
   const [form, setForm] = useState(null);
   const [msg, setMsg] = useState('');
+  const statusOptions = [
+    { value: "AVAILABLE", label: "Available" },
+    { value: "UNAVAILABLE", label: "Unavailable" }
+  ];
+
 
   useEffect(() => {
     ownerService.getProductById(otId).then(res => {
@@ -75,16 +82,32 @@ const EditProductDetails = ({ otId }) => {
           className="mb-2"
         />
 
-        <Form.Label>Status</Form.Label>
-        <Form.Select
-          name="status"
-          value={form.status}
+        <Form.Label>Max Rent Days </Form.Label>
+        <Form.Control
+          type="number"
+          name="maxRentDays"
+          value={form.maxRentDays}
           onChange={handleChange}
+          className="mb-2"
+        />
+
+        <Form.Label>Status</Form.Label>
+        <Select
           className="mb-3"
-        >
-          <option value="AVAILABLE">AVAILABLE</option>
-          <option value="UNAVAILABLE">UNAVAILABLE</option>
-        </Form.Select>
+          classNamePrefix="react-select"
+          placeholder="Select Status"
+          options={statusOptions}
+          value={statusOptions.find(opt => opt.value === form.status)}
+          onChange={(option) =>
+            handleChange({
+              target: {
+                name: "status",
+                value: option.value
+              }
+            })
+          }
+        />
+
 
         <Button onClick={submit}>Update Details</Button>
       </Form>
