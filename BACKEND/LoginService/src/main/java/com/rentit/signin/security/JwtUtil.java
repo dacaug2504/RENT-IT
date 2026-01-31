@@ -22,7 +22,7 @@ public class JwtUtil {
 
         return Jwts.builder()
                 .setSubject(String.valueOf(userId))
-                .claim("role", role)
+                .claim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(
                         new Date(System.currentTimeMillis() + EXPIRATION_TIME)

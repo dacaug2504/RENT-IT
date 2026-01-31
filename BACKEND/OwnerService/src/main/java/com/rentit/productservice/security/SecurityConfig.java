@@ -29,12 +29,13 @@ public class SecurityConfig {
 	        )
 
 	        .authorizeHttpRequests(auth -> auth
-	            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//	            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
 	            .requestMatchers(
+	            	HttpMethod.OPTIONS,
 	                "/api/categories/**",
 	                "/api/products/public/**",
-	                "/api/items/category/**"
+	                "/api/`items/category/**"
 	            ).permitAll()
 
 	            .anyRequest().authenticated()

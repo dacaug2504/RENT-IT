@@ -1,28 +1,41 @@
 import { useNavigate } from 'react-router-dom';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
-import { userService } from '../services/api';
+import AppNavbar from "../components/AppNavbar";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 import { motion } from 'framer-motion';
 
 
 const Dashboard = ({ role }) => {
   const navigate = useNavigate();
-  const user = userService.getCurrentUser();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+  if (!user) {
+    return null; // ProtectedRoute already handles redirect
+  }
+
+
 
   let roleName = null;
+  const userRole = user.role;
 
-  if (typeof user.role === 'object' && user.role !== null) {
-    roleName = user.role.roleName || user.role.role_name;
+  if (typeof userRole === 'object' && userRole !== null) {
+    roleName = userRole.roleName || userRole.role_name;
   } else {
-    roleName = user.role;
+    roleName = userRole;
   }
+
+
 
   roleName = roleName?.toUpperCase();
 
 
   const handleLogout = () => {
-    userService.logout();
+    dispatch(logout());
     navigate('/login');
   };
+
 
   if (!user) {
     navigate('/login');
@@ -46,7 +59,8 @@ const Dashboard = ({ role }) => {
 
   return (
     <div className="dashboard">
-      <Navbar bg="light" expand="lg" className="navbar">
+      <AppNavbar />
+      {/* <Navbar bg="light" expand="lg" className="navbar">
         <Container>
           <Navbar.Brand>🏠 Rent-It System</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -61,7 +75,7 @@ const Dashboard = ({ role }) => {
               {role === 'owner' && (
                 <>
                   {/* <Nav.Link onClick={() => navigate('/owner/my-items')}>My Listings</Nav.Link>
-                  <Nav.Link onClick={() => navigate('/owner/add-item')}>Add Appliance</Nav.Link> */}
+                  <Nav.Link onClick={() => navigate('/owner/add-item')}>Add Appliance</Nav.Link> */}{/*
                   <Nav.Link onClick={()=> navigate('/owner/my-products')}>
                     My Listings
                   </Nav.Link>
@@ -89,7 +103,7 @@ const Dashboard = ({ role }) => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar> */}
 
       <Container className="dashboard-content">
         <div className="welcome-card">

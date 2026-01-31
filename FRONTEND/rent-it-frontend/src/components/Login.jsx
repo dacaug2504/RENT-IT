@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { authService, userService } from '../services/api';
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../features/auth/authSlice";
+import { authService } from "../services/api";
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -36,15 +41,26 @@ const Login = () => {
         return;
       }
 
-      /* =========================
-         ✅ SAVE JWT TOKEN
-         ========================= */
-      localStorage.setItem('token', response.data.token);
+      // /* =========================
+      //    ✅ SAVE JWT TOKEN
+      //    ========================= */
+      // localStorage.setItem('token', response.data.token);
+
+      // /* =========================
+      //    ✅ SAVE USER (NO PASSWORD)
+      //    ========================= */
+      // userService.saveUser(response.data.user);
 
       /* =========================
-         ✅ SAVE USER (NO PASSWORD)
-         ========================= */
-      userService.saveUser(response.data.user);
+        ✅ SAVE AUTH DATA TO REDUX
+        ========================= */
+      dispatch(
+        loginSuccess({
+          user: response.data.user,
+          token: response.data.token
+        })
+      );
+
 
       /* =========================
          ✅ ROLE BASED REDIRECT
