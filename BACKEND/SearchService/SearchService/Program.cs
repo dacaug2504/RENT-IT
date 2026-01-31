@@ -30,14 +30,19 @@ namespace SearchService
             // CORS Configuration (fix your existing one)
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy =>
+                options.AddPolicy("AllowReact", policy =>
                 {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
+                    policy
+                        .WithOrigins(
+                            "http://localhost:3000",
+                            "https://localhost:3000"
+                        )
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 });
             });
-           
+
 
             var app = builder.Build();
 
@@ -48,7 +53,7 @@ namespace SearchService
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowAll");  
+            app.UseCors("AllowReact");  
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();

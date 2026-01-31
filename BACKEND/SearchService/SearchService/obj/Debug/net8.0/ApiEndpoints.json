@@ -2,17 +2,23 @@
   {
     "ContainingType": "SearchService.Controllers.CatalogController",
     "Method": "GetCategories",
-    "RelativePath": "categories",
+    "RelativePath": "api/catalog/categories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "SearchService.Controllers.CatalogController",
     "Method": "GetItemsByCategory",
-    "RelativePath": "categories/{categoryId}/items",
+    "RelativePath": "api/catalog/categories/{categoryId}/items",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -28,12 +34,27 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
   },
   {
     "ContainingType": "SearchService.Controllers.CatalogController",
     "Method": "GetItemDetail",
-    "RelativePath": "items/{itemId}",
+    "RelativePath": "api/catalog/items/{itemId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -44,12 +65,36 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
   },
   {
     "ContainingType": "SearchService.Controllers.CatalogController",
     "Method": "SearchItems",
-    "RelativePath": "search",
+    "RelativePath": "api/catalog/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -60,7 +105,13 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "SearchService.Controllers.WeatherForecastController",

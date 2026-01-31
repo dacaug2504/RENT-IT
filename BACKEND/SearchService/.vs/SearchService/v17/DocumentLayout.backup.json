@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\C#\\SearchService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\repositories\\catalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\repositories\\catalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\itemdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,12 +47,16 @@
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\c#\\searchservice\\searchservice\\data\\searchdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\data\\searchdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,142 +66,177 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Program.cs",
-              "RelativeDocumentMoniker": "SearchService\\Program.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Program.cs",
-              "RelativeToolTip": "SearchService\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "SearchResult.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\SearchResult.cs",
+              "RelativeDocumentMoniker": "SearchService\\Models\\SearchResult.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\SearchResult.cs",
+              "RelativeToolTip": "SearchService\\Models\\SearchResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T07:13:44.268Z"
+              "WhenOpened": "2026-01-26T20:10:47.151Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CatalogRepository.cs",
               "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
               "RelativeDocumentMoniker": "SearchService\\Repositories\\CatalogRepository.cs",
               "ToolTip": "C:\\C#\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
               "RelativeToolTip": "SearchService\\Repositories\\CatalogRepository.cs",
-              "ViewState": "AgIAADABAAAAAAAAAAAAADUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAowJYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T18:56:01.619Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ICatalogRepository.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
-              "RelativeDocumentMoniker": "SearchService\\Repositories\\ICatalogRepository.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
-              "RelativeToolTip": "SearchService\\Repositories\\ICatalogRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T18:54:34.13Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Item.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\Item.cs",
-              "RelativeDocumentMoniker": "SearchService\\Models\\Item.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\Item.cs",
-              "RelativeToolTip": "SearchService\\Models\\Item.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T07:20:43.185Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ItemDetail.cs",
               "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\ItemDetail.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\ItemDetail.cs",
               "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\ItemDetail.cs",
               "RelativeToolTip": "SearchService\\Models\\ItemDetail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBYAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T15:09:02.496Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "OwnerItemListing.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
-              "RelativeDocumentMoniker": "SearchService\\Models\\OwnerItemListing.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
-              "RelativeToolTip": "SearchService\\Models\\OwnerItemListing.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T15:19:41.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CatalogController.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
-              "RelativeDocumentMoniker": "SearchService\\Controllers\\CatalogController.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
-              "RelativeToolTip": "SearchService\\Controllers\\CatalogController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T19:57:28.497Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "ICatalogService.cs",
               "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Services\\ICatalogService.cs",
               "RelativeDocumentMoniker": "SearchService\\Services\\ICatalogService.cs",
               "ToolTip": "C:\\C#\\SearchService\\SearchService\\Services\\ICatalogService.cs",
               "RelativeToolTip": "SearchService\\Services\\ICatalogService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAmwE4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T19:32:07.572Z",
+              "WhenOpened": "2026-01-26T19:32:07.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CatalogController.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
+              "RelativeDocumentMoniker": "SearchService\\Controllers\\CatalogController.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
+              "RelativeToolTip": "SearchService\\Controllers\\CatalogController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T19:57:28.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "SearchService\\Models\\Item.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\Item.cs",
+              "RelativeToolTip": "SearchService\\Models\\Item.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA9wBUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T07:20:43.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OwnerItemListing.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
+              "RelativeDocumentMoniker": "SearchService\\Models\\OwnerItemListing.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
+              "RelativeToolTip": "SearchService\\Models\\OwnerItemListing.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwBwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T15:19:41.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OwnerItem.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItem.cs",
+              "RelativeDocumentMoniker": "SearchService\\Models\\OwnerItem.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\OwnerItem.cs",
+              "RelativeToolTip": "SearchService\\Models\\OwnerItem.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswDwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T06:12:22.881Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "SearchResult.cs",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\SearchResult.cs",
-              "RelativeDocumentMoniker": "SearchService\\Models\\SearchResult.cs",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\SearchResult.cs",
-              "RelativeToolTip": "SearchService\\Models\\SearchResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Title": "ICatalogRepository.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
+              "RelativeDocumentMoniker": "SearchService\\Repositories\\ICatalogRepository.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
+              "RelativeToolTip": "SearchService\\Repositories\\ICatalogRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T20:10:47.151Z"
+              "WhenOpened": "2026-01-26T18:54:34.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\appsettings.json",
-              "RelativeDocumentMoniker": "SearchService\\appsettings.json",
-              "ToolTip": "C:\\C#\\SearchService\\SearchService\\appsettings.json",
-              "RelativeToolTip": "SearchService\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T05:40:37.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Models\\Category.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\Category.cs",
               "ToolTip": "C:\\C#\\SearchService\\SearchService\\Models\\Category.cs",
               "RelativeToolTip": "SearchService\\Models\\Category.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAuwAkAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-24T07:19:32.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Program.cs",
+              "RelativeDocumentMoniker": "SearchService\\Program.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Program.cs",
+              "RelativeToolTip": "SearchService\\Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwDUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T07:13:44.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "SearchService\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "SearchService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABYAAAAAAAAAAAAIwBsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-29T09:28:21.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\appsettings.json",
+              "RelativeDocumentMoniker": "SearchService\\appsettings.json",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\appsettings.json",
+              "RelativeToolTip": "SearchService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-24T05:40:37.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SearchDbContext.cs",
+              "DocumentMoniker": "C:\\C#\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
+              "RelativeDocumentMoniker": "SearchService\\Data\\SearchDbContext.cs",
+              "ToolTip": "C:\\C#\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
+              "RelativeToolTip": "SearchService\\Data\\SearchDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T07:00:00.008Z"
             }
           ]
         }

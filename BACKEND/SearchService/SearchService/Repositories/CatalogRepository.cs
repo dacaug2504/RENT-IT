@@ -1,6 +1,7 @@
 ﻿
 using MySqlConnector;
 using SearchService.Models;
+using System.Data;
 
 namespace SearchService.Repositories
 {
@@ -13,238 +14,222 @@ namespace SearchService.Repositories
             _connectionString = connectionString;
         }
 
-        // HOME PAGE Get all categories with item count
+        private MySqlConnection CreateConnection()
+        {
+            return new MySqlConnection(_connectionString);
+        }
+
+        // ============================
+        // HOME PAGE: Categories
+        // ============================
         public async Task<List<Category>> GetAllCategoriesAsync()
         {
             var categories = new List<Category>();
+
+            using var conn = CreateConnection();
+            await conn.OpenAsync();
 
             var sql = @"
                 SELECT 
                     c.category_id,
                     c.type,
                     c.description,
-                    COUNT(i.item_id) as ItemCount
+                    COUNT(i.item_id) AS item_count
                 FROM category c
                 LEFT JOIN items i ON c.category_id = i.category_id
                 GROUP BY c.category_id, c.type, c.description
                 ORDER BY c.type";
 
-            using (var connection = new MySqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = await cmd.ExecuteReaderAsync();
 
-                using (var command = new MySqlCommand(sql, connection))
+            while (await reader.ReadAsync())
+            {
+                categories.Add(new Category
                 {
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            categories.Add(new Category
-                            {
-                                CategoryId = reader.GetInt32("category_id"),
-                                Type = reader.GetString("type"),
-                                Description = reader.IsDBNull(reader.GetOrdinal("description"))
-                                    ? null
-                                    : reader.GetString("description"),
-                                ItemCount = reader.GetInt32("ItemCount")
-                            });
-                        }
-                    }
-                }
+                    CategoryId = reader.GetInt32("category_id"),
+                    Type = reader.GetString("type"),
+                    Description = reader.GetString("description"),
+                    ItemCount = reader.GetInt32("item_count")
+                });
             }
 
             return categories;
         }
 
-        // CATEGORY PAGE Get items by category with availability count
+        // ============================
+        // CATEGORY PAGE: Items by Category
+        // ============================
         public async Task<List<Item>> GetItemsByCategoryAsync(int categoryId)
         {
             var items = new List<Item>();
+
+            using var conn = CreateConnection();
+            await conn.OpenAsync();
 
             var sql = @"
                 SELECT 
                     i.item_id,
                     i.item_name,
                     i.category_id,
-                    c.type as CategoryType,
-                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) as AvailableCount
+                    c.type AS category_type,
+                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) AS available_count
                 FROM items i
                 JOIN category c ON i.category_id = c.category_id
                 LEFT JOIN owner_items oi ON i.item_id = oi.item_id
-                WHERE i.category_id = @categoryId
+                WHERE i.category_id = @CategoryId
                 GROUP BY i.item_id, i.item_name, i.category_id, c.type
                 ORDER BY i.item_name";
 
-            using (var connection = new MySqlConnection(_connectionString))
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
-                await connection.OpenAsync();
-
-                using (var command = new MySqlCommand(sql, connection))
+                items.Add(new Item
                 {
-                    command.Parameters.AddWithValue("@categoryId", categoryId);
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            items.Add(new Item
-                            {
-                                ItemId = reader.GetInt32("item_id"),
-                                ItemName = reader.GetString("item_name"),
-                                CategoryId = reader.GetInt32("category_id"),
-                                CategoryType = reader.GetString("CategoryType"),
-                                AvailableCount = reader.GetInt32("AvailableCount")
-                            });
-                        }
-                    }
-                }
+                    ItemId = reader.GetInt32("item_id"),
+                    ItemName = reader.GetString("item_name"),
+                    CategoryId = reader.GetInt32("category_id"),
+                    CategoryType = reader.GetString("category_type"),
+                    AvailableCount = reader.GetInt32("available_count")
+                });
             }
 
             return items;
         }
 
-        // ITEM DETAIL PAGE  Get item details with all available listings
-        public async Task<ItemDetail> GetItemDetailAsync(int itemId)
+        // ============================
+        // ITEM DETAIL PAGE
+        // ============================
+        public async Task<ItemDetail?> GetItemDetailAsync(int itemId)
         {
-            ItemDetail itemDetail = null;
+            using var conn = CreateConnection();
+            await conn.OpenAsync();
 
-            // First query Get item basic info
+            ItemDetail? item = null;
+
             var itemSql = @"
                 SELECT 
                     i.item_id,
                     i.item_name,
                     i.category_id,
-                    c.type as CategoryType,
-                    c.description as CategoryDescription
+                    c.type,
+                    c.description
                 FROM items i
                 JOIN category c ON i.category_id = c.category_id
-                WHERE i.item_id = @itemId";
+                WHERE i.item_id = @ItemId";
 
-            using (var connection = new MySqlConnection(_connectionString))
+            using (var cmd = new MySqlCommand(itemSql, conn))
             {
-                await connection.OpenAsync();
+                cmd.Parameters.AddWithValue("@ItemId", itemId);
+                using var reader = await cmd.ExecuteReaderAsync();
 
-                // Get item info
-                using (var command = new MySqlCommand(itemSql, connection))
+                if (await reader.ReadAsync())
                 {
-                    command.Parameters.AddWithValue("@itemId", itemId);
-
-                    using (var reader = await command.ExecuteReaderAsync())
+                    item = new ItemDetail
                     {
-                        if (await reader.ReadAsync())
-                        {
-                            itemDetail = new ItemDetail
-                            {
-                                ItemId = reader.GetInt32("item_id"),
-                                ItemName = reader.GetString("item_name"),
-                                CategoryId = reader.GetInt32("category_id"),
-                                CategoryType = reader.GetString("CategoryType"),
-                                CategoryDescription = reader.IsDBNull(reader.GetOrdinal("CategoryDescription"))
-                                    ? null
-                                    : reader.GetString("CategoryDescription"),
-                                AvailableListings = new List<OwnerItemListing>()
-                            };
-                        }
-                    }
-                }
-
-                // If item found, get its listings
-                if (itemDetail != null)
-                {
-                    var listingsSql = @"
-                        SELECT 
-                            oi.ot_id,
-                            oi.brand,
-                            oi.description,
-                            oi.`condition`,
-                            oi.rent_per_day,
-                            oi.deposit_amt,
-                            oi.status,
-                            oi.user_id,
-                            CONCAT(u.first_name, ' ', u.last_name) as OwnerName,
-                            c.city_name,
-                            s.state_name
-                        FROM owner_items oi
-                        JOIN user u ON oi.user_id = u.user_id
-                        JOIN city c ON u.city_id = c.city_id
-                        JOIN state s ON u.state_id = s.state_id
-                        WHERE oi.item_id = @itemId 
-                        AND oi.status = 'AVAILABLE'
-                        ORDER BY oi.rent_per_day ASC";
-
-                    using (var command = new MySqlCommand(listingsSql, connection))
-                    {
-                        command.Parameters.AddWithValue("@itemId", itemId);
-
-                        using (var reader = await command.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                itemDetail.AvailableListings.Add(new OwnerItemListing
-                                {
-                                    OtId = reader.GetInt32("ot_id"),
-                                    Brand = reader.GetString("brand"),
-                                    Description = reader.GetString("description"),
-                                    Condition = reader.GetString("condition"),
-                                    RentPerDay = reader.GetInt32("rent_per_day"),
-                                    DepositAmt = reader.GetInt32("deposit_amt"),
-                                    Status = reader.GetString("status"),
-                                    OwnerId = reader.GetInt32("user_id"),
-                                    OwnerName = reader.GetString("OwnerName"),
-                                    CityName = reader.GetString("city_name"),
-                                    StateName = reader.GetString("state_name")
-                                });
-                            }
-                        }
-                    }
+                        ItemId = reader.GetInt32("item_id"),
+                        ItemName = reader.GetString("item_name"),
+                        CategoryId = reader.GetInt32("category_id"),
+                        CategoryType = reader.GetString("type"),
+                        CategoryDescription = reader.GetString("description"),
+                        AvailableListings = new List<OwnerItemListing>()
+                    };
                 }
             }
 
-            return itemDetail;
+            if (item == null) return null;
+
+            var listingSql = @"
+                SELECT 
+                    oi.ot_id,
+                    oi.brand,
+                    oi.description,
+                    oi.`condition_type`,
+                    oi.rent_per_day,
+                    oi.deposit_amt,
+                    oi.status,
+                    oi.user_id,
+                    CONCAT(u.first_name, ' ', u.last_name) AS owner_name,
+                    c.city_name,
+                    s.state_name
+                FROM owner_items oi
+                JOIN user u ON oi.user_id = u.user_id
+                JOIN city c ON u.city_id = c.city_id
+                JOIN state s ON u.state_id = s.state_id
+                WHERE oi.item_id = @ItemId
+                AND oi.status = 'AVAILABLE'
+                ORDER BY oi.rent_per_day";
+
+            using var listCmd = new MySqlCommand(listingSql, conn);
+            listCmd.Parameters.AddWithValue("@ItemId", itemId);
+
+            using var listReader = await listCmd.ExecuteReaderAsync();
+            while (await listReader.ReadAsync())
+            {
+                item.AvailableListings.Add(new OwnerItemListing
+                {
+                    OtId = listReader.GetInt32("ot_id"),
+                    Brand = listReader.GetString("brand"),
+                    Description = listReader.GetString("description"),
+                    Condition = listReader.GetString("condition_type"),
+                    RentPerDay = listReader.GetInt32("rent_per_day"),
+                    DepositAmt = listReader.GetInt32("deposit_amt"),
+                    Status = listReader.GetString("status"),
+                    OwnerId = listReader.GetInt32("user_id"),
+                    OwnerName = listReader.GetString("owner_name"),
+                    CityName = listReader.GetString("city_name"),
+                    StateName = listReader.GetString("state_name")
+                });
+            }
+
+            return item;
         }
 
-        // SEARCH Search items by name
+        // ============================
+        // SEARCH
+        // ============================
         public async Task<SearchResult> SearchItemsAsync(string searchTerm)
         {
             var items = new List<Item>();
 
+            using var conn = CreateConnection();
+            await conn.OpenAsync();
+
             var sql = @"
-                SELECT 
+                SELECT DISTINCT
                     i.item_id,
                     i.item_name,
                     i.category_id,
-                    c.type as CategoryType,
-                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) as AvailableCount
+                    c.type AS category_type,
+                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) AS available_count
                 FROM items i
                 JOIN category c ON i.category_id = c.category_id
                 LEFT JOIN owner_items oi ON i.item_id = oi.item_id
-                WHERE i.item_name LIKE @searchTerm
+                WHERE i.item_name LIKE @Search
+                   OR c.type LIKE @Search
+                   OR c.description LIKE @Search
+                   OR oi.brand LIKE @Search
+                   OR oi.description LIKE @Search
                 GROUP BY i.item_id, i.item_name, i.category_id, c.type
                 ORDER BY i.item_name";
 
-            using (var connection = new MySqlConnection(_connectionString))
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Search", $"%{searchTerm}%");
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
-                await connection.OpenAsync();
-
-                using (var command = new MySqlCommand(sql, connection))
+                items.Add(new Item
                 {
-                    command.Parameters.AddWithValue("@searchTerm", $"%{searchTerm}%");
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            items.Add(new Item
-                            {
-                                ItemId = reader.GetInt32("item_id"),
-                                ItemName = reader.GetString("item_name"),
-                                CategoryId = reader.GetInt32("category_id"),
-                                CategoryType = reader.GetString("CategoryType"),
-                                AvailableCount = reader.GetInt32("AvailableCount")
-                            });
-                        }
-                    }
-                }
+                    ItemId = reader.GetInt32("item_id"),
+                    ItemName = reader.GetString("item_name"),
+                    CategoryId = reader.GetInt32("category_id"),
+                    CategoryType = reader.GetString("category_type"),
+                    AvailableCount = reader.GetInt32("available_count")
+                });
             }
 
             return new SearchResult
@@ -255,56 +240,52 @@ namespace SearchService.Repositories
             };
         }
 
-        // FILTER Get items by category and city
+        // ============================
+        // FILTER: Category + City
+        // ============================
         public async Task<List<Item>> GetItemsByCategoryAndCityAsync(int categoryId, int cityId)
         {
             var items = new List<Item>();
+
+            using var conn = CreateConnection();
+            await conn.OpenAsync();
 
             var sql = @"
                 SELECT DISTINCT
                     i.item_id,
                     i.item_name,
                     i.category_id,
-                    c.type as CategoryType,
-                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) as AvailableCount
+                    c.type AS category_type,
+                    COUNT(CASE WHEN oi.status = 'AVAILABLE' THEN 1 END) AS available_count
                 FROM items i
                 JOIN category c ON i.category_id = c.category_id
                 LEFT JOIN owner_items oi ON i.item_id = oi.item_id
                 LEFT JOIN user u ON oi.user_id = u.user_id
-                WHERE i.category_id = @categoryId
-                AND (u.city_id = @cityId OR u.city_id IS NULL)
+                WHERE i.category_id = @CategoryId
+                AND (u.city_id = @CityId OR u.city_id IS NULL)
                 GROUP BY i.item_id, i.item_name, i.category_id, c.type
-                HAVING AvailableCount > 0
+                HAVING available_count > 0
                 ORDER BY i.item_name";
 
-            using (var connection = new MySqlConnection(_connectionString))
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+            cmd.Parameters.AddWithValue("@CityId", cityId);
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
-                await connection.OpenAsync();
-
-                using (var command = new MySqlCommand(sql, connection))
+                items.Add(new Item
                 {
-                    command.Parameters.AddWithValue("@categoryId", categoryId);
-                    command.Parameters.AddWithValue("@cityId", cityId);
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            items.Add(new Item
-                            {
-                                ItemId = reader.GetInt32("item_id"),
-                                ItemName = reader.GetString("item_name"),
-                                CategoryId = reader.GetInt32("category_id"),
-                                CategoryType = reader.GetString("CategoryType"),
-                                AvailableCount = reader.GetInt32("AvailableCount")
-                            });
-                        }
-                    }
-                }
+                    ItemId = reader.GetInt32("item_id"),
+                    ItemName = reader.GetString("item_name"),
+                    CategoryId = reader.GetInt32("category_id"),
+                    CategoryType = reader.GetString("category_type"),
+                    AvailableCount = reader.GetInt32("available_count")
+                });
             }
 
             return items;
         }
+
     }
 }
-

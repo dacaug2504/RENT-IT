@@ -1,5 +1,4 @@
-﻿
-using SearchService.Models;
+﻿using SearchService.Models;
 using SearchService.Repositories;
 
 namespace SearchService.Services
@@ -7,12 +6,21 @@ namespace SearchService.Services
     public interface ICatalogService
     {
         Task<List<Category>> GetCategoriesForHomePageAsync();
-        Task<List<Item>> GetItemsForCategoryAsync(int categoryId);
-        Task<ItemDetail> GetItemDetailsAsync(int itemId);
-        Task<SearchResult> SearchItemsAsync(string searchTerm);
-        Task<List<Item>> FilterItemsByLocationAsync(int categoryId, int cityId);
 
+        // Category Page Service
+        Task<List<Item>> GetItemsForCategoryAsync(int categoryId);
+
+        // Item Detail Page Service
+        Task<ItemDetail> GetItemDetailsAsync(int itemId);
+
+        // Search Service
+        Task<SearchResult> SearchItemsAsync(string searchTerm);
+
+        // Filter Service
+        Task<List<Item>> FilterItemsByLocationAsync(int categoryId, int cityId);
     }
+
+
     public class CatalogService : ICatalogService
     {
         private readonly ICatalogRepository _repository;
