@@ -7,6 +7,8 @@ import com.rentit.signin.entities.User;
 
 @Repository
 public interface RegisterRepository extends JpaRepository<User, Integer> {
+
+	User findByEmailAndPassword(String email, String password);
 	
 	
 }

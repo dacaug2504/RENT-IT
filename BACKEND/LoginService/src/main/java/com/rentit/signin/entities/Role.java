@@ -2,8 +2,10 @@ package com.rentit.signin.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="role")
 @AllArgsConstructor
@@ -25,11 +28,13 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer role_id;
+	@Column(name = "role_id")
+	private Integer roleId;
 	
-	private String role_name;
+	@Column(name = "role_name")
+	private String roleName;
 	
 	@OneToMany(mappedBy = "role")
-	@JsonIgnoreProperties("role")
-	Set<User> users;
+	@JsonIgnore  // ← Ignore users collection to avoid circular reference
+	private Set<User> users;
 }
