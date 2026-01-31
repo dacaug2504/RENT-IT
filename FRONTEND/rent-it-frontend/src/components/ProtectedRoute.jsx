@@ -1,12 +1,16 @@
 import { Navigate } from 'react-router-dom';
-import { userService } from '../services/api';
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const user = userService.getCurrentUser();
+  const auth = useSelector((state) => state.auth);
+  const { user, token, isAuthenticated } = auth;
 
-  if (!user) {
+
+  // ⏳ Block routing until auth is rehydrated
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
+
 
   // 🔹 Normalize role safely
   let userRole = user.role;
@@ -19,7 +23,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   }
 
   if (typeof userRole === 'string') {
-    userRole = userRole.toUpperCase(); // normalize
+    userRole = userRole.toUpperCase();
   }
 
   // 🔹 Normalize allowed roles
