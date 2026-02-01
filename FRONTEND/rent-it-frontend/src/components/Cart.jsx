@@ -14,11 +14,10 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { addDays, format } from "date-fns";
-import { userService, cartService, orderService } from "../services/api";
+import { cartService, orderService } from "../services/api";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const user = userService.getCurrentUser();
 
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,11 +37,7 @@ const Cart = () => {
 
   const handleBack = () => navigate(-1);
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login", { replace: true });
-    }
-  }, [user, navigate]);
+
 
 
   const getDefaultDateRange = (cartId) => [
