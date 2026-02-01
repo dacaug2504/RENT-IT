@@ -3,6 +3,7 @@ import axios from "axios";
 // ================== ENV VARIABLES ==================
 const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL;
 const OWNER_API_URL = import.meta.env.VITE_OWNER_API_URL;
+const CART_API_URL = import.meta.env.VITE_CART_API_URL;
 
 if (!AUTH_API_URL || !OWNER_API_URL) {
   throw new Error("API base URLs not defined. Check .env file");
@@ -15,6 +16,10 @@ const authApi = axios.create({
 
 const ownerApi = axios.create({
   baseURL: OWNER_API_URL,
+});
+
+const productApi = axios.create({
+  baseURL: CART_API_URL, // http://localhost:8082
 });
 
 // ================== JWT INTERCEPTOR ==================
@@ -30,6 +35,7 @@ const attachToken = (config) => {
 
 authApi.interceptors.request.use(attachToken);
 ownerApi.interceptors.request.use(attachToken);
+productApi.interceptors.request.use(attachToken);
 
 
 
@@ -199,5 +205,63 @@ export const ownerService = {
 
 };
 
+
+// ================== CART SERVICE (ADD-TO-CART) ==================
+export const cartService = {
+  /**
+   * Add item to cart
+   * Backend must read userId from JWT (via JwtFilter)
+   * Request body: { ownerItemId }
+   */
+  addToCart: async (ownerItemId) => {
+    return productApi.post("/addtocart", { ownerItemId });
+  },
+
+  /**
+   * Get all cart products for logged-in user
+   * Backend must read userId from JWT
+   */
+  getCartProducts: async () => {
+    return productApi.get("/getproductsbyid");
+  },
+
+  /**
+   * Remove product from cart by cartId
+   */
+  removeFromCart: async (cartId) => {
+    return productApi.delete(`/deleteproductfromcart/${cartId}`);
+  },
+};
+
+// ================== OWNER ITEM SERVICE ==================
+export const ownerItemService = {
+  getAllProducts: async () => {
+    return productApi.get("/getallproducts"); // http://localhost:8081/getallproducts
+  },
+   getProductDetails: async (otId) => {
+    return productApi.get(`/${otId}/details`);
+  }
+};
+
+// ================== ORDER SERVICE ==================
+export const orderService = {
+  /**
+   * Place order from single cart item
+   */
+  placeOrder: async (cartId, startDate, endDate) => {
+    return productApi.post(`/order/place?cartId=${cartId}&startDate=${startDate}&endDate=${endDate}`);
+  },
+  
+  /**
+   * Place orders for multiple cart items (BULK)
+   */
+  placeBulkOrders: async (cartIds, startDate, endDate) => {
+    return productApi.post('/order/bulk-place', { 
+      cartIds, 
+      startDate, 
+      endDate 
+    });
+  }
+};
 
 export { authApi, ownerApi };
