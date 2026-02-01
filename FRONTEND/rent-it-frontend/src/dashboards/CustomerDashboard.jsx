@@ -191,10 +191,11 @@ const CustomerDashboard = () => {
                         <Button
                           variant="success"
                           className="btn-details"
-                          onClick={() => navigate(`/productdetails?otId=${p.ot_id}`)}
+                          onClick={() => navigate(`/product/${p.ot_id}`)}
                         >
                           View Details
                         </Button>
+
                       </div>
                     </Card.Body>
                   </Card>
