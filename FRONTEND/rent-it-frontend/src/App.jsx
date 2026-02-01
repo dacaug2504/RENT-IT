@@ -25,12 +25,19 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<Search/>}/>
-        <Route path="/mycart" element={<Cart />} />
         <Route path="/product/:id" element={<ProductDetails />} />
 
         
 
-        
+        <Route
+          path="/mycart"
+          element={
+            <ProtectedRoute allowedRoles={["CUSTOMER"]}>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route
           path="/owner/edit-product/:otId"
