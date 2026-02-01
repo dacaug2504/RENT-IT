@@ -2595,11 +2595,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\SearchService.csproj",
+      "projectUniqueName": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\SearchService.csproj",
       "projectName": "SearchService",
-      "projectPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\SearchService.csproj",
+      "projectPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\SearchService.csproj",
       "packagesPath": "C:\\Users\\AVISHKAR\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\obj\\",
+      "outputPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
