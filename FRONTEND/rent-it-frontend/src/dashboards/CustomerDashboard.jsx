@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -22,19 +22,82 @@ const CustomerDashboard = () => {
   const [cartSuccess, setCartSuccess] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
 
   const displayName = "Priya";
 
-  // filter products client-side based on searchQuery
-  const filteredProducts = searchQuery.trim() === ""
-    ? products
-    : products.filter((p) => {
-        const q = searchQuery.toLowerCase();
-        return (
-          (p.brand && p.brand.toLowerCase().includes(q)) ||
-          (p.description && p.description.toLowerCase().includes(q))
-        );
-      });
+  // Cache for storing search results
+  const searchCacheRef = useRef(new Map());
+  
+  // Ref for debounce timer
+  const debounceTimerRef = useRef(null);
+
+  /* ============================
+      DEBOUNCING LOGIC
+     ============================ */
+  useEffect(() => {
+    // Clear existing timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    // Show searching indicator if query is not empty
+    if (searchQuery.trim() !== "") {
+      setIsSearching(true);
+    }
+
+    // Set new timer for 500ms
+    debounceTimerRef.current = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+      setIsSearching(false);
+    }, 500);
+
+    // Cleanup
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [searchQuery]);
+
+  /* ============================
+      FILTER PRODUCTS WITH CACHING
+     ============================ */
+  const filteredProducts = useMemo(() => {
+    const query = debouncedSearchQuery.trim().toLowerCase();
+    
+    // If no search query, return all products
+    if (query === "") {
+      return products;
+    }
+
+    // Check cache first
+    if (searchCacheRef.current.has(query)) {
+      console.log(`Cache hit for query: "${query}"`);
+      return searchCacheRef.current.get(query);
+    }
+
+    // Perform search
+    console.log(`Cache miss for query: "${query}" - performing search`);
+    const results = products.filter((p) => {
+      return (
+        (p.brand && p.brand.toLowerCase().includes(query)) ||
+        (p.description && p.description.toLowerCase().includes(query))
+      );
+    });
+
+    // Store in cache
+    searchCacheRef.current.set(query, results);
+
+    // Optional: Limit cache size to prevent memory issues
+    if (searchCacheRef.current.size > 50) {
+      const firstKey = searchCacheRef.current.keys().next().value;
+      searchCacheRef.current.delete(firstKey);
+    }
+
+    return results;
+  }, [products, debouncedSearchQuery]);
 
   const handleLogout = () => {
     userService.logout();
@@ -50,6 +113,8 @@ const CustomerDashboard = () => {
       try {
         const res = await ownerItemService.getAllProducts();
         setProducts(res.data || []);
+        // Clear cache when products are refreshed
+        searchCacheRef.current.clear();
       } catch (err) {
         setError("Failed to load products");
         console.error(err);
@@ -73,6 +138,15 @@ const CustomerDashboard = () => {
       setError("Unable to add item to cart");
       console.error(err);
     }
+  };
+
+  /* ============================
+      CLEAR SEARCH
+     ============================ */
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setDebouncedSearchQuery("");
+    setIsSearching(false);
   };
 
   return (
@@ -99,7 +173,8 @@ const CustomerDashboard = () => {
                 borderRadius: "20px",
                 padding: "4px 8px 4px 14px",
                 margin: "0 10px",
-                width: "240px"
+                width: "240px",
+                position: "relative"
               }}>
                 <input
                   type="text"
@@ -115,9 +190,20 @@ const CustomerDashboard = () => {
                     color: "#333"
                   }}
                 />
-                {searchQuery && (
+                {isSearching && (
                   <span
-                    onClick={() => setSearchQuery("")}
+                    style={{
+                      fontSize: "12px",
+                      color: "#666",
+                      marginRight: "4px"
+                    }}
+                  >
+                    ⏳
+                  </span>
+                )}
+                {searchQuery && !isSearching && (
+                  <span
+                    onClick={handleClearSearch}
                     style={{
                       cursor: "pointer",
                       color: "#999",
@@ -202,10 +288,10 @@ const CustomerDashboard = () => {
         <Container>
           <div className="products-header">
             <h2 className="products-title">
-              {searchQuery.trim() === "" ? "All Appliances" : `Results for "${searchQuery}"`}
+              {debouncedSearchQuery.trim() === "" ? "All Appliances" : `Results for "${debouncedSearchQuery}"`}
             </h2>
             <p className="products-subtitle">
-              {searchQuery.trim() === ""
+              {debouncedSearchQuery.trim() === ""
                 ? "Choose from a curated list of home appliances available for rent."
                 : `${filteredProducts.length} ${filteredProducts.length === 1 ? "item" : "items"} found`}
             </p>
@@ -215,7 +301,7 @@ const CustomerDashboard = () => {
             <div className="loading-state">Loading...</div>
           ) : filteredProducts.length === 0 ? (
             <div className="empty-state">
-              {searchQuery.trim() === "" ? "No products found" : "No results found — try a different keyword"}
+              {debouncedSearchQuery.trim() === "" ? "No products found" : "No results found — try a different keyword"}
             </div>
           ) : (
             <Row xs={1} sm={2} md={3} lg={4} className="g-4">
