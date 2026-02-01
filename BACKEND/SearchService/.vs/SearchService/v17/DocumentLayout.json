@@ -1,61 +1,61 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\",
+  "WorkspaceRootPath": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\repositories\\catalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\repositories\\catalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\repositories\\catalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\owneritemlisting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\repositories\\icatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\services\\icatalogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\itemdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\itemdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\itemdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\cdac-project\\search .net\\rent-it\\backend\\searchservice\\searchservice\\data\\searchdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|c:\\users\\avishkar\\onedrive\\desktop\\rent project\\rent-it\\backend\\searchservice\\searchservice\\data\\searchdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2EF896E-7139-430F-8514-82ED5BCCE2D7}|SearchService\\SearchService.csproj|solutionrelative:searchservice\\data\\searchdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -72,9 +72,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "Item.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Item.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Item.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\Item.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Item.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Item.cs",
               "RelativeToolTip": "SearchService\\Models\\Item.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA9wBUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -84,9 +84,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "OwnerItemListing.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\OwnerItemListing.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItemListing.cs",
               "RelativeToolTip": "SearchService\\Models\\OwnerItemListing.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAwBwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -96,9 +96,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "OwnerItem.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItem.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItem.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\OwnerItem.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItem.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\OwnerItem.cs",
               "RelativeToolTip": "SearchService\\Models\\OwnerItem.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAswDwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -108,9 +108,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "ICatalogRepository.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
               "RelativeDocumentMoniker": "SearchService\\Repositories\\ICatalogRepository.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\ICatalogRepository.cs",
               "RelativeToolTip": "SearchService\\Repositories\\ICatalogRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -120,48 +120,45 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Category.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Category.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\Category.cs",
               "RelativeToolTip": "SearchService\\Models\\Category.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAzwBIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T07:19:32.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T07:19:32.776Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Program.cs",
               "RelativeDocumentMoniker": "SearchService\\Program.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Program.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Program.cs",
               "RelativeToolTip": "SearchService\\Program.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T07:13:44.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T07:13:44.268Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\appsettings.json",
               "RelativeDocumentMoniker": "SearchService\\appsettings.json",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\appsettings.json",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\appsettings.json",
               "RelativeToolTip": "SearchService\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T05:40:37.34Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T05:40:37.34Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "SearchService\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Properties\\launchSettings.json",
               "RelativeToolTip": "SearchService\\Properties\\launchSettings.json",
               "ViewState": "AgIAABsAAAAAAAAAAAAAABsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -172,9 +169,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "CatalogController.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
               "RelativeDocumentMoniker": "SearchService\\Controllers\\CatalogController.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Controllers\\CatalogController.cs",
               "RelativeToolTip": "SearchService\\Controllers\\CatalogController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAiwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -184,9 +181,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "ICatalogService.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Services\\ICatalogService.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Services\\ICatalogService.cs",
               "RelativeDocumentMoniker": "SearchService\\Services\\ICatalogService.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Services\\ICatalogService.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Services\\ICatalogService.cs",
               "RelativeToolTip": "SearchService\\Services\\ICatalogService.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAmwE4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -196,9 +193,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "ItemDetail.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\ItemDetail.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\ItemDetail.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\ItemDetail.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\ItemDetail.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\ItemDetail.cs",
               "RelativeToolTip": "SearchService\\Models\\ItemDetail.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAYwBYAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -208,22 +205,21 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "CatalogRepository.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
               "RelativeDocumentMoniker": "SearchService\\Repositories\\CatalogRepository.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Repositories\\CatalogRepository.cs",
               "RelativeToolTip": "SearchService\\Repositories\\CatalogRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T18:56:01.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T18:56:01.619Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "SearchResult.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\SearchResult.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\SearchResult.cs",
               "RelativeDocumentMoniker": "SearchService\\Models\\SearchResult.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\SearchResult.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Models\\SearchResult.cs",
               "RelativeToolTip": "SearchService\\Models\\SearchResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -233,9 +229,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "SearchDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
               "RelativeDocumentMoniker": "SearchService\\Data\\SearchDbContext.cs",
-              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\CDAC-Project\\Search .net\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
+              "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\SearchService\\SearchService\\Data\\SearchDbContext.cs",
               "RelativeToolTip": "SearchService\\Data\\SearchDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
