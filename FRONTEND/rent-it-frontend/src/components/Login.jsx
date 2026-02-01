@@ -44,12 +44,12 @@ const Login = () => {
       // /* =========================
       //    ✅ SAVE JWT TOKEN
       //    ========================= */
-      // localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
 
       // /* =========================
       //    ✅ SAVE USER (NO PASSWORD)
       //    ========================= */
-      // userService.saveUser(response.data.user);
+      //userService.saveUser(response.data.user);
 
       /* =========================
         ✅ SAVE AUTH DATA TO REDUX
@@ -63,35 +63,45 @@ const Login = () => {
 
 
       /* =========================
-         ✅ ROLE BASED REDIRECT
-         ========================= */
+   ✅ ROLE BASED REDIRECT (SAFE)
+   ========================= */
+      const rawRole = response.data.user.role;
+
       let role = null;
 
-      const userRole = response.data.user.role;
-
-      if (userRole) {
-        // Handle both backend naming styles safely
-        role = (
-          userRole.role_name ||   // snake_case
-          userRole.roleName ||    // camelCase
-          userRole               // string fallback
-        );
-
-        if (typeof role === 'string') {
-          role = role.toLowerCase();
-        }
+      if (typeof rawRole === "string") {
+        role = rawRole;
+      } else if (typeof rawRole === "object" && rawRole !== null) {
+        role = rawRole.role_name || rawRole.roleName;
       }
 
       if (!role) {
-        console.error("Invalid role object:", response.data.user.role);
-        setError('Unable to determine user role');
+        console.error("❌ Unable to detect role:", rawRole);
+        setError("Unable to determine user role");
         setLoading(false);
         return;
       }
 
-      
+      role = role.toUpperCase(); // normalize once
 
-      navigate(`/${role}/dashboard`);
+      console.log("✅ Detected role:", role);
+
+      // 🔐 strict routing (NO guesswork)
+      switch (role) {
+        case "OWNER":
+          navigate("/owner/dashboard");
+          break;
+        case "CUSTOMER":
+          navigate("/customer/dashboard");
+          break;
+        case "ADMIN":
+          navigate("/admin/dashboard");
+          break;
+        default:
+          console.error("❌ Unknown role:", role);
+          setError("Unauthorized role");
+        }
+
     } catch (err) {
       if (err.response?.status === 401) {
         setError('Invalid email or password');
