@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Alert, Spinner, Badge } from 'react-bootstrap';
 import { ownerItemService, cartService } from '../services/api'; // ✅ Added cartService
-import '../App.css';
+import  "../assets/product-details.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
