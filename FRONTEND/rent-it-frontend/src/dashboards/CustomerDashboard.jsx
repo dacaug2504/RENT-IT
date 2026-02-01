@@ -21,7 +21,20 @@ const CustomerDashboard = () => {
   const [error, setError] = useState("");
   const [cartSuccess, setCartSuccess] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const displayName = "Priya";
+
+  // filter products client-side based on searchQuery
+  const filteredProducts = searchQuery.trim() === ""
+    ? products
+    : products.filter((p) => {
+        const q = searchQuery.toLowerCase();
+        return (
+          (p.brand && p.brand.toLowerCase().includes(q)) ||
+          (p.description && p.description.toLowerCase().includes(q))
+        );
+      });
 
   const handleLogout = () => {
     userService.logout();
@@ -73,10 +86,51 @@ const CustomerDashboard = () => {
 
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Nav className="ms-auto">
+            <Nav className="ms-auto" style={{ alignItems: "center" }}>
               <Nav.Link onClick={() => navigate("/customer/dashboard")}>
                 Home
               </Nav.Link>
+
+              {/* Search bar — sits between Home and My Cart */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                background: "#f0f0f0",
+                borderRadius: "20px",
+                padding: "4px 8px 4px 14px",
+                margin: "0 10px",
+                width: "240px"
+              }}>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search appliances…"
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    outline: "none",
+                    flex: 1,
+                    fontSize: "14px",
+                    color: "#333"
+                  }}
+                />
+                {searchQuery && (
+                  <span
+                    onClick={() => setSearchQuery("")}
+                    style={{
+                      cursor: "pointer",
+                      color: "#999",
+                      fontSize: "16px",
+                      marginLeft: "4px",
+                      lineHeight: 1
+                    }}
+                  >
+                    ✕
+                  </span>
+                )}
+              </div>
+
               <Nav.Link onClick={() => navigate("/mycart")}>
                 🛒 My Cart
               </Nav.Link>
@@ -147,19 +201,25 @@ const CustomerDashboard = () => {
       <section className="dashboard-products" id="appliances-section">
         <Container>
           <div className="products-header">
-            <h2 className="products-title">All Appliances</h2>
+            <h2 className="products-title">
+              {searchQuery.trim() === "" ? "All Appliances" : `Results for "${searchQuery}"`}
+            </h2>
             <p className="products-subtitle">
-              Choose from a curated list of home appliances available for rent.
+              {searchQuery.trim() === ""
+                ? "Choose from a curated list of home appliances available for rent."
+                : `${filteredProducts.length} ${filteredProducts.length === 1 ? "item" : "items"} found`}
             </p>
           </div>
 
           {loading ? (
             <div className="loading-state">Loading...</div>
-          ) : products.length === 0 ? (
-            <div className="empty-state">No products found</div>
+          ) : filteredProducts.length === 0 ? (
+            <div className="empty-state">
+              {searchQuery.trim() === "" ? "No products found" : "No results found — try a different keyword"}
+            </div>
           ) : (
             <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-              {products.map((p) => (
+              {filteredProducts.map((p) => (
                 <Col key={p.ot_id}>
                   <Card className="product-card">
                     <div className="product-image">
