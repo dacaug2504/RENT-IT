@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Entity Framework Core for MySQL -->
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
+
+		<!-- BCrypt for password hashing - CRITICAL for compatibility with Spring Boot -->
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+
+		<!-- JWT Authentication -->
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.0" />
+
+		<!-- Swagger/OpenAPI -->
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+
+		<!-- EF Core Tools for migrations (if needed) -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+		<!-- Design package -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>

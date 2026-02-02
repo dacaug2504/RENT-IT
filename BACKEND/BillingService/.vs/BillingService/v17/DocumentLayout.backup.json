@@ -1,0 +1,326 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\services\\billingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\services\\billingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\controllers\\billingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\controllers\\billingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\dtos\\billresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\dtos\\billresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\dtos\\createbilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\dtos\\createbilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\owneritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\attributes\\authorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\attributes\\authorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\services\\ibillingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\services\\ibillingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\models\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\models\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\billingservice\\billingservice\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0A19D77C-6FBE-4E64-BC93-1F917D97016D}|BillingService\\BillingService.csproj|solutionrelative:billingservice\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\City.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\City.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\City.cs",
+              "RelativeToolTip": "BillingService\\Models\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T22:29:02.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "State.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\State.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\State.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\State.cs",
+              "RelativeToolTip": "BillingService\\Models\\State.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T22:24:13.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\User.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\User.cs",
+              "RelativeToolTip": "BillingService\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:23:07.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BillingController.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Controllers\\BillingController.cs",
+              "RelativeDocumentMoniker": "BillingService\\Controllers\\BillingController.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Controllers\\BillingController.cs",
+              "RelativeToolTip": "BillingService\\Controllers\\BillingController.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAowLgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T11:26:07.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\appsettings.json",
+              "RelativeDocumentMoniker": "BillingService\\appsettings.json",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\appsettings.json",
+              "RelativeToolTip": "BillingService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-01T11:27:58.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BillResponseDTO.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\DTOs\\BillResponseDTO.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\DTOs\\BillResponseDTO.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\DTOs\\BillResponseDTO.cs",
+              "RelativeToolTip": "BillingService\\Models\\DTOs\\BillResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T11:26:44.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BillingService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Services\\BillingService.cs",
+              "RelativeDocumentMoniker": "BillingService\\Services\\BillingService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Services\\BillingService.cs",
+              "RelativeToolTip": "BillingService\\Services\\BillingService.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAANQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:27:43.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BillingService\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "BillingService\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T11:26:34.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OwnerItem.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\OwnerItem.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\OwnerItem.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\OwnerItem.cs",
+              "RelativeToolTip": "BillingService\\Models\\OwnerItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:23:53.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IBillingService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Services\\IBillingService.cs",
+              "RelativeDocumentMoniker": "BillingService\\Services\\IBillingService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Services\\IBillingService.cs",
+              "RelativeToolTip": "BillingService\\Services\\IBillingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:27:10.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "JwtMiddleware.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Middleware\\JwtMiddleware.cs",
+              "RelativeDocumentMoniker": "BillingService\\Middleware\\JwtMiddleware.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Middleware\\JwtMiddleware.cs",
+              "RelativeToolTip": "BillingService\\Middleware\\JwtMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:28:38.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Attributes\\AuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "BillingService\\Attributes\\AuthorizeAttribute.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Attributes\\AuthorizeAttribute.cs",
+              "RelativeToolTip": "BillingService\\Attributes\\AuthorizeAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:29:49.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateBillDTO.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\DTOs\\CreateBillDTO.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\DTOs\\CreateBillDTO.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\DTOs\\CreateBillDTO.cs",
+              "RelativeToolTip": "BillingService\\Models\\DTOs\\CreateBillDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T11:27:18.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Program.cs",
+              "RelativeDocumentMoniker": "BillingService\\Program.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Program.cs",
+              "RelativeToolTip": "BillingService\\Program.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAAAJEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T11:28:11.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\Role.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\Role.cs",
+              "RelativeToolTip": "BillingService\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:23:38.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Bill.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\Bill.cs",
+              "RelativeDocumentMoniker": "BillingService\\Models\\Bill.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Models\\Bill.cs",
+              "RelativeToolTip": "BillingService\\Models\\Bill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T21:22:51.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "BillingService\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "BillingService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-01T11:28:26.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BillingService\\appsettings.Development.json",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\BillingService\\BillingService\\appsettings.Development.json",
+              "RelativeToolTip": "BillingService\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-01T19:25:27.792Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

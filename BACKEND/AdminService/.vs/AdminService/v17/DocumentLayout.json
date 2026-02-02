@@ -1,0 +1,522 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\dtos\\categoryresponsedto.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\dtos\\categoryresponsedto.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\adminserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\adminserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\dtos\\dashboardstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\dtos\\dashboardstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\controllers\\adminstatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\controllers\\adminstatscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\adminstatsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\adminstatsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\iadminstatsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\iadminstatsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\dtos\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\dtos\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\mappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\mappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\adminservice.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\adminservice.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\utils\\jwtutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\utils\\jwtutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\enums\\accountstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\enums\\accountstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\authorization\\adminrolehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\authorization\\adminrolehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|d:\\c-dac\\project-git\\rent-it\\backend\\adminservice\\adminservice\\adminservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A1C13002-779B-4876-9FA0-D5669FA2DE1D}|AdminService\\AdminService.csproj|solutionrelative:adminservice\\adminservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "AdminService\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "AdminService\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:50:06.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "AdminService\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "AdminService\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAPQBAAAAAAAAAADwvyECAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:50:35.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\CategoryService.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\CategoryService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\CategoryService.cs",
+              "RelativeToolTip": "AdminService\\Services\\CategoryService.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAA7wJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:58:39.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryDto.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\CategoryDto.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\DTOs\\CategoryDto.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\CategoryDto.cs",
+              "RelativeToolTip": "AdminService\\Models\\DTOs\\CategoryDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:07:59.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoryResponseDto.cs.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\CategoryResponseDto.cs.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\DTOs\\CategoryResponseDto.cs.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\CategoryResponseDto.cs.cs",
+              "RelativeToolTip": "AdminService\\Models\\DTOs\\CategoryResponseDto.cs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:04:44.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "AdminService\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "AdminService\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAADwv0gAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:55:51.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AdminStatsService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\AdminStatsService.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\AdminStatsService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\AdminStatsService.cs",
+              "RelativeToolTip": "AdminService\\Services\\AdminStatsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T21:14:24.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Program.cs",
+              "RelativeDocumentMoniker": "AdminService\\Program.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Program.cs",
+              "RelativeToolTip": "AdminService\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:47:41.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IAdminService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\IAdminService.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\IAdminService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\IAdminService.cs",
+              "RelativeToolTip": "AdminService\\Services\\IAdminService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:56:46.919Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DashboardStatsDto.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\DashboardStatsDto.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\DTOs\\DashboardStatsDto.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\DashboardStatsDto.cs",
+              "RelativeToolTip": "AdminService\\Models\\DTOs\\DashboardStatsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T15:17:45.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdminServiceImpl.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\AdminServiceImpl.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\AdminServiceImpl.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\AdminServiceImpl.cs",
+              "RelativeToolTip": "AdminService\\Services\\AdminServiceImpl.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAgwIQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:57:32.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminStatsController.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AdminStatsController.cs",
+              "RelativeDocumentMoniker": "AdminService\\Controllers\\AdminStatsController.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AdminStatsController.cs",
+              "RelativeToolTip": "AdminService\\Controllers\\AdminStatsController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T21:14:58.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAdminStatsService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\IAdminStatsService.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\IAdminStatsService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\IAdminStatsService.cs",
+              "RelativeToolTip": "AdminService\\Services\\IAdminStatsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T21:10:58.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "AdminService\\Services\\ICategoryService.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Services\\ICategoryService.cs",
+              "RelativeToolTip": "AdminService\\Services\\ICategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:58:08.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Admindtos.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\Admindtos.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\DTOs\\Admindtos.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\DTOs\\Admindtos.cs",
+              "RelativeToolTip": "AdminService\\Models\\DTOs\\Admindtos.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAYwGEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:55:08.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\User.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\User.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\User.cs",
+              "RelativeToolTip": "AdminService\\Models\\User.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA4wDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:51:18.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AdminService.http",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.http",
+              "RelativeDocumentMoniker": "AdminService\\AdminService.http",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.http",
+              "RelativeToolTip": "AdminService\\AdminService.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-01-30T18:31:02.717Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\Role.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Role.cs",
+              "RelativeToolTip": "AdminService\\Models\\Role.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAmwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:52:13.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MappingExtensions.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\MappingExtensions.cs",
+              "RelativeDocumentMoniker": "AdminService\\MappingExtensions.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\MappingExtensions.cs",
+              "RelativeToolTip": "AdminService\\MappingExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:41:11.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\appsettings.json",
+              "RelativeDocumentMoniker": "AdminService\\appsettings.json",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\appsettings.json",
+              "RelativeToolTip": "AdminService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-30T10:48:53.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "JwtUtil.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Utils\\JwtUtil.cs",
+              "RelativeDocumentMoniker": "AdminService\\Utils\\JwtUtil.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Utils\\JwtUtil.cs",
+              "RelativeToolTip": "AdminService\\Utils\\JwtUtil.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA1wC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:01:22.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "State.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\State.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\State.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\State.cs",
+              "RelativeToolTip": "AdminService\\Models\\State.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:16:30.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Items.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Items.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\Items.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Items.cs",
+              "RelativeToolTip": "AdminService\\Models\\Items.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:53:06.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\City.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\City.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\City.cs",
+              "RelativeToolTip": "AdminService\\Models\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:15:38.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "AdminService\\Models\\Category.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Models\\Category.cs",
+              "RelativeToolTip": "AdminService\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:52:38.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AccountStatus.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Enums\\AccountStatus.cs",
+              "RelativeDocumentMoniker": "AdminService\\Enums\\AccountStatus.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Enums\\AccountStatus.cs",
+              "RelativeToolTip": "AdminService\\Enums\\AccountStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T10:59:20.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "AdminService\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "AdminService\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:23:09.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AdminRoleHandler.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Authorization\\AdminRoleHandler.cs",
+              "RelativeDocumentMoniker": "AdminService\\Authorization\\AdminRoleHandler.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Authorization\\AdminRoleHandler.cs",
+              "RelativeToolTip": "AdminService\\Authorization\\AdminRoleHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:32:51.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "AdminService\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "AdminService\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-30T11:36:23.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "AdminService\\WeatherForecast.cs",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\WeatherForecast.cs",
+              "RelativeToolTip": "AdminService\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T11:53:28.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AdminService.csproj",
+              "DocumentMoniker": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
+              "RelativeDocumentMoniker": "AdminService\\AdminService.csproj",
+              "ToolTip": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
+              "RelativeToolTip": "AdminService\\AdminService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-30T10:48:11.656Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
