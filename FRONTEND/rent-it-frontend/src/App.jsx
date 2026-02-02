@@ -14,6 +14,12 @@ import MyProducts from './components/MyProducts';
 import Search from './components/SearchPage';
 import Cart from "./components/Cart";
 import ProductDetails from './components/ProductDetails';
+import UserManagement from "./components/UserManagement";
+import CategoryManagement from "./components/CategoryManagement";
+import ItemManagement from "./components/ItemManagement";
+import CustomerBills from "./components/CustomerBills";
+import OwnerBills from "./components/OwnerBills";
+import BillInvoice from "./components/BillInvoice";
 
 
 
@@ -26,6 +32,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<Search/>}/>
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/customer/bills" element={<CustomerBills />} />
+        <Route path="/owner/bills" element={<OwnerBills />} />
+        <Route path="/bill/:billNo" element={<BillInvoice />} />
+
+
 
         
 
@@ -59,6 +70,14 @@ function App() {
           }
         />
 
+        <Route
+          path="/owner/add-product"
+          element={
+            <ProtectedRoute allowedRoles={['OWNER']}>
+              <AddItem />
+            </ProtectedRoute>
+          }
+        />
 
         
         <Route
@@ -88,15 +107,36 @@ function App() {
           }
         />
 
-
         <Route
-          path="/owner/add-product"
+          path="/admin/user-management"
           element={
-            <ProtectedRoute allowedRoles={['OWNER']}>
-              <AddItem />
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <UserManagement />
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/admin/category-management"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <CategoryManagement />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/item-management"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <ItemManagement />
+            </ProtectedRoute>
+          }
+        />
+
+
+
+     
 
         
        

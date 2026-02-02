@@ -104,9 +104,9 @@ const MyProducts = () => {
               </Nav.Link>
               <Nav.Link
                 onClick={() => navigate('/owner/my-products')}
-                style={{ color: 'var(--pastel-green-dark)' }}
+                style={{ color: 'var(--pastel-green-dark) !important' }}
               >
-                My Products
+                My Listings
               </Nav.Link>
               <Button
                 variant="outline-primary"

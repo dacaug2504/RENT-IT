@@ -9,12 +9,34 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
 import "../assets/customer-dashboard.css";
 
-import { userService, cartService, ownerItemService } from "../services/api";
+import { cartService, ownerItemService } from "../services/api";
+import { logoutThunk } from "../features/auth/authThunks";
+import { persistor } from "../app/store";
 
 const CustomerDashboard = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // 🔐 AUTH FROM REDUX (SOURCE OF TRUTH)
+  const { user } = useSelector((state) => state.auth);
+
+  // ⛔ Safety: if auth not ready (extra guard)
+  if (!user) return null;
+
+  // =========================
+  // ✅ DISPLAY NAME (DYNAMIC)
+  // =========================
+  const displayName =
+    user.firstName ||
+    user.first_name ||
+    user.name ||
+    user.email?.split("@")[0] ||
+    "User";
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,35 +47,36 @@ const CustomerDashboard = () => {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
-  const displayName = "Priya";
-
-  // Cache for storing search results
+  // Cache for search results
   const searchCacheRef = useRef(new Map());
-  
-  // Ref for debounce timer
   const debounceTimerRef = useRef(null);
 
   /* ============================
-      DEBOUNCING LOGIC
+      🔄 LOGOUT (PROPER, REDUX)
+     ============================ */
+  const handleLogout = async () => {
+    await dispatch(logoutThunk());
+    await persistor.purge();
+    navigate("/login");
+  };
+
+  /* ============================
+      ⏳ DEBOUNCING LOGIC
      ============================ */
   useEffect(() => {
-    // Clear existing timer
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
     }
 
-    // Show searching indicator if query is not empty
     if (searchQuery.trim() !== "") {
       setIsSearching(true);
     }
 
-    // Set new timer for 500ms
     debounceTimerRef.current = setTimeout(() => {
       setDebouncedSearchQuery(searchQuery);
       setIsSearching(false);
     }, 500);
 
-    // Cleanup
     return () => {
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
@@ -62,35 +85,24 @@ const CustomerDashboard = () => {
   }, [searchQuery]);
 
   /* ============================
-      FILTER PRODUCTS WITH CACHING
+      🔍 FILTER + CACHE SEARCH
      ============================ */
   const filteredProducts = useMemo(() => {
     const query = debouncedSearchQuery.trim().toLowerCase();
-    
-    // If no search query, return all products
-    if (query === "") {
-      return products;
-    }
 
-    // Check cache first
+    if (query === "") return products;
+
     if (searchCacheRef.current.has(query)) {
-      console.log(`Cache hit for query: "${query}"`);
       return searchCacheRef.current.get(query);
     }
 
-    // Perform search
-    console.log(`Cache miss for query: "${query}" - performing search`);
-    const results = products.filter((p) => {
-      return (
-        (p.brand && p.brand.toLowerCase().includes(query)) ||
-        (p.description && p.description.toLowerCase().includes(query))
-      );
-    });
+    const results = products.filter((p) =>
+      (p.brand && p.brand.toLowerCase().includes(query)) ||
+      (p.description && p.description.toLowerCase().includes(query))
+    );
 
-    // Store in cache
     searchCacheRef.current.set(query, results);
 
-    // Optional: Limit cache size to prevent memory issues
     if (searchCacheRef.current.size > 50) {
       const firstKey = searchCacheRef.current.keys().next().value;
       searchCacheRef.current.delete(firstKey);
@@ -99,21 +111,14 @@ const CustomerDashboard = () => {
     return results;
   }, [products, debouncedSearchQuery]);
 
-  const handleLogout = () => {
-    userService.logout();
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   /* ============================
-      FETCH PRODUCTS
+      📦 FETCH PRODUCTS
      ============================ */
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await ownerItemService.getAllProducts();
         setProducts(res.data || []);
-        // Clear cache when products are refreshed
         searchCacheRef.current.clear();
       } catch (err) {
         setError("Failed to load products");
@@ -127,7 +132,7 @@ const CustomerDashboard = () => {
   }, []);
 
   /* ============================
-      ADD TO CART
+      🛒 ADD TO CART
      ============================ */
   const handleAddToCart = async (ownerItemId) => {
     try {
@@ -141,7 +146,7 @@ const CustomerDashboard = () => {
   };
 
   /* ============================
-      CLEAR SEARCH
+      ❌ CLEAR SEARCH
      ============================ */
   const handleClearSearch = () => {
     setSearchQuery("");
@@ -152,79 +157,55 @@ const CustomerDashboard = () => {
   return (
     <div className="dashboard-page">
       {/* ================= NAVBAR ================= */}
-      <Navbar bg="white" expand="lg" className="shadow-sm sticky-top">
+      <Navbar bg="white" expand="lg" className="custom-navbar shadow-sm sticky-top">
         <Container>
-          <Navbar.Brand className="fw-bold text-primary">
+          <Navbar.Brand className="brand-logo">
             🏠 Rent-It
           </Navbar.Brand>
 
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Nav className="ms-auto" style={{ alignItems: "center" }}>
-              <Nav.Link onClick={() => navigate("/customer/dashboard")}>
+            <Nav className="ms-auto nav-items">
+              <Nav.Link 
+                onClick={() => navigate("/customer/dashboard")}
+                className="nav-link-custom"
+              >
                 Home
               </Nav.Link>
 
-              {/* Search bar — sits between Home and My Cart */}
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                background: "#f0f0f0",
-                borderRadius: "20px",
-                padding: "4px 8px 4px 14px",
-                margin: "0 10px",
-                width: "240px",
-                position: "relative"
-              }}>
+              {/* Enhanced Search Bar */}
+              <div className="search-container">
+                <div className="search-icon">🔍</div>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search appliances…"
-                  style={{
-                    border: "none",
-                    background: "transparent",
-                    outline: "none",
-                    flex: 1,
-                    fontSize: "14px",
-                    color: "#333"
-                  }}
+                  className="search-input"
                 />
-                {isSearching && (
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      color: "#666",
-                      marginRight: "4px"
-                    }}
-                  >
-                    ⏳
-                  </span>
-                )}
+                {isSearching && <span className="search-loader">⏳</span>}
                 {searchQuery && !isSearching && (
                   <span
                     onClick={handleClearSearch}
-                    style={{
-                      cursor: "pointer",
-                      color: "#999",
-                      fontSize: "16px",
-                      marginLeft: "4px",
-                      lineHeight: 1
-                    }}
+                    className="search-clear"
                   >
                     ✕
                   </span>
                 )}
               </div>
 
-              <Nav.Link onClick={() => navigate("/mycart")}>
+              <Nav.Link 
+                onClick={() => navigate("/mycart")}
+                className="nav-link-custom cart-link"
+              >
                 🛒 My Cart
               </Nav.Link>
+
               <Button
                 variant="outline-primary"
                 size="sm"
                 onClick={handleLogout}
-                className="ms-3"
+                className="logout-btn"
               >
                 Logout
               </Button>
@@ -236,19 +217,47 @@ const CustomerDashboard = () => {
       {/* ================= HERO ================= */}
       <section className="dashboard-hero">
         <Container>
-          <div className="hero-card">
+          <motion.div 
+            className="hero-card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="hero-content">
-              <div className="hero-badge">CUSTOMER ACCOUNT</div>
-              <h1 className="hero-title">
-                Welcome back, {displayName}! 👋
-              </h1>
-              <p className="hero-subtitle">
-                Browse and rent reliable home appliances from nearby owners.
-              </p>
+              <motion.div 
+                className="hero-badge"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                CUSTOMER ACCOUNT
+              </motion.div>
 
-              <div className="hero-actions">
+              <motion.h1 
+                className="hero-title"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                Welcome back, <span className="name-highlight">{displayName}</span>! 👋
+              </motion.h1>
+
+              <motion.p 
+                className="hero-subtitle"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                Browse and rent reliable home appliances from nearby owners.
+              </motion.p>
+
+              <motion.div 
+                className="hero-actions"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
                 <Button
-                  variant="success"
                   className="action-btn-primary"
                   onClick={() =>
                     document
@@ -260,91 +269,102 @@ const CustomerDashboard = () => {
                 </Button>
 
                 <Button
-                  variant="outline-secondary"
                   className="action-btn-secondary"
                   onClick={() => navigate("/mycart")}
                 >
                   View My Cart
                 </Button>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="hero-stats">
-              <div className="stat-card">
-                <span className="stat-label">ROLE</span>
-                <span className="stat-value">CUSTOMER</span>
-              </div>
-              <div className="stat-card">
-                <span className="stat-label">STATUS</span>
-                <span className="stat-value status-active">Active</span>
-              </div>
+            {/* Decorative Element */}
+            <div className="hero-decoration">
+              <div className="decoration-circle"></div>
+              <div className="decoration-dots"></div>
             </div>
-          </div>
+          </motion.div>
         </Container>
       </section>
 
       {/* ================= PRODUCTS ================= */}
       <section className="dashboard-products" id="appliances-section">
         <Container>
-          <div className="products-header">
-            <h2 className="products-title">
-              {debouncedSearchQuery.trim() === "" ? "All Appliances" : `Results for "${debouncedSearchQuery}"`}
-            </h2>
+          <motion.div 
+            className="products-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="products-title">Available Appliances</h2>
             <p className="products-subtitle">
-              {debouncedSearchQuery.trim() === ""
-                ? "Choose from a curated list of home appliances available for rent."
-                : `${filteredProducts.length} ${filteredProducts.length === 1 ? "item" : "items"} found`}
+              {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} available for rent
             </p>
-          </div>
+          </motion.div>
 
           {loading ? (
-            <div className="loading-state">Loading...</div>
+            <div className="loading-state">
+              <div className="spinner"></div>
+              <p>Loading appliances...</p>
+            </div>
           ) : filteredProducts.length === 0 ? (
             <div className="empty-state">
-              {debouncedSearchQuery.trim() === "" ? "No products found" : "No results found — try a different keyword"}
+              <div className="empty-icon">🔍</div>
+              <h3>No products found</h3>
+              <p>Try adjusting your search or browse all items</p>
             </div>
           ) : (
             <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-              {filteredProducts.map((p) => (
+              {filteredProducts.map((p, index) => (
                 <Col key={p.ot_id}>
-                  <Card className="product-card">
-                    <div className="product-image">
-                      <div className="product-initial">
-                        {p.brand ? p.brand.charAt(0).toUpperCase() : "A"}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: index * 0.1 
+                    }}
+                  >
+                    <Card className="product-card">
+                      <div className="product-image">
+                        <div className="product-initial">
+                          {p.brand?.charAt(0)?.toUpperCase() || '?'}
+                        </div>
+                        <div className="product-overlay"></div>
                       </div>
-                    </div>
-                    <Card.Body className="product-body">
-                      <h5 className="product-name">{p.brand}</h5>
-                      <p className="product-description">
-                        {p.description || "Comfortable appliance..."}
-                      </p>
 
-                      <div className="product-pricing">
-                        <span className="product-price">₹{p.rent_per_day}/day</span>
-                        <span className="product-deposit">Deposit: ₹{p.deposit_amt}</span>
-                      </div>
+                      <Card.Body className="product-body">
+                        <h5 className="product-name">{p.brand}</h5>
+                        <p className="product-description">{p.description}</p>
+                        
+                        <div className="product-pricing">
+                          <div className="product-price">₹{p.rent_per_day}/day</div>
+                        </div>
 
-                      <div className="product-actions">
-                        <Button
-                          variant="outline-secondary"
-                          className="btn-add-cart"
-                          onClick={() => handleAddToCart(p.ot_id)}
-                          disabled={cartSuccess === p.ot_id}
-                        >
-                          🛒 {cartSuccess === p.ot_id ? "Added to Cart" : "Add to Cart"}
-                        </Button>
+                        <div className="product-actions">
+                          <Button
+                            className="btn-add-cart"
+                            disabled={cartSuccess === p.ot_id}
+                            onClick={() => handleAddToCart(p.ot_id)}
+                          >
+                            {cartSuccess === p.ot_id ? (
+                              <>✓ Added to Cart</>
+                            ) : (
+                              <>🛒 Add to Cart</>
+                            )}
+                          </Button>
 
-                        <Button
-                          variant="success"
-                          className="btn-details"
-                          onClick={() => navigate(`/product/${p.ot_id}`)}
-                        >
-                          View Details
-                        </Button>
-
-                      </div>
-                    </Card.Body>
-                  </Card>
+                          <Button
+                            className="btn-details"
+                            onClick={() => navigate(`/product/${p.ot_id}`)}
+                          >
+                            View Details →
+                          </Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </motion.div>
                 </Col>
               ))}
             </Row>

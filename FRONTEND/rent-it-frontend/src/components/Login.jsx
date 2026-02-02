@@ -1,119 +1,108 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "../features/auth/authSlice";
-import { authService } from "../services/api";
-
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Form, Button, Alert, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { loginThunk } from "../features/auth/authThunks";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // 🔐 Redux auth state (SOURCE OF TRUTH)
+  const {
+    user,
+    isAuthenticated,
+    loading,
+    error: authError,
+  } = useSelector((state) => state.auth);
+
+  // 🧾 Local form state (UI ONLY)
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+
+  // ❌ UI error (kept for compatibility with your JSX)
+  const [localError, setLocalError] = useState("");
+
+  // 🛑 Prevent duplicate redirects
+  const hasRedirected = useRef(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setError('');
+    setLocalError("");
   };
 
+  // =========================
+  // ✅ FORM SUBMIT → REDUX
+  // =========================
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
+    setLocalError("");
 
-    try {
-      const response = await authService.login(formData);
-
-      console.log(response.data);
-
-      if (!response.data || !response.data.token || !response.data.user) {
-        setError('Invalid login response');
-        setLoading(false);
-        return;
-      }
-
-      // /* =========================
-      //    ✅ SAVE JWT TOKEN
-      //    ========================= */
-      localStorage.setItem('token', response.data.token);
-
-      // /* =========================
-      //    ✅ SAVE USER (NO PASSWORD)
-      //    ========================= */
-      //userService.saveUser(response.data.user);
-
-      /* =========================
-        ✅ SAVE AUTH DATA TO REDUX
-        ========================= */
-      dispatch(
-        loginSuccess({
-          user: response.data.user,
-          token: response.data.token
-        })
-      );
-
-
-      /* =========================
-   ✅ ROLE BASED REDIRECT (SAFE)
-   ========================= */
-      const rawRole = response.data.user.role;
-
-      let role = null;
-
-      if (typeof rawRole === "string") {
-        role = rawRole;
-      } else if (typeof rawRole === "object" && rawRole !== null) {
-        role = rawRole.role_name || rawRole.roleName;
-      }
-
-      if (!role) {
-        console.error("❌ Unable to detect role:", rawRole);
-        setError("Unable to determine user role");
-        setLoading(false);
-        return;
-      }
-
-      role = role.toUpperCase(); // normalize once
-
-      console.log("✅ Detected role:", role);
-
-      // 🔐 strict routing (NO guesswork)
-      switch (role) {
-        case "OWNER":
-          navigate("/owner/dashboard");
-          break;
-        case "CUSTOMER":
-          navigate("/customer/dashboard");
-          break;
-        case "ADMIN":
-          navigate("/admin/dashboard");
-          break;
-        default:
-          console.error("❌ Unknown role:", role);
-          setError("Unauthorized role");
-        }
-
-    } catch (err) {
-      if (err.response?.status === 401) {
-        setError('Invalid email or password');
-      } else if (err.response?.status === 403) {
-        setError('Your account is inactive. Please contact support.');
-      } else {
-        setError('Login failed. Please try again.');
-      }
-    } finally {
-      setLoading(false);
-    }
+    await dispatch(loginThunk(formData));
   };
+
+  // =========================
+  // ✅ POST-LOGIN REDIRECT
+  // =========================
+  useEffect(() => {
+    // ⛔ Do nothing while auth state is stabilizing
+    if (loading) return;
+
+    // ⛔ Not authenticated
+    if (!isAuthenticated || !user) return;
+
+    // ⛔ Prevent double execution
+    if (hasRedirected.current) return;
+
+    const rawRole = user.role;
+    let role = null;
+
+    if (typeof rawRole === "string") {
+      role = rawRole;
+    } else if (typeof rawRole === "object" && rawRole !== null) {
+      role = rawRole.role_name || rawRole.roleName;
+    }
+
+    if (!role) {
+      console.error("❌ Unable to detect role:", rawRole);
+      setLocalError("Unable to determine user role");
+      return;
+    }
+
+    role = role.toUpperCase();
+    console.log("✅ Detected role:", role);
+
+    hasRedirected.current = true;
+
+    switch (role) {
+      case "OWNER":
+        navigate("/owner/dashboard", { replace: true });
+        break;
+      case "CUSTOMER":
+        navigate("/customer/dashboard", { replace: true });
+        break;
+      case "ADMIN":
+        navigate("/admin/dashboard", { replace: true });
+        break;
+      default:
+        console.error("❌ Unknown role:", role);
+        setLocalError("Unauthorized role");
+        hasRedirected.current = false;
+    }
+  }, [isAuthenticated, user, loading, navigate]);
+
+  // 🧼 Cleanup on unmount (important after logout)
+  useEffect(() => {
+    return () => {
+      hasRedirected.current = false;
+      setLocalError("");
+    };
+  }, []);
 
   return (
     <div className="auth-container">
@@ -131,7 +120,11 @@ const Login = () => {
           <p className="auth-subtitle">Sign in to your account</p>
         </div>
 
-        {error && <Alert variant="danger">{error}</Alert>}
+        {(localError || authError) && (
+          <Alert variant="danger">
+            {localError || authError}
+          </Alert>
+        )}
 
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
@@ -170,13 +163,14 @@ const Login = () => {
                 Signing in...
               </>
             ) : (
-              'Sign In'
+              "Sign In"
             )}
           </Button>
         </Form>
 
         <div className="auth-link">
-          Don't have an account? <Link to="/register">Register here</Link>
+          Don&apos;t have an account?{" "}
+          <Link to="/register">Register here</Link>
         </div>
       </div>
     </div>

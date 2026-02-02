@@ -231,7 +231,7 @@ const AddItem = () => {
                 onClick={() => navigate('/owner/add-product')}
                 style={{ color: 'var(--pastel-green-dark) !important' }}
               >
-                Add Item
+                Add Product
               </Nav.Link>
 
               <Button

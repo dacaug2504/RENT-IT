@@ -1,7 +1,8 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../features/auth/authSlice";
+import { logoutThunk } from "../features/auth/authThunks";
+import { persistor } from "../app/store";
 
 const AppNavbar = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const AppNavbar = () => {
   // ⛔ Safety: during refresh / logout
   if (!user) return null;
 
-  // 🔹 Normalize role safely
+  // 🔹 Normalize role safely (KEEP YOUR LOGIC)
   let role = user.role;
 
   if (typeof role === "object" && role !== null) {
@@ -23,8 +24,14 @@ const AppNavbar = () => {
     role = role.toLowerCase();
   }
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    // 🔐 1️⃣ Clear Redux auth state
+    await dispatch(logoutThunk());
+
+    // 🧹 2️⃣ Clear persisted auth
+    await persistor.purge();
+
+    // 🚪 3️⃣ Redirect
     navigate("/login");
   };
 
@@ -32,7 +39,12 @@ const AppNavbar = () => {
     <Navbar bg="light" expand="lg" className="navbar">
       <Container>
         <Navbar.Brand
-          style={{ fontWeight: "700", fontSize: "24px", color: "var(--text-dark)" }}
+          style={{
+            fontWeight: "700",
+            fontSize: "24px",
+            color: "var(--text-dark)",
+            cursor: "pointer",
+          }}
           onClick={() => navigate(`/${role}/dashboard`)}
         >
           🏠 Rent-It System
