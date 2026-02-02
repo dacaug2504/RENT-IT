@@ -14,7 +14,13 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { addDays, format } from "date-fns";
-import { cartService, orderService } from "../services/api";
+import {
+  cartService,
+  orderService,
+  billService,
+  userService
+} from "../services/api";
+
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -37,7 +43,10 @@ const Cart = () => {
 
   const handleBack = () => navigate(-1);
 
+  const handleMyBills = () => {
+    navigate("/customer/bills", { replace: true });
 
+  };
 
 
   const getDefaultDateRange = (cartId) => [
@@ -104,40 +113,40 @@ const Cart = () => {
 
   // 🧾 PLACE ALL ORDERS
   const handlePlaceAllOrders = async () => {
-    try {
-      let successCount = 0;
+  try {
+    const billedCartIds = [];
 
-      for (const item of cartProducts) {
-        const range = dateRanges[item.cart_id][0];
-        const startDate = format(range.startDate, "yyyy-MM-dd");
-        const endDate = format(range.endDate, "yyyy-MM-dd");
+    for (const item of cartProducts) {
+      const range = dateRanges[item.cart_id][0];
+      const startDate = format(range.startDate, "yyyy-MM-dd");
+      const endDate = format(range.endDate, "yyyy-MM-dd");
 
-        try {
-          const response = await orderService.placeOrder(
-            item.cart_id,
-            startDate,
-            endDate,
-          );
-          if (response.data.success) successCount++;
-        } catch {}
+      const res = await orderService.placeOrder(
+        item.cart_id,
+        startDate,
+        endDate
+      );
+
+      if (res.data?.success) {
+        billedCartIds.push(item.cart_id);
       }
-
-      if (successCount > 0) {
-        setShowSuccess(true);
-
-        // Start fade-out after 4s
-        setTimeout(() => setFadeOut(true), 3000);
-        // Remove popup + refresh
-        setTimeout(() => {
-          setShowSuccess(false);
-          setFadeOut(false);
-          window.location.reload();
-        }, 4600);
-      }
-    } catch {
-      alert("Failed to place orders");
     }
-  };
+
+    console.log("Billed carts:", billedCartIds);
+    navigate("/customer/bills"); // optional redirect
+  } catch (err) {
+    if (err.response?.status === 401) {
+      alert("Session expired. Please login again.");
+      navigate("/login");
+    } else {
+      console.error(err);
+      alert("Failed to place order");
+    }
+  }
+};
+
+
+
 
   const toggleCalendar = (cartId) => {
     setShowCalendar(showCalendar === cartId ? null : cartId);
@@ -704,14 +713,34 @@ const Cart = () => {
         </div>
       )}
 
-      <Navbar bg="light">
-        <Container>
-          <Navbar.Brand>🛒 My Cart ({cartProducts.length} items)</Navbar.Brand>
-          <Button variant="outline-primary" onClick={handleBack}>
-            Back
-          </Button>
+      <Navbar bg="light" className="shadow-sm">
+        <Container className="d-flex justify-content-between align-items-center">
+          
+          {/* LEFT */}
+          <Navbar.Brand className="fw-bold">
+            🛒 My Cart ({cartProducts.length} items)
+          </Navbar.Brand>
+
+          {/* RIGHT ACTIONS */}
+          <div className="d-flex gap-2">
+            <Button
+              variant="outline-success"
+              onClick={handleMyBills}
+            >
+              📄 My Bills
+            </Button>
+
+            <Button
+              variant="outline-primary"
+              onClick={handleBack}
+            >
+              ← Back
+            </Button>
+          </div>
+
         </Container>
       </Navbar>
+
 
       <Container className="dashboard-content">
         {error && <Alert variant="danger">{error}</Alert>}

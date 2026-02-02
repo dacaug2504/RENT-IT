@@ -1,9 +1,14 @@
 import axios from "axios";
+import { getStore } from "../app/storeAccessor";
 
 // ================== ENV VARIABLES ==================
 const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL;
 const OWNER_API_URL = import.meta.env.VITE_OWNER_API_URL;
 const CART_API_URL = import.meta.env.VITE_CART_API_URL;
+const BILL_API_URL =import.meta.env.VITE_BILL_API_URL || "https://localhost:7001";
+
+
+
 
 if (!AUTH_API_URL || !OWNER_API_URL) {
   throw new Error("API base URLs not defined. Check .env file");
@@ -22,9 +27,14 @@ const productApi = axios.create({
   baseURL: CART_API_URL, // http://localhost:8082
 });
 
+export const billApi = axios.create({
+  baseURL: BILL_API_URL,
+});
+
 // ================== JWT INTERCEPTOR ==================
 const attachToken = (config) => {
-  const token = localStorage.getItem("token");
+  const store = getStore();
+  const token = store?.getState()?.auth?.token;
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -36,6 +46,7 @@ const attachToken = (config) => {
 authApi.interceptors.request.use(attachToken);
 ownerApi.interceptors.request.use(attachToken);
 productApi.interceptors.request.use(attachToken);
+billApi.interceptors.request.use(attachToken);
 
 
 
@@ -205,6 +216,17 @@ export const ownerService = {
 
 };
 
+// ================== ADMIN SERVICE ==================
+const ADMIN_API_URL = import.meta.env.VITE_ADMIN_API_URL || "https://localhost:7280";
+
+export const adminServiceAPI = axios.create({
+  baseURL: ADMIN_API_URL,
+});
+
+// Attach JWT token automatically
+adminServiceAPI.interceptors.request.use(attachToken);
+
+
 
 // ================== CART SERVICE (ADD-TO-CART) ==================
 export const cartService = {
@@ -264,4 +286,111 @@ export const orderService = {
   }
 };
 
-export { authApi, ownerApi };
+// ================== BILLING SERVICE (.NET) ==================
+
+
+export const billService = {
+  /**
+   * 🔴 CREATE BILL (USED BY CART.JSX)
+   * Maps to: POST /api/billing/create
+   * NOTE: This endpoint is ADMIN-only in backend,
+   * but we are intentionally using frontend control (as discussed)
+   */
+  createBill: async ({ customerId, ownerId, itemId, amount }) => {
+    return billApi.post("/api/billing/create", {
+      customerId,
+      ownerId,
+      itemId,
+      amount,
+    });
+  },
+
+  /**
+   * Get bills for current customer
+   */
+  getCustomerBills: async () => {
+    const user = userService.getCurrentUser();
+    if (!user || !user.userId) {
+      throw new Error("User not logged in");
+    }
+
+    return billApi.get(`/api/billing/customer/${user.userId}`);
+  },
+
+  /**
+   * Get bills for current owner
+   */
+  getOwnerBills: async () => {
+    const user = userService.getCurrentUser();
+    if (!user || !user.userId) {
+      throw new Error("User not logged in");
+    }
+
+    return billApi.get(`/api/billing/owner/${user.userId}`);
+  },
+
+  /**
+   * Get single bill details
+   */
+  getBillDetails: async (billNo) => {
+  const response = await billApi.get(`/api/billing/${billNo}`);
+  const b = response.data;
+
+  return {
+    data: {
+      billNo: b.billNo,
+      billDate: b.billDate,
+
+      customer: {
+        fullName: b.customerName,
+        email: b.customerEmail,
+        phoneNo: b.customerPhone,
+        address: b.customerAddress,
+        city: b.customerCity,
+        state: b.customerState,
+      },
+
+      owner: {
+        fullName: b.ownerName,
+        email: b.ownerEmail,
+        phoneNo: b.ownerPhone,
+        address: b.ownerAddress,
+        city: b.ownerCity,
+        state: b.ownerState,
+      },
+
+      item: {
+        itemName: b.itemBrand,
+        brand: b.itemBrand,
+        description: b.itemDescription,
+        condition: "Good",
+        rentPerDay: b.rentPerDay ?? 0,
+      },
+
+      rental: {
+        startDate: b.startDate,
+        endDate: b.endDate,
+        numberOfDays: b.numberOfDays,
+        totalRent: b.totalRent,
+        deposit: b.deposit,
+        grandTotal: b.amount,
+      },
+    },
+  };
+},
+
+
+  /**
+   * Health check
+   */
+  testConnection: async () => {
+    return billApi.get("/api/billing/health");
+  },
+};
+
+
+export {
+  authApi,
+  ownerApi,
+  productApi,
+};

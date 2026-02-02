@@ -1,0 +1,40 @@
+/* ============================================
+   ITEM MANAGEMENT STYLES
+   ============================================ */
+
+.item-name {
+  font-weight: 600;
+  color: var(--pastel-green-dark);
+}
+
+/* CATEGORY BADGE
+   background stays pastel green
+   text changed to BLACK
+*/
+.category-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    var(--pastel-green-light),
+    var(--pastel-green)
+  );
+  color: #000000; /* ✅ BLACK TEXT */
+}
+
+/* EDIT BUTTON → pastel light BLUE */
+.btn-edit {
+  background-color: #b9d6fb;     /* pastel light blue */
+  color: #1e3a8a;                /* readable dark blue text */
+}
+
+/* DELETE BUTTON → pastel light RED */
+.btn-delete {
+  background-color: #fec2c2;     /* pastel light red */
+  color: #7f1d1d;                /* readable dark red text */
+}
+
+/* Reuse existing table and form styles from other management pages */

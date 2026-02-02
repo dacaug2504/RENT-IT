@@ -332,7 +332,6 @@ C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\Se
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\SearchSe.43BA948F.Up2Date
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\SearchService.dll
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\refint\SearchService.dll
