@@ -1,7 +1,8 @@
-
-using SearchService.Repositories;  
-using SearchService.Services;      
+﻿using SearchService.Repositories;
+using SearchService.Services;
 using System.Text.Json.Serialization;
+using Steeltoe.Discovery.Client;  // ✅ ADD THIS
+using Steeltoe.Discovery.Eureka;  // ✅ ADD THIS
 
 namespace SearchService
 {
@@ -15,8 +16,6 @@ namespace SearchService
             builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -27,22 +26,24 @@ namespace SearchService
                 new CatalogRepository(connectionString));
             builder.Services.AddScoped<ICatalogService, CatalogService>();
 
-            // CORS Configuration (fix your existing one)
+            // ✅ ADD EUREKA DISCOVERY CLIENT
+            builder.Services.AddServiceDiscovery(o => o.UseEureka());
+
+            // CORS Configuration - REMOVE THIS (Gateway will handle CORS)
+            // Comment out or delete the CORS configuration
+            /*
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowReact", policy =>
                 {
                     policy
-                        .WithOrigins(
-                            "http://localhost:3000",
-                            "https://localhost:3000"
-                        )
+                        .WithOrigins("http://localhost:3000", "https://localhost:3000")
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
             });
-
+            */
 
             var app = builder.Build();
 
@@ -53,11 +54,12 @@ namespace SearchService
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowReact");  
+            // ✅ REMOVE THIS LINE (Gateway handles CORS)
+            // app.UseCors("AllowReact");  
+
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-
             app.Run();
         }
     }

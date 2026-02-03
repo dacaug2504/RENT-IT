@@ -23,7 +23,7 @@ public class OwnerItemController {
 	OwnerItemService serv;
 	
 	 @GetMapping("/getallproducts")
-	    public ResponseEntity<List<OwnerItem>> getAllProducts(HttpServletRequest httpRequest) {
+	    public ResponseEntity<List<ProductDetailsDTO>> getAllProducts(HttpServletRequest httpRequest) {
 	        Integer userId = (Integer) httpRequest.getAttribute("userId");
 	        String role = (String) httpRequest.getAttribute("role");
 	        
@@ -35,7 +35,8 @@ public class OwnerItemController {
 	        }
 
 
-	        List<OwnerItem> products = serv.getAllProducts();
+//	        List<OwnerItem> products = serv.getAllProducts();
+	        List<ProductDetailsDTO> products = serv.getAllProducts();
 	        return ResponseEntity.ok(products);
 	    }
 	 

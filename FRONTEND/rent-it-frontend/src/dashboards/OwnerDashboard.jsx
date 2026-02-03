@@ -161,7 +161,7 @@ const OwnerDashboard = () => {
           transition={{ delay: 1, duration: 0.6 }}
           className="stats-section"
         >
-          <div className="stats-grid">
+          {/* <div className="stats-grid">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.15 }}
@@ -200,7 +200,7 @@ const OwnerDashboard = () => {
                 <h3 className="stat-value">--</h3>
               </div>
             </motion.div>
-          </div>
+          </div> */}
         </motion.div>
       </Container>
     </div>

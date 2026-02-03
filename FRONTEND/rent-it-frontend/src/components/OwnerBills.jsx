@@ -40,6 +40,16 @@ const OwnerBills = () => {
 
   return (
     <Container className="py-5">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h3 className="fw-bold">🧾 My Bills</h3>
+
+        <Button
+          variant="outline-primary"
+          onClick={() => navigate(-1)}
+        >
+          ← Back
+        </Button>
+      </div>
       <h2>💰 Rental Income</h2>
 
       {error && <Alert variant="danger">{error}</Alert>}

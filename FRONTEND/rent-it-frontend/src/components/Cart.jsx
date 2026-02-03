@@ -13,12 +13,12 @@ import {
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import SuccessScreen from "../components/SuccessScreen";
+
 import { addDays, format } from "date-fns";
 import {
   cartService,
   orderService,
-  billService,
-  userService
 } from "../services/api";
 
 
@@ -37,9 +37,9 @@ const Cart = () => {
   const [dateRanges, setDateRanges] = useState({});
   const [showCalendar, setShowCalendar] = useState(null);
 
-  // 🎉 ENHANCED SUCCESS POPUP STATE
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [showSuccessOverlay, setShowSuccessOverlay] = useState(false);
+
+
 
   const handleBack = () => navigate(-1);
 
@@ -133,7 +133,8 @@ const Cart = () => {
     }
 
     console.log("Billed carts:", billedCartIds);
-    navigate("/customer/bills"); // optional redirect
+    setShowSuccessOverlay(true);
+
   } catch (err) {
     if (err.response?.status === 401) {
       alert("Session expired. Please login again.");
@@ -195,68 +196,14 @@ const Cart = () => {
 
   return (
     <div className="dashboard">
-      {/* 🚀 ULTIMATE CELEBRATION POPUP */}
-      {showSuccess && (
-        <div className={`ultimate-success ${fadeOut ? "fade-out" : ""}`}>
-          {/* 🌈 RAINBOW BACKGROUND */}
-          <div className="rainbow-bg"></div>
-          
-          {/* 🎆 FIREWORKS */}
-          <div className="fireworks">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className={`firework firework-${i}`}>
-                <span></span><span></span><span></span><span></span><span></span>
-              </div>
-            ))}
-          </div>
-
-          {/* 🎊 CONFETTI EXPLOSION */}
-          <div className="confetti-container">
-            {[...Array(100)].map((_, i) => (
-              <div 
-                key={i} 
-                className={`confetti-piece piece-${i % 8}`}
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 0.5}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`
-                }}
-              />
-            ))}
-          </div>
-
-          {/* ✨ FLOATING EMOJIS */}
-          <div className="floating-emojis">
-            {["🎉", "🎊", "✨", "🚀", "⭐", "🎈", "🎁"].map((emoji, i) => (
-              <span 
-                key={i}
-                className={`emoji emoji-${i}`}
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {emoji}
-              </span>
-            ))}
-          </div>
-
-          {/* 🎯 MAIN SUCCESS CARD */}
-          <div className="mega-success-card">
-            <div className="success-ring"></div>
-            <div className="trophy">🏆</div>
-            <h1 className="glitch" data-text="SUCCESS!">
-              SUCCESS!
-            </h1>
-            <h2>Orders Placed 🎉</h2>
-            <p className="glow-text">
-              Your items are officially booked! 🚀
-            </p>
-          </div>
-
-          {/* 🔄 LOADING RING */}
-          <div className="success-loader">
-            <div></div><div></div><div></div><div></div>
-          </div>
-        </div>
+      {showSuccessOverlay && (
+        <SuccessScreen
+          title="Order Placed 🎉"
+          message="Your rental items have been booked successfully"
+          redirectTo="/customer/bills"
+        />
       )}
+      
 
       <style jsx="true">{`
         /* 🚀 ULTIMATE SUCCESS ANIMATION */

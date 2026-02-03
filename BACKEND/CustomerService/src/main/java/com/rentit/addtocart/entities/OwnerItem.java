@@ -47,6 +47,8 @@ public class OwnerItem {
 //    @JsonIgnoreProperties({"items"})  // in Category, ignore item list when seen from here
 //    private Category category;
 
+    private Integer max_rent_days;
+
     // One item -> many cart rows
     @OneToMany(mappedBy = "owneritem", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("owneritem")     // in Cart, ignore back-reference to item
