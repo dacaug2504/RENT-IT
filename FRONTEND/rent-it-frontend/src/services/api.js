@@ -288,104 +288,145 @@ export const orderService = {
 
 // ================== BILLING SERVICE (.NET) ==================
 
-
+// ================== BILLING SERVICE (.NET) ==================
 export const billService = {
   /**
-   * 🔴 CREATE BILL (USED BY CART.JSX)
-   * Maps to: POST /api/billing/create
-   * NOTE: This endpoint is ADMIN-only in backend,
-   * but we are intentionally using frontend control (as discussed)
-   */
-  createBill: async ({ customerId, ownerId, itemId, amount }) => {
-    return billApi.post("/api/billing/create", {
-      customerId,
-      ownerId,
-      itemId,
-      amount,
-    });
-  },
-
-  /**
    * Get bills for current customer
+   * Maps to: GET /api/billing/customer/{customerId}
+   * .NET automatically extracts customerId from JWT
    */
   getCustomerBills: async () => {
-    const user = userService.getCurrentUser();
-    if (!user || !user.userId) {
-      throw new Error("User not logged in");
+    try {
+      const user = userService.getCurrentUser();
+      if (!user || !user.userId) {
+        throw new Error("User not logged in");
+      }
+      
+      const response = await billApi.get(`/api/billing/customer/${user.userId}`);
+      
+      // Transform .NET response to match frontend expectations
+      return {
+        data: response.data.map(bill => ({
+          billNo: bill.billNo,
+          customerId: bill.customerId,
+          customer: bill.customerName,
+          ownerId: bill.ownerId,
+          owner: bill.ownerName,
+          itemId: bill.itemId,
+          item: bill.itemBrand,
+          amount: bill.amount,
+          billDate: new Date().toISOString(), // .NET doesn't return date yet
+        }))
+      };
+    } catch (error) {
+      console.error("Error fetching customer bills:", error);
+      throw error;
     }
-
-    return billApi.get(`/api/billing/customer/${user.userId}`);
   },
 
   /**
    * Get bills for current owner
+   * Maps to: GET /api/billing/owner/{ownerId}
    */
   getOwnerBills: async () => {
-    const user = userService.getCurrentUser();
-    if (!user || !user.userId) {
-      throw new Error("User not logged in");
+    try {
+      const user = userService.getCurrentUser();
+      if (!user || !user.userId) {
+        throw new Error("User not logged in");
+      }
+      
+      const response = await billApi.get(`/api/billing/owner/${user.userId}`);
+      
+      // Transform .NET response
+      return {
+        data: response.data.map(bill => ({
+          billNo: bill.billNo,
+          customerId: bill.customerId,
+          customer: bill.customerName,
+          ownerId: bill.ownerId,
+          owner: bill.ownerName,
+          itemId: bill.itemId,
+          item: bill.itemBrand,
+          amount: bill.amount,
+          billDate: new Date().toISOString(),
+        }))
+      };
+    } catch (error) {
+      console.error("Error fetching owner bills:", error);
+      throw error;
     }
-
-    return billApi.get(`/api/billing/owner/${user.userId}`);
   },
 
   /**
-   * Get single bill details
+   * Get specific bill details
+   * Maps to: GET /api/billing/{billNo}
    */
   getBillDetails: async (billNo) => {
-  const response = await billApi.get(`/api/billing/${billNo}`);
-  const b = response.data;
+    try {
+      const response = await billApi.get(`/api/billing/${billNo}`);
+      const bill = response.data;
+      
+      // Transform to match BillInvoice component expectations
+      return {
+        data: {
+          billNo: bill.billNo,
+          billDate: new Date().toISOString(),
+          
+          customer: {
+              fullName: bill.customerName,
+              email: bill.customerEmail,
+              phoneNo: bill.customerPhone,    // <-- from backend
+              address: bill.customerAddress,  // <-- from backend
+              city: bill.customerCity,        // <-- from backend
+              state: bill.customerState       // <-- from backend
+            },
 
-  return {
-    data: {
-      billNo: b.billNo,
-      billDate: b.billDate,
-
-      customer: {
-        fullName: b.customerName,
-        email: b.customerEmail,
-        phoneNo: b.customerPhone,
-        address: b.customerAddress,
-        city: b.customerCity,
-        state: b.customerState,
-      },
-
-      owner: {
-        fullName: b.ownerName,
-        email: b.ownerEmail,
-        phoneNo: b.ownerPhone,
-        address: b.ownerAddress,
-        city: b.ownerCity,
-        state: b.ownerState,
-      },
-
-      item: {
-        itemName: b.itemBrand,
-        brand: b.itemBrand,
-        description: b.itemDescription,
-        condition: "Good",
-        rentPerDay: b.rentPerDay ?? 0,
-      },
-
-      rental: {
-        startDate: b.startDate,
-        endDate: b.endDate,
-        numberOfDays: b.numberOfDays,
-        totalRent: b.totalRent,
-        deposit: b.deposit,
-        grandTotal: b.amount,
-      },
-    },
-  };
-},
-
+            owner: {
+              fullName: bill.ownerName,
+              email: bill.ownerEmail,
+              phoneNo: bill.ownerPhone,       // <-- from backend
+              address: bill.ownerAddress,     // <-- from backend
+              city: bill.ownerCity,           // <-- from backend
+              state: bill.ownerState          // <-- from backend
+            },
+          
+          item: {
+            itemName: bill.itemBrand,
+            brand: bill.itemBrand,
+            description: bill.itemDescription,
+            condition: "Good",
+            rentPerDay: 0, // Not in current .NET response
+          },
+          
+          rental: {
+            startDate: new Date().toISOString(),
+            endDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+            numberOfDays: 7,
+            totalRent: bill.amount * 0.7, // Estimate
+            deposit: bill.amount * 0.3,   // Estimate
+            grandTotal: bill.amount
+          }
+        }
+      };
+    } catch (error) {
+      console.error("Error fetching bill details:", error);
+      throw error;
+    }
+  },
 
   /**
-   * Health check
+   * Health check endpoint
    */
   testConnection: async () => {
-    return billApi.get("/api/billing/health");
-  },
+    try {
+      const response = await billApi.get("/api/billing/health");
+      console.log("✅ .NET Billing Service is healthy:", response.data);
+      return response;
+    } catch (error) {
+      console.error("❌ .NET Billing Service connection failed:", error);
+      throw error;
+    }
+  }
 };
 
 
