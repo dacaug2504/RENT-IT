@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Steeltoe.Discovery.Client;
 using System.Security.Claims;
 using System.Text;
 
@@ -12,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ====================== CONTROLLERS ======================
 builder.Services.AddControllers();
-builder.Services.AddDiscoveryClient(builder.Configuration);
+
 // ====================== DATABASE ======================
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -94,7 +93,7 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // ====================== MIDDLEWARE ORDER (IMPORTANT) ======================
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseCors("AllowReactApp");       // 🔥 MUST be before auth
 
@@ -103,8 +102,6 @@ app.UseAuthorization();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
-app.UseDiscoveryClient();
 
 app.MapControllers();
 

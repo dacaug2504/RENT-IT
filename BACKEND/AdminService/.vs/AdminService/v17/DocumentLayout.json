@@ -146,8 +146,7 @@
               "RelativeToolTip": "AdminService\\Models\\DTOs\\CategoryResponseDto.cs.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T13:04:44.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T13:04:44.484Z"
             },
             {
               "$type": "Document",
@@ -159,8 +158,7 @@
               "RelativeToolTip": "AdminService\\Data\\AppDbContext.cs",
               "ViewState": "AgIAADUAAAAAAAAAAADwv0gAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:55:51.607Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:55:51.607Z"
             },
             {
               "$type": "Document",
@@ -172,8 +170,7 @@
               "RelativeToolTip": "AdminService\\Services\\AdminStatsService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T21:14:24.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T21:14:24.599Z"
             },
             {
               "$type": "Document",
@@ -185,8 +182,7 @@
               "RelativeToolTip": "AdminService\\appsettings.json",
               "ViewState": "AgIAABkAAAAAAAAAAAAwwDYAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-30T10:48:53.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:48:53.247Z"
             },
             {
               "$type": "Document",
@@ -198,8 +194,7 @@
               "RelativeToolTip": "AdminService\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAIAAAAAAAAAAAAwwAwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-30T11:36:23.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:36:23.372Z"
             },
             {
               "$type": "Document",
@@ -209,7 +204,7 @@
               "RelativeDocumentMoniker": "AdminService\\Program.cs",
               "ToolTip": "C:\\Users\\AVISHKAR\\OneDrive\\Desktop\\RENT PROJECT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\Program.cs",
               "RelativeToolTip": "AdminService\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAWwAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-30T10:47:41.422Z",
               "EditorCaption": ""
@@ -224,8 +219,7 @@
               "RelativeToolTip": "AdminService\\Models\\DTOs\\CategoryDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T13:07:59.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T13:07:59.917Z"
             },
             {
               "$type": "Document",
@@ -237,8 +231,7 @@
               "RelativeToolTip": "AdminService\\Services\\CategoryService.cs",
               "ViewState": "AgIAAGkAAAAAAAAAAAAkwJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:58:39.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:58:39.051Z"
             },
             {
               "$type": "Document",
@@ -250,8 +243,7 @@
               "RelativeToolTip": "AdminService\\Controllers\\CategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACECAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:50:35.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:50:35.617Z"
             },
             {
               "$type": "Document",
@@ -263,8 +255,7 @@
               "RelativeToolTip": "AdminService\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAIBQwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:50:06.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:50:06.463Z"
             },
             {
               "$type": "Document",
@@ -276,8 +267,7 @@
               "RelativeToolTip": "AdminService\\Services\\IAdminService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:56:46.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:56:46.919Z"
             },
             {
               "$type": "Document",
@@ -289,8 +279,7 @@
               "RelativeToolTip": "AdminService\\Models\\DTOs\\DashboardStatsDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T15:17:45.971Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T15:17:45.971Z"
             },
             {
               "$type": "Document",
@@ -302,8 +291,7 @@
               "RelativeToolTip": "AdminService\\Services\\AdminServiceImpl.cs",
               "ViewState": "AgIAAG8AAAAAAAAAAAAgwIQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:57:32.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:57:32.113Z"
             },
             {
               "$type": "Document",
@@ -315,8 +303,7 @@
               "RelativeToolTip": "AdminService\\Controllers\\AdminStatsController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwAYAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T21:14:58.531Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T21:14:58.531Z"
             },
             {
               "$type": "Document",
@@ -328,8 +315,7 @@
               "RelativeToolTip": "AdminService\\Services\\IAdminStatsService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T21:10:58.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T21:10:58.06Z"
             },
             {
               "$type": "Document",
@@ -341,8 +327,7 @@
               "RelativeToolTip": "AdminService\\Services\\ICategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:58:08.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:58:08.86Z"
             },
             {
               "$type": "Document",
@@ -354,8 +339,7 @@
               "RelativeToolTip": "AdminService\\Models\\DTOs\\Admindtos.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAA1wGEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:55:08.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:55:08.617Z"
             },
             {
               "$type": "Document",
@@ -367,8 +351,7 @@
               "RelativeToolTip": "AdminService\\Models\\User.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAcwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:51:18.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:51:18.177Z"
             },
             {
               "$type": "Document",
@@ -380,8 +363,7 @@
               "RelativeToolTip": "AdminService\\AdminService.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-01-30T18:31:02.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T18:31:02.717Z"
             },
             {
               "$type": "Document",
@@ -393,8 +375,7 @@
               "RelativeToolTip": "AdminService\\Models\\Role.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAmwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:52:13.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:52:13.818Z"
             },
             {
               "$type": "Document",
@@ -406,8 +387,7 @@
               "RelativeToolTip": "AdminService\\MappingExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T13:41:11.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T13:41:11.209Z"
             },
             {
               "$type": "Document",
@@ -419,8 +399,7 @@
               "RelativeToolTip": "AdminService\\Utils\\JwtUtil.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAQwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:01:22.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:01:22.083Z"
             },
             {
               "$type": "Document",
@@ -432,8 +411,7 @@
               "RelativeToolTip": "AdminService\\Models\\State.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:16:30.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:16:30.072Z"
             },
             {
               "$type": "Document",
@@ -445,8 +423,7 @@
               "RelativeToolTip": "AdminService\\Models\\Items.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:53:06.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:53:06.413Z"
             },
             {
               "$type": "Document",
@@ -458,8 +435,7 @@
               "RelativeToolTip": "AdminService\\Models\\City.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:15:38.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:15:38.939Z"
             },
             {
               "$type": "Document",
@@ -471,8 +447,7 @@
               "RelativeToolTip": "AdminService\\Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:52:38.731Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:52:38.731Z"
             },
             {
               "$type": "Document",
@@ -484,8 +459,7 @@
               "RelativeToolTip": "AdminService\\Enums\\AccountStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:59:20.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:59:20.448Z"
             },
             {
               "$type": "Document",
@@ -497,8 +471,7 @@
               "RelativeToolTip": "AdminService\\Controllers\\AuthController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAAwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:23:09.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:23:09.999Z"
             },
             {
               "$type": "Document",
@@ -510,8 +483,7 @@
               "RelativeToolTip": "AdminService\\Authorization\\AdminRoleHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:32:51.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:32:51.633Z"
             },
             {
               "$type": "Document",
@@ -523,8 +495,7 @@
               "RelativeToolTip": "AdminService\\WeatherForecast.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T11:53:28.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T11:53:28.74Z"
             },
             {
               "$type": "Document",
@@ -536,8 +507,7 @@
               "RelativeToolTip": "AdminService\\AdminService.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-30T10:48:11.656Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:48:11.656Z"
             }
           ]
         }
