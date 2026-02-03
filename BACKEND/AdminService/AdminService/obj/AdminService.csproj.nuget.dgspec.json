@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj": {}
+    "C:\\Users\\priya\\OneDrive\\Desktop\\RENT-IT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj": {}
   },
   "projects": {
-    "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj": {
+    "C:\\Users\\priya\\OneDrive\\Desktop\\RENT-IT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
+        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Desktop\\RENT-IT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
         "projectName": "AdminService",
-        "projectPath": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
+        "projectPath": "C:\\Users\\priya\\OneDrive\\Desktop\\RENT-IT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\AdminService.csproj",
         "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-        "outputPath": "D:\\C-DAC\\PROJECT-GIT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\obj\\",
+        "outputPath": "C:\\Users\\priya\\OneDrive\\Desktop\\RENT-IT\\RENT-IT\\BACKEND\\AdminService\\AdminService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -73,6 +73,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Steeltoe.Discovery.Eureka": {
+              "target": "Package",
+              "version": "[3.2.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

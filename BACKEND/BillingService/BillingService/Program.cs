@@ -2,21 +2,24 @@
 using BillingService.Data;
 using BillingService.Services;
 using BillingService.Middleware;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// ========== ALL SERVICE REGISTRATIONS GO HERE ==========
+
 builder.Services.AddControllers();
 
-// Configure Entity Framework with MySQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySQL(connectionString ?? throw new InvalidOperationException("Connection string not found")));
 
-// Register BillingService
 builder.Services.AddScoped<IBillingService, BillingService.Services.BillingService>();
 
-// Configure CORS
+// ✅ MOVE THIS LINE HERE (BEFORE builder.Build())
+builder.Services.AddServiceDiscovery(o => o.UseEureka());
+
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
     ?? new[] { "http://localhost:3000" };
 
@@ -31,7 +34,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -42,7 +44,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Billing Service for RentIt Application"
     });
 
-    // Add JWT Authentication to Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Enter 'Bearer' [space] and then your token",
@@ -68,23 +69,24 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Add logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
+// ========== END OF SERVICE REGISTRATIONS ==========
+// ========== NOW BUILD THE APP ==========
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-// Enable Swagger in all environments for easy testing
+// ========== MIDDLEWARE PIPELINE (AFTER BUILD) ==========
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Billing Service API V1");
-    c.RoutePrefix = "swagger"; // Swagger UI at /swagger
+    c.RoutePrefix = "swagger";
 });
 
-// Global exception handler
 app.UseExceptionHandler(errorApp =>
 {
     errorApp.Run(async context =>
@@ -103,19 +105,12 @@ app.UseExceptionHandler(errorApp =>
     });
 });
 
-// Middleware pipeline
 app.UseHttpsRedirection();
-
 app.UseCors("AllowFrontend");
-
-// Custom JWT Middleware (must be before Authorization)
 app.UseJwtMiddleware();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
-// Database connection test on startup
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

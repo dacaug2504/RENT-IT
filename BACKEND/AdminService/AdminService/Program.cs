@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
+using Steeltoe.Discovery.Client;  // ✅ ADD THIS
+using Steeltoe.Discovery.Eureka;  // ✅ ADD THIS
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +53,8 @@ builder.Services.AddScoped<IAdminService, AdminServiceImpl>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAdminStatsService, AdminStatsService>();
 
+// ====================== EUREKA DISCOVERY CLIENT ✅ ======================
+builder.Services.AddServiceDiscovery(o => o.UseEureka());
 
 // ====================== CORS ======================
 builder.Services.AddCors(options =>
@@ -92,10 +96,10 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// ====================== MIDDLEWARE ORDER (IMPORTANT) ======================
+// ====================== MIDDLEWARE ORDER ======================
 app.UseHttpsRedirection();
 
-app.UseCors("AllowReactApp");       // 🔥 MUST be before auth
+app.UseCors("AllowReactApp");
 
 app.UseAuthentication();
 app.UseAuthorization();
