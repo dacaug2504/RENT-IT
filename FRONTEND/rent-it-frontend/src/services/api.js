@@ -10,9 +10,9 @@ const BILL_API_URL =import.meta.env.VITE_BILL_API_URL || "https://localhost:7001
 
 
 
-if (!AUTH_API_URL || !OWNER_API_URL) {
-  throw new Error("API base URLs not defined. Check .env file");
-}
+// if (!AUTH_API_URL || !OWNER_API_URL) {
+//   throw new Error("API base URLs not defined. Check .env file");
+// }
 
 // ================== AXIOS INSTANCES ==================
 const authApi = axios.create({
@@ -286,7 +286,6 @@ export const orderService = {
   }
 };
 
-// ================== BILLING SERVICE (.NET) ==================
 
 // ================== BILLING SERVICE (.NET) ==================
 export const billService = {

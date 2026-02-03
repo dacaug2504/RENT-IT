@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rentit.signin.entities.Role;
-import com.rentit.signin.repositories.RoleRepository;
 import com.rentit.signin.services.RoleService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+// @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class RoleController {
 	

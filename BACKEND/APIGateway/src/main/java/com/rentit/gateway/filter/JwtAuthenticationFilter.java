@@ -26,6 +26,18 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
 
+            String path = request.getURI().getPath();
+
+            // ✅ PUBLIC ENDPOINTS (NO JWT REQUIRED)
+            if (
+                path.startsWith("/api/login") ||
+                path.startsWith("/api/register") ||
+                path.startsWith("/api/catalog")
+            ) {
+                return chain.filter(exchange);
+            }
+
+
             // Extract Authorization header
             if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
                 return onError(exchange, "Missing Authorization header", HttpStatus.UNAUTHORIZED);

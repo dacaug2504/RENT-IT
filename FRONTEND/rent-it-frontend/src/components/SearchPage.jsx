@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import '../App.css';
 
-const API_BASE_URL = 'http://localhost:5258/api/catalog';
+const API_BASE_URL = 'http://localhost:8765/api/catalog';
 
 /* ================= REUSABLE MODAL COMPONENT ================= */
 const LoginModal = ({ show, onClose, navigate }) => {

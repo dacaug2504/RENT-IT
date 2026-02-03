@@ -26,28 +26,64 @@ public class GatewayConfig {
                 // Get all categories for home page
                 .route("search-categories", r -> r
                         .path("/api/catalog/categories")
-                        .uri("lb://SEARCHSERVICE"))
+                        .uri("lb://SearchService"))
                 
                 // Get items by category
                 .route("search-category-items", r -> r
                         .path("/api/catalog/categories/*/items")
-                        .uri("lb://SEARCHSERVICE"))
+                        .uri("lb://SearchService"))
                 
                 // Get item details
                 .route("search-item-detail", r -> r
                         .path("/api/catalog/items/*")
-                        .uri("lb://SEARCHSERVICE"))
+                        .uri("lb://SearchService"))
                 
                 // Search items
                 .route("search-items", r -> r
                         .path("/api/catalog/search")
-                        .uri("lb://SEARCHSERVICE"))
+                        .uri("lb://SearchService"))
                 
                 // Catch-all for any other catalog endpoints
                 .route("search-catalog-all", r -> r
                         .path("/api/catalog/**")
-                        .uri("lb://SEARCHSERVICE"))
+                        .uri("lb://SearchService"))
                 
+                // ========== PRODUCT / OWNER SERVICE ==========
+                .route("product-categories", r -> r
+                        .path("/api/categories")
+                        .uri("lb://OwnerService"))
+
+                .route("product-items", r -> r
+                        .path("/api/items/**")
+                        .uri("lb://OwnerService"))
+
+                .route("product-products", r -> r
+                        .path("/api/products/**")
+                        .uri("lb://OwnerService"))
+                
+                // ================= CUSTOMER / CART =================
+                .route("customer-cart", r -> r
+                        .path(
+                        "/addtocart",
+                        "/getallcartproducts",
+                        "/getproductsbyid",
+                        "/deleteproductfromcart/**"
+                        )
+                        .uri("lb://AddToCartService"))
+
+                // ================= CUSTOMER / ORDER =================
+                .route("customer-order", r -> r
+                        .path("/order/**")
+                        .uri("lb://AddToCartService"))
+
+                // ================= CUSTOMER / VIEW PRODUCTS =================
+                .route("customer-products", r -> r
+                        .path(
+                        "/getallproducts",
+                        "/*/details"
+                        )
+                        .uri("lb://AddToCartService"))
+
                 .build();
     }
 }

@@ -10,7 +10,7 @@ import com.rentit.signin.services.UserService;
 
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
+// @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class RegisterController {
