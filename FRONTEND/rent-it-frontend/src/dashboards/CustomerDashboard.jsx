@@ -409,21 +409,27 @@ const CustomerDashboard = () => {
                             </div>
 
                             <div className="product-actions">
-                              <Button
-                                className="btn-add-cart"
-                                disabled={cartSuccess === p.ot_id}
-                                onClick={() => handleAddToCart(p.ot_id)}
-                              >
-                                {cartSuccess === p.ot_id ? (
-                                  <>
-                                    <span className="success-icon">✓</span> Added to Cart
-                                  </>
-                                ) : (
-                                  <>
-                                    <span>🛒</span> Add to Cart
-                                  </>
-                                )}
-                              </Button>
+                              <div style={{ marginTop: "12px" }}>
+  <button
+    style={{
+      padding: "10px 14px",
+      background: "red",
+      color: "white",
+      border: "none",
+      cursor: "pointer",
+      position: "relative",
+      zIndex: 9999
+    }}
+    onClick={() => {
+      console.log("RAW BUTTON CLICKED", p.ot_id);
+      alert("RAW BUTTON CLICKED");
+      handleAddToCart(p.ot_id);
+    }}
+  >
+    TEST ADD TO CART
+  </button>
+</div>
+
 
                               <Button
                                 className="btn-details"

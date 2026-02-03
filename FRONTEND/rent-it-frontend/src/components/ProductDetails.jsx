@@ -396,7 +396,7 @@ const ProductDetails = () => {
                 </div>
 
                 {/* Action Button */}
-                <div className="d-grid gap-3">
+                {/* <div className="d-grid gap-3">
                   <Button 
                     variant="primary" 
                     size="lg" 
@@ -421,7 +421,31 @@ const ProductDetails = () => {
                       </>
                     )}
                   </Button>
+                </div> */}
+                <div style={{ marginTop: "20px", textAlign: "center" }}>
+                  <button
+                    style={{
+                      padding: "14px 20px",
+                      backgroundColor: "#dc2626",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "8px",
+                      fontSize: "18px",
+                      fontWeight: "600",
+                      cursor: "pointer",
+                      position: "relative",
+                      zIndex: 99999
+                    }}
+                    onClick={() => {
+                      console.log("RAW PRODUCT DETAILS ADD CLICKED", product.ot_id);
+                      alert("RAW PRODUCT DETAILS ADD CLICKED");
+                      handleAddToCart();
+                    }}
+                  >
+                    🧪 TEST ADD TO CART (RAW)
+                  </button>
                 </div>
+
 
                 {/* Product ID Footer */}
                 <div className="mt-4 pt-4 border-top">

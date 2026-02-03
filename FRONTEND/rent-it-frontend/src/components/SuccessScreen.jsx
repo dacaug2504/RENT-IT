@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -9,17 +9,25 @@ const SuccessScreen = ({
   delay = 3000
 }) => {
   const navigate = useNavigate();
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      setActive(false);          // release pointer events
       navigate(redirectTo);
     }, delay);
 
     return () => clearTimeout(timer);
   }, [navigate, redirectTo, delay]);
 
+
   return (
-    <div className="success-overlay">
+    <div
+      className="success-overlay"
+      style={{
+        pointerEvents: active ? "auto" : "none"
+      }}
+    >
       <div className="success-content">
         <div className="success-icon">
           <svg

@@ -1,19 +1,17 @@
 
 package com.rentit.addtocart.services;
 
-import com.rentit.addtocart.dto.ProductDetailsDTO;
 import com.rentit.addtocart.entities.Bill;
 import com.rentit.addtocart.entities.Cart;
 import com.rentit.addtocart.entities.DeliveryMode;
-import com.rentit.addtocart.entities.Image;
 import com.rentit.addtocart.entities.OrderTable;
 import com.rentit.addtocart.entities.OwnerItem;
 import com.rentit.addtocart.entities.User;
+import com.rentit.addtocart.entities.ItemStatus;
+
 import com.rentit.addtocart.repositories.BillRepository;
 import com.rentit.addtocart.repositories.CartRepository;
-import com.rentit.addtocart.repositories.ImageRepository;
 import com.rentit.addtocart.repositories.OrderTableRepository;
-import com.rentit.addtocart.repositories.OwnerItemRepository;
 import com.rentit.addtocart.repositories.UserRepository;
 
 import jakarta.transaction.Transactional;
@@ -34,7 +32,6 @@ public class OrderService {
     @Autowired private OrderTableRepository orderRepo;
     @Autowired private CartRepository cartRepo;
     @Autowired private UserRepository userRepo;
-    @Autowired private OwnerItemRepository ownerItemRepo;
     
     public Map<String, Object> placeOrderFromCart(Integer cartId, LocalDate startDate, LocalDate endDate) {
         try {
@@ -81,8 +78,13 @@ public class OrderService {
             order.setDeliveryMode(DeliveryMode.SELF);
             OrderTable savedOrder = orderRepo.save(order);
             
+            // 6. Update item status to UNAVAILABLE
+            ownerItem.setStatus(ItemStatus.UNAVAILABLE);
+
+            
             // 6. Delete from cart (optional)
-            // cartRepo.delete(cart);
+            
+            cartRepo.delete(cart);
             
             // 7. Return success response
             Map<String, Object> response = new HashMap<>();
