@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Java
+target/
+
+# Node
+node_modules/
+dist/
+build/
