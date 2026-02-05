@@ -1,0 +1,6 @@
+com\rentit\gateway\ApiGatewayApplication.class
+com\rentit\gateway\config\GatewayConfig.class
+com\rentit\gateway\config\CorsConfig.class
+com\rentit\gateway\util\JwtUtil.class
+com\rentit\gateway\filter\JwtAuthenticationFilter.class
+com\rentit\gateway\filter\JwtAuthenticationFilter$Config.class
