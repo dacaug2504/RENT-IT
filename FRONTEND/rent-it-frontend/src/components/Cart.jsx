@@ -49,10 +49,11 @@ const Cart = () => {
   };
 
 
+  // FIXED: Default date range is now 7 days INCLUDING both start and end date
   const getDefaultDateRange = (cartId) => [
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), 6), // 6 days from start = 7 total days (including both dates)
       key: `selection-${cartId}`,
     },
   ];
@@ -65,7 +66,7 @@ const Cart = () => {
     cartProducts.forEach((item) => {
       const range = dateRanges[item.cart_id]?.[0];
       if (range && range.startDate && range.endDate) {
-        // Calculate days between dates
+        // Calculate days between dates (INCLUSIVE of both start and end)
         const days = Math.ceil(
           (range.endDate - range.startDate) / (1000 * 60 * 60 * 24)
         ) + 1; // +1 to include both start and end date
@@ -120,6 +121,8 @@ const Cart = () => {
       const range = dateRanges[item.cart_id][0];
       const startDate = format(range.startDate, "yyyy-MM-dd");
       const endDate = format(range.endDate, "yyyy-MM-dd");
+
+      console.log(`Placing order for cart ${item.cart_id}:`, { startDate, endDate });
 
       const res = await orderService.placeOrder(
         item.cart_id,

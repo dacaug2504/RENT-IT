@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.22",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.22",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.3",
+          "Steeltoe.Discovery.ClientCore": "3.2.8",
           "Steeltoe.Discovery.Eureka": "3.2.8",
           "Swashbuckle.AspNetCore": "6.6.2"
         },
@@ -700,6 +701,17 @@
           }
         }
       },
+      "Steeltoe.Discovery.ClientCore/3.2.8": {
+        "dependencies": {
+          "Steeltoe.Discovery.ClientBase": "3.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/Steeltoe.Discovery.ClientCore.dll": {
+            "assemblyVersion": "3.2.8.0",
+            "fileVersion": "3.2.8.0"
+          }
+        }
+      },
       "Steeltoe.Discovery.Eureka/3.2.8": {
         "dependencies": {
           "Steeltoe.Common.Http": "3.2.8",
@@ -1263,6 +1275,13 @@
       "sha512": "sha512-atM8lhY48pX+7LS91on/r+pMiWjidbMkSTbnrw+CobVL2u2Ic4y099tBptJVwyPVrUCRjKvFB/ch3aQzazONPA==",
       "path": "steeltoe.discovery.clientbase/3.2.8",
       "hashPath": "steeltoe.discovery.clientbase.3.2.8.nupkg.sha512"
+    },
+    "Steeltoe.Discovery.ClientCore/3.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dLqnwbOH9PpaL24em+ZBpfqI+u9q8aAZhfMi6c1j4XgmoquJRNJjluAMkjD4a7X+MHAOhY1MpOseexz2xV5wxw==",
+      "path": "steeltoe.discovery.clientcore/3.2.8",
+      "hashPath": "steeltoe.discovery.clientcore.3.2.8.nupkg.sha512"
     },
     "Steeltoe.Discovery.Eureka/3.2.8": {
       "type": "package",

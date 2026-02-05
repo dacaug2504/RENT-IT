@@ -19,7 +19,11 @@ const BillInvoice = () => {
     try {
       setLoading(true);
       const response = await billService.getBillDetails(billNo);
-      console.log('Bill Details:', response.data);
+      
+      console.log('=== BILL DETAILS DEBUG ===');
+      console.log('Response Data:', response.data);
+      console.log('=========================');
+      
       setBill(response.data);
     } catch (err) {
       console.error('Error fetching bill:', err);
@@ -31,6 +35,20 @@ const BillInvoice = () => {
 
   const handlePrint = () => {
     window.print();
+  };
+
+  // Helper function to format date
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    try {
+      return new Date(dateString).toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+    } catch {
+      return 'N/A';
+    }
   };
 
   if (loading) {
@@ -54,6 +72,43 @@ const BillInvoice = () => {
       </Container>
     );
   }
+
+  // Extract data from NESTED structure
+  const billNumber = bill.billNo || 'N/A';
+  const billDate = bill.billDate || new Date();
+  
+  // Date fields from rental object
+  const startDate = bill.rental?.startDate;
+  const endDate = bill.rental?.endDate;
+  const numberOfDays = bill.rental?.numberOfDays || 1;
+  
+  // Financial details from rental and item objects
+  const rentPerDay = bill.item?.rentPerDay || 0;
+  const totalRent = bill.rental?.totalRent || (rentPerDay * numberOfDays);
+  const depositAmt = bill.rental?.deposit || 0;
+  const grandTotal = bill.rental?.grandTotal || (totalRent + depositAmt);
+  
+  // Customer details from nested customer object
+  const customerName = bill.customer?.fullName || 'N/A';
+  const customerEmail = bill.customer?.email || 'N/A';
+  const customerPhone = bill.customer?.phoneNo || 'N/A';
+  const customerAddress = bill.customer?.address || 'N/A';
+  const customerCity = bill.customer?.city || 'N/A';
+  const customerState = bill.customer?.state || 'N/A';
+
+  // Owner details from nested owner object
+  const ownerName = bill.owner?.fullName || 'N/A';
+  const ownerEmail = bill.owner?.email || 'N/A';
+  const ownerPhone = bill.owner?.phoneNo || 'N/A';
+  const ownerAddress = bill.owner?.address || 'N/A';
+  const ownerCity = bill.owner?.city || 'N/A';
+  const ownerState = bill.owner?.state || 'N/A';
+
+  // Item details from nested item object
+  const itemName = bill.item?.itemName || 'N/A';
+  const itemBrand = bill.item?.brand || 'N/A';
+  const itemDescription = bill.item?.description || 'N/A';
+  const itemCondition = bill.item?.condition || 'N/A';
 
   return (
     <div style={{ 
@@ -94,10 +149,10 @@ const BillInvoice = () => {
                   INVOICE
                 </h2>
                 <p style={{ fontSize: '20px', margin: 0 }}>
-                  #{bill.billNo}
+                  #{billNumber}
                 </p>
                 <p style={{ fontSize: '16px', opacity: 0.9, margin: 0 }}>
-                  Date: {new Date(bill.billDate).toLocaleDateString('en-IN')}
+                  Date: {formatDate(billDate)}
                 </p>
               </Col>
             </Row>
@@ -121,19 +176,19 @@ const BillInvoice = () => {
                     👤 CUSTOMER DETAILS
                   </h5>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Name:</strong> {bill.customer.fullName}
+                    <strong>Name:</strong> {customerName}
                   </p>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Email:</strong> {bill.customer.email}
+                    <strong>Email:</strong> {customerEmail}
                   </p>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Phone:</strong> {bill.customer.phoneNo}
+                    <strong>Phone:</strong> {customerPhone}
                   </p>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Address:</strong> {bill.customer.address}
+                    <strong>Address:</strong> {customerAddress}
                   </p>
                   <p style={{ marginBottom: 0, fontSize: '15px' }}>
-                    <strong>City, State:</strong> {bill.customer.city}, {bill.customer.state}
+                    <strong>City, State:</strong> {customerCity}, {customerState}
                   </p>
                 </div>
               </Col>
@@ -152,16 +207,19 @@ const BillInvoice = () => {
                     🏢 OWNER DETAILS
                   </h5>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Name:</strong> {bill.owner.fullName}
+                    <strong>Name:</strong> {ownerName}
                   </p>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Email:</strong> {bill.owner.email}
+                    <strong>Email:</strong> {ownerEmail}
                   </p>
                   <p style={{ marginBottom: '8px', fontSize: '15px' }}>
-                    <strong>Phone:</strong> {bill.owner.phoneNo}
+                    <strong>Phone:</strong> {ownerPhone}
+                  </p>
+                  <p style={{ marginBottom: '8px', fontSize: '15px' }}>
+                    <strong>Address:</strong> {ownerAddress}
                   </p>
                   <p style={{ marginBottom: 0, fontSize: '15px' }}>
-                    <strong>Address:</strong> {bill.owner.address}
+                    <strong>City, State:</strong> {ownerCity}, {ownerState}
                   </p>
                 </div>
               </Col>
@@ -188,10 +246,10 @@ const BillInvoice = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>{bill.item.itemName}</strong></td>
-                    <td>{bill.item.brand}</td>
-                    <td>{bill.item.description}</td>
-                    <td>{bill.item.condition}</td>
+                    <td><strong>{itemName}</strong></td>
+                    <td>{itemBrand}</td>
+                    <td>{itemDescription}</td>
+                    <td>{itemCondition}</td>
                   </tr>
                 </tbody>
               </Table>
@@ -216,7 +274,7 @@ const BillInvoice = () => {
                   }}>
                     <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>Start Date</p>
                     <h4 style={{ margin: '8px 0', color: '#2e7d32', fontWeight: '700' }}>
-                      {new Date(bill.rental.startDate).toLocaleDateString('en-IN')}
+                      {formatDate(startDate)}
                     </h4>
                   </div>
                 </Col>
@@ -228,7 +286,7 @@ const BillInvoice = () => {
                   }}>
                     <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>End Date</p>
                     <h4 style={{ margin: '8px 0', color: '#f57c00', fontWeight: '700' }}>
-                      {new Date(bill.rental.endDate).toLocaleDateString('en-IN')}
+                      {formatDate(endDate)}
                     </h4>
                   </div>
                 </Col>
@@ -240,7 +298,7 @@ const BillInvoice = () => {
                   }}>
                     <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>Total Days</p>
                     <h4 style={{ margin: '8px 0', color: '#1976d2', fontWeight: '700' }}>
-                      {bill.rental.numberOfDays} Days
+                      {numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}
                     </h4>
                   </div>
                 </Col>
@@ -261,19 +319,19 @@ const BillInvoice = () => {
                 <tbody>
                   <tr>
                     <td><strong>Rent per Day</strong></td>
-                    <td className="text-end">₹{bill.item.rentPerDay}</td>
+                    <td className="text-end">₹{rentPerDay.toLocaleString('en-IN')}</td>
                   </tr>
                   <tr>
                     <td><strong>Number of Days</strong></td>
-                    <td className="text-end">{bill.rental.numberOfDays}</td>
+                    <td className="text-end">{numberOfDays}</td>
                   </tr>
                   <tr>
                     <td><strong>Total Rent</strong></td>
-                    <td className="text-end">₹{bill.rental.totalRent}</td>
+                    <td className="text-end">₹{totalRent.toLocaleString('en-IN')}</td>
                   </tr>
                   <tr>
                     <td><strong>Security Deposit</strong></td>
-                    <td className="text-end">₹{bill.rental.deposit}</td>
+                    <td className="text-end">₹{depositAmt.toLocaleString('en-IN')}</td>
                   </tr>
                   <tr style={{ 
                     background: 'linear-gradient(135deg, var(--pastel-green-light) 0%, var(--pastel-green) 100%)',
@@ -281,7 +339,7 @@ const BillInvoice = () => {
                     fontWeight: '700'
                   }}>
                     <td><strong>GRAND TOTAL</strong></td>
-                    <td className="text-end"><strong>₹{bill.rental.grandTotal}</strong></td>
+                    <td className="text-end"><strong>₹{grandTotal.toLocaleString('en-IN')}</strong></td>
                   </tr>
                 </tbody>
               </Table>

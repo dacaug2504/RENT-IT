@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllUsers, updateUserStatus } from '../services/adminServiceAPI';
 import '../css/UserManagement.css';
+import { useDispatch } from "react-redux";
+import { persistor } from "../app/store";
+import { forceLogout } from "../features/auth/authSlice";
 
 const UserManagement = () => {
   const navigate = useNavigate();
@@ -41,36 +44,43 @@ const UserManagement = () => {
   };
 
   const filterUsers = () => {
-    let filtered = [...users];
+  // 🚫 ALWAYS exclude admins
+  let filtered = users.filter(
+    user => user.roleName?.toUpperCase() !== 'ADMIN'
+  );
 
-    if (filterRole !== 'all') {
-      filtered = filtered.filter(
-        user => user.roleName?.toUpperCase() === filterRole.toUpperCase()
-      );
-    }
+  // Role filter (OWNER / CUSTOMER)
+  if (filterRole !== 'all') {
+    filtered = filtered.filter(
+      user => user.roleName?.toUpperCase() === filterRole.toUpperCase()
+    );
+  }
 
-    if (filterStatus !== 'all') {
-      const statusMap = {
-        active: 1,
-        suspended: 2,
-        disabled: 3
-      };
-      filtered = filtered.filter(
-        user => user.status === statusMap[filterStatus]
-      );
-    }
+  // Status filter
+  if (filterStatus !== 'all') {
+    const statusMap = {
+      active: 1,
+      suspended: 2,
+      disabled: 3
+    };
+    filtered = filtered.filter(
+      user => user.status === statusMap[filterStatus]
+    );
+  }
 
-    if (searchTerm) {
-      const search = searchTerm.toLowerCase();
-      filtered = filtered.filter(user => {
-        const fullName = `${user.firstName || ''} ${user.lastName || ''}`.toLowerCase();
-        const email = (user.email || '').toLowerCase();
-        return fullName.includes(search) || email.includes(search);
-      });
-    }
+  // Search filter
+  if (searchTerm) {
+    const search = searchTerm.toLowerCase();
+    filtered = filtered.filter(user => {
+      const fullName = `${user.firstName || ''} ${user.lastName || ''}`.toLowerCase();
+      const email = (user.email || '').toLowerCase();
+      return fullName.includes(search) || email.includes(search);
+    });
+  }
 
-    setFilteredUsers(filtered);
-  };
+  setFilteredUsers(filtered);
+};
+
 
   // ✅ UPDATED — NO alert(), only message state
   const handleUpdateStatus = async (userId, newStatus) => {
@@ -99,12 +109,27 @@ const UserManagement = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   navigate('/login');
+  // };
 
+  const dispatch = useDispatch();
+
+const handleLogout = async () => {
+  // 1️⃣ Clear redux auth state
+  dispatch(forceLogout());
+
+  // 2️⃣ Clear persisted redux state
+  await persistor.purge();
+
+  // 3️⃣ Clear local storage (safety)
+  localStorage.clear();
+
+  // 4️⃣ HARD redirect (prevents auto-redirect)
+  window.location.href = "/search";
+};
   const getStatusText = (status) => {
     switch (status) {
       case 1: return 'Active';
@@ -207,7 +232,7 @@ const UserManagement = () => {
                 <option value="all">All Roles</option>
                 <option value="OWNER">Owner</option>
                 <option value="CUSTOMER">Customer</option>
-                <option value="ADMIN">Admin</option>
+                {/* <option value="ADMIN">Admin</option> */}
               </select>
             </div>
 

@@ -9,7 +9,7 @@ import java.security.Key;
 
 public class JwtUtil {
 
-    // 🔴 MUST MATCH LOGIN-SERVICE EXACTLY
+    //  MUST MATCH LOGIN-SERVICE EXACTLY
     private static final String SECRET =
             "rentit_super_secret_key_rentit_super_secret_key";
 

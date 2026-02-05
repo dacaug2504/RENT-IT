@@ -8,9 +8,14 @@ import {
   deleteItem
 } from '../services/adminServiceAPI';
 import '../css/ItemManagement.css';
+import { useDispatch } from "react-redux";
+import { forceLogout } from "../features/auth/authSlice";
+import { persistor } from "../app/store";
+
 
 const ItemManagement = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -131,10 +136,15 @@ const ItemManagement = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
+  /* =========================
+     LOGOUT HANDLER
+     ========================= */
+
+  const handleLogout = async () => {
+    dispatch(forceLogout());
+    await persistor.purge();
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
   };
 
   const filteredItems = items.filter(item => {

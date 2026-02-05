@@ -1,22 +1,23 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const ProtectedRoute = ({ children, allowedRoles }) => {
-  const auth = useSelector((state) => state.auth);
-  const { user, isAuthenticated, _persist } = auth;
+const ProtectedRoute = ({ allowedRoles }) => {
+  const { user, isAuthenticated, _persist } = useSelector(
+    (state) => state.auth
+  );
 
-  // ⏳ Wait for redux-persist to rehydrate
+  // ⏳ Wait for redux-persist rehydration
   if (_persist && !_persist.rehydrated) {
-    return null; // or a spinner if you want
+    return null; // or <Spinner />
   }
 
-  // ❌ Not logged in
+  // ❌ Not logged in → block immediately
   if (!isAuthenticated || !user) {
     return <Navigate to="/login" replace />;
   }
 
   // =========================
-  // 🔹 Normalize user role (KEEP OLD LOGIC)
+  // 🔹 Normalize user role
   // =========================
   let userRole = user.role;
 
@@ -34,21 +35,19 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   // =========================
   // 🔹 Normalize allowed roles
   // =========================
-  const normalizedAllowedRoles = allowedRoles?.map(
-    (r) => r.toUpperCase()
-  );
+  if (allowedRoles) {
+    const normalizedAllowedRoles = allowedRoles.map(r =>
+      r.toUpperCase()
+    );
 
-  // ❌ Role not allowed
-  if (
-    normalizedAllowedRoles &&
-    !normalizedAllowedRoles.includes(userRole)
-  ) {
-    console.warn("Role blocked by ProtectedRoute:", userRole);
-    return <Navigate to="/login" replace />;
+    if (!normalizedAllowedRoles.includes(userRole)) {
+      console.warn("Role blocked:", userRole);
+      return <Navigate to="/login" replace />;
+    }
   }
 
-  // ✅ Authorized
-  return children;
+  // ✅ AUTHORIZED → render nested route
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

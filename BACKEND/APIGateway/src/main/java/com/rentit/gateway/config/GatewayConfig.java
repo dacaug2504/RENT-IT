@@ -20,33 +20,61 @@ public class GatewayConfig {
                 .route("auth-register", r -> r
                         .path("/api/register")
                         .uri("lb://REGISTRATIONSERVICE"))
+
                 
+                .route("auth-states", r -> r
+                        .path("/states")
+                        .uri("lb://REGISTRATIONSERVICE"))
+
+                .route("auth-cities", r -> r
+                        .path("/cities/**")
+                        .uri("lb://REGISTRATIONSERVICE"))
+
+                .route("auth-roles", r -> r
+                        .path("/api/getallroles")
+                        .uri("lb://REGISTRATIONSERVICE"))
+
+                // =================================================
+                // ADMIN SERVICE (JWT REQUIRED)
+                // =================================================
+
+                .route("admin-all", r -> r
+                        .path("/api/admin/**")
+                        .uri("lb://AdminService"))
+
+                // =================================================
+                // BILLING SERVICE
+                // =================================================
+                .route("billing-service", r -> r
+                        .path("/api/Billing/all")
+                        .uri("lb://BillingService"))
+
                 // ========== SEARCH SERVICE ROUTES (Public - No JWT Required) ==========
-                
+
                 // Get all categories for home page
                 .route("search-categories", r -> r
                         .path("/api/catalog/categories")
-                        .uri("lb://SearchService"))
-                
+                        .uri("lb://SEARCHSERVICE"))
+
                 // Get items by category
                 .route("search-category-items", r -> r
                         .path("/api/catalog/categories/*/items")
-                        .uri("lb://SearchService"))
-                
+                        .uri("lb://SEARCHSERVICE"))
+
                 // Get item details
                 .route("search-item-detail", r -> r
                         .path("/api/catalog/items/*")
-                        .uri("lb://SearchService"))
-                
+                        .uri("lb://SEARCHSERVICE"))
+
                 // Search items
                 .route("search-items", r -> r
                         .path("/api/catalog/search")
-                        .uri("lb://SearchService"))
-                
+                        .uri("lb://SEARCHSERVICE"))
+
                 // Catch-all for any other catalog endpoints
                 .route("search-catalog-all", r -> r
                         .path("/api/catalog/**")
-                        .uri("lb://SearchService"))
+                        .uri("lb://SEARCHSERVICE"))
                 
                 // ========== PRODUCT / OWNER SERVICE ==========
                 .route("product-categories", r -> r

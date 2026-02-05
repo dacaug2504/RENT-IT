@@ -5,6 +5,7 @@ import { getAdminStats } from "../services/adminServiceAPI";
 import { forceLogout } from "../features/auth/authSlice";
 import { persistor } from "../app/store";
 import "../assets/admin-dashboard.css";
+import { useSelector } from "react-redux";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ const AdminDashboard = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { user } = useSelector((state) => state.auth);
+  const displayName = user.first_name || user.firstName || "Owner";
 
   // =========================
   // ✅ FETCH DASHBOARD DATA
@@ -105,7 +109,7 @@ const AdminDashboard = () => {
         <div className="header-content">
           <div className="header-left">
             <h1>Admin Dashboard</h1>
-            <p className="welcome-text">Welcome back, Administrator</p>
+            <p className="welcome-text">Welcome back, <span>{displayName}</span>! 👋</p>
           </div>
           <button onClick={handleLogout} className="logout-btn">
             <span className="logout-icon">🚪</span>

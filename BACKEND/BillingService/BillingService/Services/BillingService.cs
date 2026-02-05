@@ -36,7 +36,7 @@ namespace BillingService.Services
                     .Include(b => b.OwnerItem)
                     .ToListAsync();
 
-                return bills.Select(MapToDTO);
+                return await MapToDTOWithOrderAsync(bills);
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace BillingService.Services
                     .Where(b => b.CustomerId == customerId)
                     .ToListAsync();
 
-                return bills.Select(MapToDTO);
+                return await MapToDTOWithOrderAsync(bills);
             }
             catch (Exception ex)
             {
@@ -96,7 +96,7 @@ namespace BillingService.Services
                     .Where(b => b.OwnerId == ownerId)
                     .ToListAsync();
 
-                return bills.Select(MapToDTO);
+                return await MapToDTOWithOrderAsync(bills);
             }
             catch (Exception ex)
             {
@@ -125,7 +125,13 @@ namespace BillingService.Services
                     .Include(b => b.OwnerItem)
                     .FirstOrDefaultAsync(b => b.BillNo == billNo);
 
-                return bill != null ? MapToDTO(bill) : null;
+                if (bill == null) return null;
+
+                // Find the corresponding order
+                var order = await FindOrderForBill(bill);
+                bill.Order = order;
+
+                return MapToDTO(bill);
             }
             catch (Exception ex)
             {
@@ -174,6 +180,10 @@ namespace BillingService.Services
                     .Include(b => b.OwnerItem)
                     .FirstAsync(b => b.BillNo == bill.BillNo);
 
+                // Find the corresponding order
+                var order = await FindOrderForBill(createdBill);
+                createdBill.Order = order;
+
                 return MapToDTO(createdBill);
             }
             catch (Exception ex)
@@ -183,12 +193,81 @@ namespace BillingService.Services
             }
         }
 
+        /// <summary>
+        /// Find the order that corresponds to this bill by matching customer, owner, and item
+        /// </summary>
+        private async Task<OrderTable?> FindOrderForBill(Bill bill)
+        {
+            try
+            {
+                // Find order matching customer_id, owner_id, and owner_item_id
+                var order = await _context.Orders
+                    .Where(o => o.CustomerId == bill.CustomerId
+                             && o.OwnerId == bill.OwnerId
+                             && o.OwnerItemId == bill.ItemId)
+                    .OrderByDescending(o => o.OrderId) // Get the most recent order if multiple exist
+                    .FirstOrDefaultAsync();
+
+                return order;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Could not find order for bill {BillNo}", bill.BillNo);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Map multiple bills to DTOs with order information
+        /// </summary>
+        private async Task<List<BillResponseDTO>> MapToDTOWithOrderAsync(List<Bill> bills)
+        {
+            var result = new List<BillResponseDTO>();
+
+            foreach (var bill in bills)
+            {
+                var order = await FindOrderForBill(bill);
+                bill.Order = order;
+                result.Add(MapToDTO(bill));
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Map Bill entity to BillResponseDTO
+        /// </summary>
         private static BillResponseDTO MapToDTO(Bill bill)
         {
+            // Calculate number of days from order dates
+            int? numberOfDays = null;
+            DateTime? startDate = bill.Order?.StartDate;
+            DateTime? endDate = bill.Order?.EndDate;
+
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                numberOfDays = (int)(endDate.Value - startDate.Value).TotalDays;
+                if (numberOfDays < 1) numberOfDays = 1; // At least 1 day
+            }
+
+            // Calculate total rent
+            int? totalRent = null;
+            if (numberOfDays.HasValue && bill.OwnerItem != null)
+            {
+                totalRent = numberOfDays.Value * bill.OwnerItem.RentPerDay;
+            }
+
             return new BillResponseDTO
             {
                 BillNo = bill.BillNo,
-                BillDate = DateTime.Now,
+                BillDate = DateTime.Now, // Or you could use order date if available
+                Amount = bill.Amount,
+
+                // Date fields from OrderTable
+                StartDate = startDate,
+                EndDate = endDate,
+                NumberOfDays = numberOfDays,
+                TotalRent = totalRent,
 
                 // Customer Info
                 CustomerId = bill.CustomerId,
@@ -218,10 +297,7 @@ namespace BillingService.Services
                 ItemDescription = bill.OwnerItem?.Description ?? "N/A",
                 ItemCondition = bill.OwnerItem?.ConditionType ?? "Good",
                 RentPerDay = bill.OwnerItem?.RentPerDay ?? 0,
-                DepositAmount = bill.OwnerItem?.DepositAmt ?? 0,
-
-                // Bill Info
-                Amount = bill.Amount
+                DepositAmount = bill.OwnerItem?.DepositAmt ?? 0
             };
         }
     }

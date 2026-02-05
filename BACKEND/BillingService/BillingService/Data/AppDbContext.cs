@@ -15,6 +15,7 @@ namespace BillingService.Data
         public DbSet<OwnerItem> OwnerItems { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<OrderTable> Orders { get; set; }  // ✅ Added OrderTable
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -81,6 +82,12 @@ namespace BillingService.Data
                     .WithMany()
                     .HasForeignKey(e => e.UserId)
                     .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // OrderTable configuration
+            modelBuilder.Entity<OrderTable>(entity =>
+            {
+                entity.HasKey(e => e.OrderId);
             });
         }
     }

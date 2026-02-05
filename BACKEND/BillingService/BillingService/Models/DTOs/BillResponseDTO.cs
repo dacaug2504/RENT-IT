@@ -2,8 +2,16 @@
 {
     public class BillResponseDTO
     {
+        // Bill Info
         public int BillNo { get; set; }
         public DateTime BillDate { get; set; } = DateTime.Now;
+        public int Amount { get; set; }
+
+        // Date fields from OrderTable (NEW - REQUIRED!)
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int? NumberOfDays { get; set; }
+        public int? TotalRent { get; set; }
 
         // Customer Info
         public int CustomerId { get; set; }
@@ -30,19 +38,5 @@
         public string? ItemCondition { get; set; }
         public int RentPerDay { get; set; }
         public int DepositAmount { get; set; }
-
-        // Bill Info
-        public int Amount { get; set; }
-
-        // Calculated fields (optional - for future enhancements)
-        public int? NumberOfDays { get; set; }
-        public int? TotalRent { get; set; }
-
-        // Customer Info
-    
-
-        // Owner Info
-        
-
     }
 }

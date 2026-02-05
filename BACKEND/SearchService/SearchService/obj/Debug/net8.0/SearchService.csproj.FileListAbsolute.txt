@@ -472,3 +472,4 @@ C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\Se
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\SearchService.pdb
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\SearchService.genruntimeconfig.cache
 C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\obj\Debug\net8.0\ref\SearchService.dll
+C:\Users\AVISHKAR\OneDrive\Desktop\RENT PROJECT\RENT-IT\BACKEND\SearchService\SearchService\bin\Debug\net8.0\Steeltoe.Discovery.ClientCore.dll

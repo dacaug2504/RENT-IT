@@ -5,15 +5,26 @@ import { userService } from '../services/api';
 import EditProductDetails from './EditProductDetails';
 import EditProductImages from './EditProductImages';
 
+import { useDispatch } from "react-redux";
+import { forceLogout } from "../features/auth/authSlice";
+import { persistor } from "../app/store";
+
 
 const EditProduct = () => {
   const { otId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    userService.logout();
-    navigate('/login');
-  };
+  /* =========================
+     LOGOUT HANDLER
+     ========================= */
+
+const handleLogout = async () => {
+  dispatch(forceLogout());
+  await persistor.purge();
+  localStorage.removeItem("token");
+  navigate("/search", { replace: true });
+};
 
   const handleBack = () => {
     navigate('/owner/my-products');
@@ -74,7 +85,7 @@ const EditProduct = () => {
             </Button>
 
             <h3 className="mb-0 text-center flex-grow-1">
-              ✏️ Edit Product (ID: {otId})
+              ✏️ Edit Product
             </h3>
 
             {/* spacer to keep title centered */}

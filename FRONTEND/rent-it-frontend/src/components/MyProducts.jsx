@@ -13,9 +13,13 @@ import {
 } from 'react-bootstrap';
 import { ownerService, userService } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useDispatch } from "react-redux";
+import { forceLogout } from "../features/auth/authSlice";
+import { persistor } from "../app/store";
 
 const MyProducts = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = userService.getCurrentUser();
 
   const [products, setProducts] = useState([]);
@@ -37,10 +41,15 @@ const MyProducts = () => {
     }
   };
 
-  const handleLogout = () => {
-    userService.logout();
-    navigate('/login');
-  };
+    /* =========================
+     LOGOUT HANDLER
+     ========================= */
+const handleLogout = async () => {
+  dispatch(forceLogout());
+  await persistor.purge();
+  localStorage.removeItem("token");
+  navigate("/search", { replace: true });
+};
 
   const getConditionBadge = (condition) => {
     const badges = {

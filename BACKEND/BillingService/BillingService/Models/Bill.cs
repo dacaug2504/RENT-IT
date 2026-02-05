@@ -35,5 +35,10 @@ namespace BillingService.Models
 
         [ForeignKey("ItemId")]
         public virtual OwnerItem? OwnerItem { get; set; }
+
+        // Note: OrderTable is not directly linked by FK, but we can find it by matching
+        // customer_id, owner_id, and owner_item_id (item_id in bill table)
+        [NotMapped]
+        public virtual OrderTable? Order { get; set; }
     }
 }

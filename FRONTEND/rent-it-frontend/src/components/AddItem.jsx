@@ -1,15 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from "react-select";
-import { Container, Form, Button, Alert, Card, Row, Col, Spinner, Navbar, Nav } from 'react-bootstrap';
-import { ownerService, userService } from '../services/api';
+import { Container, Form, Button, Alert, Card, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { ownerService } from '../services/api';
 import { useRef } from 'react';
 import SuccessScreen from "../components/SuccessScreen";
+import { useDispatch } from "react-redux";
+import { forceLogout } from "../features/auth/authSlice";
+import { persistor } from "../app/store";
+
+
 
 
 const AddItem = () => {
   const navigate = useNavigate();
   const submitLock = useRef(false);
+  const dispatch = useDispatch();
+
 
   const [formData, setFormData] = useState({
     categoryId: '',
@@ -46,7 +53,7 @@ const AddItem = () => {
   useEffect(() => {
     ownerService.getCategories()
       .then(res => {
-        console.log('CATEGORIES JSON 👉', res.data);
+        console.log('CATEGORIES JSON ', res.data);
         setCategories(res.data);
       })
       .catch(err => {
@@ -97,10 +104,12 @@ const AddItem = () => {
      LOGOUT HANDLER
      ========================= */
 
-  const handleLogout = () => {
-    userService.logout();
-    navigate('/login');
-  };
+const handleLogout = async () => {
+  dispatch(forceLogout());
+  await persistor.purge();
+  localStorage.removeItem("token");
+  navigate("/search       ", { replace: true });
+};
 
 
 

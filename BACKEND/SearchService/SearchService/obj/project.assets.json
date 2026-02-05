@@ -1150,6 +1150,25 @@
           }
         }
       },
+      "Steeltoe.Discovery.ClientCore/3.2.8": {
+        "type": "package",
+        "dependencies": {
+          "Steeltoe.Discovery.ClientBase": "3.2.8"
+        },
+        "compile": {
+          "lib/net6.0/Steeltoe.Discovery.ClientCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Steeltoe.Discovery.ClientCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Steeltoe.Discovery.Eureka/3.2.8": {
         "type": "package",
         "dependencies": {
@@ -3331,6 +3350,22 @@
         "steeltoe.discovery.clientbase.nuspec"
       ]
     },
+    "Steeltoe.Discovery.ClientCore/3.2.8": {
+      "sha512": "dLqnwbOH9PpaL24em+ZBpfqI+u9q8aAZhfMi6c1j4XgmoquJRNJjluAMkjD4a7X+MHAOhY1MpOseexz2xV5wxw==",
+      "type": "package",
+      "path": "steeltoe.discovery.clientcore/3.2.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/Steeltoe.Discovery.ClientCore.dll",
+        "lib/net6.0/Steeltoe.Discovery.ClientCore.xml",
+        "lib/netcoreapp3.1/Steeltoe.Discovery.ClientCore.dll",
+        "lib/netcoreapp3.1/Steeltoe.Discovery.ClientCore.xml",
+        "steeltoe.discovery.clientcore.3.2.8.nupkg.sha512",
+        "steeltoe.discovery.clientcore.nuspec"
+      ]
+    },
     "Steeltoe.Discovery.Eureka/3.2.8": {
       "sha512": "AJWKJFDqcOHw1mUuq01x7bVy0Vtfqmpl47qJ4EZpfCdujEVrRYfSbtcjEH1732OS7WrylTf679Pyqe+8wJ+GuA==",
       "type": "package",
@@ -3966,6 +4001,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.22",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.22",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.3",
+      "Steeltoe.Discovery.ClientCore >= 3.2.8",
       "Steeltoe.Discovery.Eureka >= 3.2.8",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
@@ -4039,6 +4075,10 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[8.0.3, )"
+          },
+          "Steeltoe.Discovery.ClientCore": {
+            "target": "Package",
+            "version": "[3.2.8, )"
           },
           "Steeltoe.Discovery.Eureka": {
             "target": "Package",

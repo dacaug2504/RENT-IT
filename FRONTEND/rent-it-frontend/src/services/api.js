@@ -123,23 +123,23 @@ export const userService = {
 };
 
 export const ownerService = {
-  // ✅ FETCH ALL CATEGORIES
+  //  FETCH ALL CATEGORIES
   getCategories: async () => {
     return await ownerApi.get('/categories');
   },
 
   
 
-  // ✅ FETCH ITEMS BY CATEGORY
+  //  FETCH ITEMS BY CATEGORY
   getItemsByCategory: async (categoryId) => {
     return await ownerApi.get(`/items/category/${categoryId}`);
   },
 
-  // ✅ ADD ITEM (multipart/form-data)
+  //  ADD ITEM (multipart/form-data)
   addItem: async (itemData, images = {}) => {
     const formData = new FormData();
 
-    // 🔹 REQUIRED FIELDS (AS STRING — IMPORTANT)
+    //  REQUIRED FIELDS (AS STRING — IMPORTANT)
     formData.append('categoryId', String(itemData.categoryId));
     formData.append('itemId', String(itemData.itemId));
     formData.append('brand', itemData.brand);
@@ -149,20 +149,20 @@ export const ownerService = {
     formData.append('depositAmt', String(itemData.depositAmt));
     formData.append('maxRentDays',String(itemData.maxRentDays));
 
-    // 🔹 OPTIONAL IMAGES (MultipartFile)
+    //  OPTIONAL IMAGES (MultipartFile)
     if (images.img1) formData.append('img1', images.img1);
     if (images.img2) formData.append('img2', images.img2);
     if (images.img3) formData.append('img3', images.img3);
     if (images.img4) formData.append('img4', images.img4);
     if (images.img5) formData.append('img5', images.img5);
 
-    // 🚫 DO NOT set Content-Type manually
+    //  DO NOT set Content-Type manually
     return ownerApi.post('/products/add', formData);
   },
 
 
 
-  // ✅ Get Product Details 
+  // Get Product Details 
   getProductById: async (otId) => {
     return ownerApi.get(`/products/${otId}`);
   },
@@ -357,7 +357,7 @@ export const billService = {
   },
 
   /**
-   * Get specific bill details
+   * Get specific bill details - FIXED TO USE REAL BACKEND DATA
    * Maps to: GET /api/billing/{billNo}
    */
   getBillDetails: async (billNo) => {
@@ -365,45 +365,48 @@ export const billService = {
       const response = await billApi.get(`/api/billing/${billNo}`);
       const bill = response.data;
       
-      // Transform to match BillInvoice component expectations
+      console.log('✅ Raw bill data from C# backend:', bill);
+      
+      // Use actual data from C# BillResponseDTO (supports both camelCase and PascalCase)
       return {
         data: {
-          billNo: bill.billNo,
-          billDate: new Date().toISOString(),
+          billNo: bill.billNo || bill.BillNo,
+          billDate: bill.billDate || bill.BillDate || new Date().toISOString(),
           
           customer: {
-              fullName: bill.customerName,
-              email: bill.customerEmail,
-              phoneNo: bill.customerPhone,    // <-- from backend
-              address: bill.customerAddress,  // <-- from backend
-              city: bill.customerCity,        // <-- from backend
-              state: bill.customerState       // <-- from backend
-            },
+            fullName: bill.customerName || bill.CustomerName,
+            email: bill.customerEmail || bill.CustomerEmail,
+            phoneNo: bill.customerPhone || bill.CustomerPhone,
+            address: bill.customerAddress || bill.CustomerAddress,
+            city: bill.customerCity || bill.CustomerCity,
+            state: bill.customerState || bill.CustomerState
+          },
 
-            owner: {
-              fullName: bill.ownerName,
-              email: bill.ownerEmail,
-              phoneNo: bill.ownerPhone,       // <-- from backend
-              address: bill.ownerAddress,     // <-- from backend
-              city: bill.ownerCity,           // <-- from backend
-              state: bill.ownerState          // <-- from backend
-            },
-          
-          item: {
-            itemName: bill.itemBrand,
-            brand: bill.itemBrand,
-            description: bill.itemDescription,
-            condition: "Good",
-            rentPerDay: 0, // Not in current .NET response
+          owner: {
+            fullName: bill.ownerName || bill.OwnerName,
+            email: bill.ownerEmail || bill.OwnerEmail,
+            phoneNo: bill.ownerPhone || bill.OwnerPhone,
+            address: bill.ownerAddress || bill.OwnerAddress,
+            city: bill.ownerCity || bill.OwnerCity,
+            state: bill.ownerState || bill.OwnerState
           },
           
+          item: {
+            itemName: bill.itemBrand || bill.ItemBrand,
+            brand: bill.itemBrand || bill.ItemBrand,
+            description: bill.itemDescription || bill.ItemDescription,
+            condition: bill.itemCondition || bill.ItemCondition || "Good",
+            rentPerDay: bill.rentPerDay || bill.RentPerDay || 0,
+          },
+          
+          // ✅ FIXED: Use ACTUAL rental data from backend instead of hardcoded values!
           rental: {
-            startDate: new Date().toISOString(),
-            endDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-            numberOfDays: 7,
-            totalRent: bill.amount * 0.7, // Estimate
-            deposit: bill.amount * 0.3,   // Estimate
-            grandTotal: bill.amount
+            startDate: bill.startDate || bill.StartDate,
+            endDate: bill.endDate || bill.EndDate,
+            numberOfDays: bill.numberOfDays || bill.NumberOfDays,
+            totalRent: bill.totalRent || bill.TotalRent,
+            deposit: bill.depositAmount || bill.DepositAmount,
+            grandTotal: bill.amount || bill.Amount
           }
         }
       };

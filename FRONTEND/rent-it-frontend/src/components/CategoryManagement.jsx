@@ -8,8 +8,14 @@ import {
 } from '../services/adminServiceAPI';
 import '../css/CategoryManagement.css';
 
+import { useDispatch } from "react-redux";
+import { forceLogout } from "../features/auth/authSlice";
+import { persistor } from "../app/store";
+
+
 const CategoryManagement = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -115,11 +121,16 @@ const CategoryManagement = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
+  /* =========================
+     LOGOUT HANDLER
+     ========================= */
+
+const handleLogout = async () => {
+  dispatch(forceLogout());
+  await persistor.purge();
+  localStorage.removeItem("token");
+  navigate("/login", { replace: true });
+};
 
   const filteredCategories = categories.filter(category => {
     const search = searchTerm.toLowerCase();

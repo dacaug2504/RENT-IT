@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // 🔐 Redux auth state (SOURCE OF TRUTH)
+  //  Redux auth state
   const {
     user,
     isAuthenticated,
@@ -16,16 +16,16 @@ const Login = () => {
     error: authError,
   } = useSelector((state) => state.auth);
 
-  // 🧾 Local form state (UI ONLY)
+  // Local form state
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // ❌ UI error (kept for compatibility with your JSX)
+  //  UI error handling
   const [localError, setLocalError] = useState("");
 
-  // 🛑 Prevent duplicate redirects
+  //  Prevent duplicate redirects
   const hasRedirected = useRef(false);
 
   const handleChange = (e) => {
@@ -33,30 +33,45 @@ const Login = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear errors when user starts typing again
     setLocalError("");
   };
 
-  // =========================
-  // ✅ FORM SUBMIT → REDUX
-  // =========================
+  // =====================================
+  // ✅ VALIDATION & SUBMIT
+  // =====================================
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLocalError("");
 
+    const { email, password } = formData;
+
+    // 1. Email validation: Must be @gmail.com
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!emailRegex.test(email)) {
+      setLocalError("Invalid email format. Please use a @gmail.com address.");
+      return;
+    }
+
+    // 2. Password validation: 8+ chars, 1 Upper, 1 Number, 1 Special Char
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setLocalError(
+        "Password must be at least 8 characters long, contain one uppercase letter, one number, and one special character."
+      );
+      return;
+    }
+
+    // Proceed to Redux login if validation passes
     await dispatch(loginThunk(formData));
   };
 
-  // =========================
-  // ✅ POST-LOGIN REDIRECT
-  // =========================
+  // =====================================
+  // ✅ POST-LOGIN REDIRECT LOGIC
+  // =====================================
   useEffect(() => {
-    // ⛔ Do nothing while auth state is stabilizing
     if (loading) return;
-
-    // ⛔ Not authenticated
     if (!isAuthenticated || !user) return;
-
-    // ⛔ Prevent double execution
     if (hasRedirected.current) return;
 
     const rawRole = user.role;
@@ -75,8 +90,6 @@ const Login = () => {
     }
 
     role = role.toUpperCase();
-    console.log("✅ Detected role:", role);
-
     hasRedirected.current = true;
 
     switch (role) {
@@ -96,7 +109,7 @@ const Login = () => {
     }
   }, [isAuthenticated, user, loading, navigate]);
 
-  // 🧼 Cleanup on unmount (important after logout)
+  // 🧼 Cleanup on unmount
   useEffect(() => {
     return () => {
       hasRedirected.current = false;
@@ -120,9 +133,10 @@ const Login = () => {
           <p className="auth-subtitle">Sign in to your account</p>
         </div>
 
+        {/* Display local validation errors or Redux auth errors */}
         {(localError || authError) && (
           <Alert variant="danger">
-            {localError || authError}
+            {localError || (typeof authError === 'string' ? authError : "An error occurred during login")}
           </Alert>
         )}
 
@@ -134,7 +148,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="example@gmail.com"
               required
             />
           </Form.Group>
@@ -146,7 +160,7 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
+              placeholder="Min 8 chars, 1 Upper, 1 Num, 1 Spec"
               required
             />
           </Form.Group>

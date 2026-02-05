@@ -6,8 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
-using Steeltoe.Discovery.Client;  // ✅ ADD THIS
-using Steeltoe.Discovery.Eureka;  // ✅ ADD THIS
+using Steeltoe.Discovery.Client;  
+using Steeltoe.Discovery.Eureka;  
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,8 +96,9 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+
 // ====================== MIDDLEWARE ORDER ======================
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("AllowReactApp");
 

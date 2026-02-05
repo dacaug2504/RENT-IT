@@ -32,7 +32,7 @@ const AppNavbar = () => {
     await persistor.purge();
 
     // 🚪 3️⃣ Redirect
-    navigate("/login");
+    navigate("/search");
   };
 
   return (

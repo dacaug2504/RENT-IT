@@ -1,8 +1,8 @@
 ﻿using SearchService.Repositories;
 using SearchService.Services;
 using System.Text.Json.Serialization;
-using Steeltoe.Discovery.Client;  // ✅ ADD THIS
-using Steeltoe.Discovery.Eureka;  // ✅ ADD THIS
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
 
 namespace SearchService
 {
@@ -12,7 +12,7 @@ namespace SearchService
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add services to the container
             builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -21,43 +21,27 @@ namespace SearchService
 
             var connectionString = builder.Configuration.GetConnectionString("RentItDb");
 
-            // Register Repository and Service with Dependency Injection
+            // Register Repository and Service
             builder.Services.AddScoped<ICatalogRepository>(provider =>
                 new CatalogRepository(connectionString));
             builder.Services.AddScoped<ICatalogService, CatalogService>();
 
-            // ✅ ADD EUREKA DISCOVERY CLIENT
+            // Add Eureka Discovery
             builder.Services.AddServiceDiscovery(o => o.UseEureka());
 
-            // CORS Configuration - REMOVE THIS (Gateway will handle CORS)
-            // Comment out or delete the CORS configuration
-            /*
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowReact", policy =>
-                {
-                    policy
-                        .WithOrigins("http://localhost:3000", "https://localhost:3000")
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
-            });
-            */
+
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configure the HTTP request pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            // ✅ REMOVE THIS LINE (Gateway handles CORS)
-            // app.UseCors("AllowReact");  
+            // ✅ REMOVED: app.UseHttpsRedirection() - Service runs HTTP only
 
-            app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

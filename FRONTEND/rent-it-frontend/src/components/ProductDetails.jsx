@@ -206,15 +206,28 @@ const ProductDetails = () => {
           box-shadow: 0 8px 24px rgba(13, 110, 253, 0.3);
         }
         
-        .add-to-cart-btn {
+        .add-to-cart-custom-btn {
+          padding: 14px 28px;
+          background-color: var(--pastel-green-dark);
+          color: white;
+          border: none;
           border-radius: 12px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+          width: 100%;
         }
         
-        .add-to-cart-btn:hover:not(:disabled) {
+        .add-to-cart-custom-btn:hover:not(:disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(13, 110, 253, 0.3);
+          box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .add-to-cart-custom-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
         
         .product-title {
@@ -395,18 +408,16 @@ const ProductDetails = () => {
                   </div>
                 </div>
 
-                {/* Action Button */}
-                {/* <div className="d-grid gap-3">
-                  <Button 
-                    variant="primary" 
-                    size="lg" 
-                    className="add-to-cart-btn py-3 fs-5 fw-bold"
+                {/* Add to Cart Button */}
+                <div style={{ marginTop: "20px" }}>
+                  <button
+                    className="add-to-cart-custom-btn"
                     onClick={handleAddToCart}
                     disabled={cartLoading || product.status !== 'AVAILABLE'}
                   >
                     {cartLoading ? (
                       <>
-                        <Spinner animation="border" size="sm" className="me-2" />
+                        <i className="fas fa-spinner fa-spin me-2"></i>
                         Adding to Cart...
                       </>
                     ) : cartSuccess ? (
@@ -420,41 +431,7 @@ const ProductDetails = () => {
                         Add to Cart
                       </>
                     )}
-                  </Button>
-                </div> */}
-                <div style={{ marginTop: "20px", textAlign: "center" }}>
-                  <button
-                    style={{
-                      padding: "14px 20px",
-                      backgroundColor: "#dc2626",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "8px",
-                      fontSize: "18px",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      position: "relative",
-                      zIndex: 99999
-                    }}
-                    onClick={() => {
-                      console.log("RAW PRODUCT DETAILS ADD CLICKED", product.ot_id);
-                      alert("RAW PRODUCT DETAILS ADD CLICKED");
-                      handleAddToCart();
-                    }}
-                  >
-                    🧪 TEST ADD TO CART (RAW)
                   </button>
-                </div>
-
-
-                {/* Product ID Footer */}
-                <div className="mt-4 pt-4 border-top">
-                  <div className="d-flex align-items-center justify-content-between text-muted small">
-                    <span>
-                      <i className="fas fa-tag me-2"></i>
-                      <strong>Product ID:</strong> {product.ot_id}
-                    </span>
-                  </div>
                 </div>
               </Card.Body>
             </Card>

@@ -66,8 +66,8 @@ const Register = () => {
 
   const fetchStates = async () => {
     try {
-      console.log('Fetching states from: http://localhost:8081/states');
-      const response = await axios.get('http://localhost:8081/states');
+      // console.log('Fetching states from: http://localhost:8081/states');
+      const response = await axios.get('http://localhost:8765/states');
       console.log('States response:', response.data);
       setStates(response.data);
     } catch (error) {
@@ -79,7 +79,7 @@ const Register = () => {
   const fetchCitiesByState = async (stateId) => {
     try {
       console.log('Fetching cities for state:', stateId);
-      const response = await axios.get(`http://localhost:8081/cities/${stateId}`);
+      const response = await axios.get(`http://localhost:8765/cities/${stateId}`);
       console.log('Cities response:', response.data);
       setCities(response.data);
     } catch (error) {

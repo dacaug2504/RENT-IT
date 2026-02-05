@@ -24,6 +24,6 @@ export const store = configureStore({
     }),
 });
 
-setStore(store); // 👈 CRITICAL
+setStore(store);
 
 export const persistor = persistStore(store);
