@@ -33,6 +33,7 @@
 
         // Item Info
         public int ItemId { get; set; }
+        public string? ItemName { get; set; }
         public string? ItemBrand { get; set; }
         public string? ItemDescription { get; set; }
         public string? ItemCondition { get; set; }

@@ -160,9 +160,9 @@ const CustomerDashboard = () => {
     const interval = setInterval(() => {
       setImageIndices((prev) => ({
         ...prev,
-        [hoveredProduct]: (prev[hoveredProduct] + 1) % images.length,
+        [hoveredProduct]: ((prev[hoveredProduct] || 0) + 1) % images.length,
       }));
-    }, 800);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, [hoveredProduct, products]);
@@ -529,19 +529,19 @@ const CustomerDashboard = () => {
                           >
                             <div className="product-image">
                               {img ? (
-                                <motion.img 
-                                  src={img} 
-                                  alt={p.brand}
-                                  style={{ 
-                                    width: '100%', 
-                                    height: '100%', 
-                                    objectFit: 'cover' 
-                                  }}
-                                  key={img}
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ duration: 0.3 }}
-                                />
+                                // All images stay mounted and stacked; only opacity changes,
+                                // so switching is a smooth crossfade with no blank frame.
+                                imgs.map((src, i) => (
+                                  <img
+                                    key={i}
+                                    src={src}
+                                    alt={p.brand}
+                                    className="product-slide"
+                                    style={{
+                                      opacity: i === ((imageIndices[p.ot_id] || 0) % imgs.length) ? 1 : 0,
+                                    }}
+                                  />
+                                ))
                               ) : (
                                 <div className="product-initial">
                                   {p.brand?.[0]?.toUpperCase() || "?"}

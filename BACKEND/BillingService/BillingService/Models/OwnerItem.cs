@@ -52,5 +52,8 @@ namespace BillingService.Models
         // Navigation property
         [ForeignKey("UserId")]
         public virtual User? User { get; set; }
+
+        [ForeignKey("ItemId")]
+        public virtual Item? Item { get; set; }
     }
 }

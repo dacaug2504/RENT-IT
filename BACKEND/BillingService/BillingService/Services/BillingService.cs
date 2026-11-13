@@ -34,6 +34,7 @@ namespace BillingService.Services
                     .Include(b => b.Owner)
                         .ThenInclude(o => o!.State)
                     .Include(b => b.OwnerItem)
+                        .ThenInclude(oi => oi!.Item)
                     .ToListAsync();
 
                 return await MapToDTOWithOrderAsync(bills);
@@ -63,6 +64,7 @@ namespace BillingService.Services
                     .Include(b => b.Owner)
                         .ThenInclude(o => o!.State)
                     .Include(b => b.OwnerItem)
+                        .ThenInclude(oi => oi!.Item)
                     .Where(b => b.CustomerId == customerId)
                     .ToListAsync();
 
@@ -93,6 +95,7 @@ namespace BillingService.Services
                     .Include(b => b.Owner)
                         .ThenInclude(o => o!.State)
                     .Include(b => b.OwnerItem)
+                        .ThenInclude(oi => oi!.Item)
                     .Where(b => b.OwnerId == ownerId)
                     .ToListAsync();
 
@@ -123,6 +126,7 @@ namespace BillingService.Services
                     .Include(b => b.Owner)
                         .ThenInclude(o => o!.State)
                     .Include(b => b.OwnerItem)
+                        .ThenInclude(oi => oi!.Item)
                     .FirstOrDefaultAsync(b => b.BillNo == billNo);
 
                 if (bill == null) return null;
@@ -178,6 +182,7 @@ namespace BillingService.Services
                     .Include(b => b.Owner)
                         .ThenInclude(o => o!.State)
                     .Include(b => b.OwnerItem)
+                        .ThenInclude(oi => oi!.Item)
                     .FirstAsync(b => b.BillNo == bill.BillNo);
 
                 // Find the corresponding order
@@ -246,7 +251,9 @@ namespace BillingService.Services
 
             if (startDate.HasValue && endDate.HasValue)
             {
-                numberOfDays = (int)(endDate.Value - startDate.Value).TotalDays;
+                // Inclusive of both start and end date — must match Cart.jsx and
+                // OrderService.java, which compute the billed amount the same way.
+                numberOfDays = (int)(endDate.Value.Date - startDate.Value.Date).TotalDays + 1;
                 if (numberOfDays < 1) numberOfDays = 1; // At least 1 day
             }
 
@@ -293,6 +300,7 @@ namespace BillingService.Services
 
                 // Item Info
                 ItemId = bill.ItemId,
+                ItemName = bill.OwnerItem?.Item?.ItemName ?? "N/A",
                 ItemBrand = bill.OwnerItem?.Brand ?? "N/A",
                 ItemDescription = bill.OwnerItem?.Description ?? "N/A",
                 ItemCondition = bill.OwnerItem?.ConditionType ?? "Good",

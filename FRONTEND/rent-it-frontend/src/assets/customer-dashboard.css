@@ -598,6 +598,13 @@
   object-fit: cover;
 }
 
+/* stacked slideshow images: crossfade via opacity */
+.product-image img.product-slide {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease;
+}
+
 .product-initial {
   width: 100%;
   height: 100%;
