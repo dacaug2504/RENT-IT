@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 import {
   getAllItems,
   getAllCategories,
@@ -284,12 +285,23 @@ const ItemManagement = () => {
             </div>
             <div className="filter-group">
               <label>📁 Category:</label>
-              <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)} className="filter-select">
-                <option value="all">All Categories</option>
-                {categories.map(cat => (
-                  <option key={cat.categoryId} value={cat.categoryId}>{cat.type}</option>
-                ))}
-              </select>
+              <Select
+                classNamePrefix="react-select"
+                isSearchable={false}
+                options={[
+                  { value: 'all', label: 'All Categories' },
+                  ...categories.map(cat => ({ value: String(cat.categoryId), label: cat.type }))
+                ]}
+                value={
+                  filterCategory === 'all'
+                    ? { value: 'all', label: 'All Categories' }
+                    : (() => {
+                        const c = categories.find(cat => String(cat.categoryId) === String(filterCategory));
+                        return c ? { value: String(c.categoryId), label: c.type } : null;
+                      })()
+                }
+                onChange={(opt) => setFilterCategory(opt ? opt.value : 'all')}
+              />
             </div>
           </div>
 
@@ -368,15 +380,18 @@ const ItemManagement = () => {
               </div>
               <div className="form-group">
                 <label>Category *</label>
-                <select
-                  name="categoryId" value={formData.categoryId}
-                  onChange={handleInputChange} className="form-select" required
-                >
-                  <option value="">Select a category</option>
-                  {categories.map(cat => (
-                    <option key={cat.categoryId} value={cat.categoryId}>{cat.type}</option>
-                  ))}
-                </select>
+                <Select
+                  classNamePrefix="react-select"
+                  placeholder="Select a category"
+                  options={categories.map(cat => ({ value: String(cat.categoryId), label: cat.type }))}
+                  value={(() => {
+                    const c = categories.find(cat => String(cat.categoryId) === String(formData.categoryId));
+                    return c ? { value: String(c.categoryId), label: c.type } : null;
+                  })()}
+                  onChange={(opt) => handleInputChange({ target: { name: 'categoryId', value: opt ? opt.value : '' } })}
+                  menuPortalTarget={document.body}
+                  styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+                />
               </div>
               <div className="form-actions">
                 <button type="button" onClick={handleCloseModal} className="btn-cancel">Cancel</button>

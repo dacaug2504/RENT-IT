@@ -43,10 +43,29 @@ const attachToken = (config) => {
   return config;
 };
 
+// ================== EXPIRED SESSION HANDLER ==================
+// JWTs expire after 24h but the token stays in localStorage (redux-persist).
+// When the backend rejects it with 401, log out and send the user to /login.
+export const handleAuthError = (error) => {
+  const status = error.response?.status;
+  const url = error.config?.url || "";
+  const store = getStore();
+
+  if (status === 401 && !url.includes("/api/login") && store?.getState()?.auth?.token) {
+    store.dispatch({ type: "auth/forceLogout" });
+    window.location.href = "/login";
+  }
+  return Promise.reject(error);
+};
+
 authApi.interceptors.request.use(attachToken);
 ownerApi.interceptors.request.use(attachToken);
 productApi.interceptors.request.use(attachToken);
 billApi.interceptors.request.use(attachToken);
+
+ownerApi.interceptors.response.use((r) => r, handleAuthError);
+productApi.interceptors.response.use((r) => r, handleAuthError);
+billApi.interceptors.response.use((r) => r, handleAuthError);
 
 
 
@@ -225,6 +244,7 @@ export const adminServiceAPI = axios.create({
 
 // Attach JWT token automatically
 adminServiceAPI.interceptors.request.use(attachToken);
+adminServiceAPI.interceptors.response.use((r) => r, handleAuthError);
 
 
 
@@ -392,7 +412,7 @@ export const billService = {
           },
           
           item: {
-            itemName: bill.itemBrand || bill.ItemBrand,
+            itemName: bill.itemName || bill.ItemName || bill.itemBrand || bill.ItemBrand,
             brand: bill.itemBrand || bill.ItemBrand,
             description: bill.itemDescription || bill.ItemDescription,
             condition: bill.itemCondition || bill.ItemCondition || "Good",
